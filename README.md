@@ -1,8 +1,8 @@
-# NGO Help Network — UI prototype
+# Peace Care Foundation — UI prototype
 
-A responsive, frontend-only demonstration of a third-party platform that connects people seeking help with independent NGOs across India.
+A responsive, frontend-only demonstration of Peace Care Foundation's mission—care for homeless dogs, children, adults and elders—alongside sample journeys for finding support, volunteering and exploring independent NGO profiles.
 
-**This is a demo.** Organizations, case requests, counts, statuses, dashboards, and notifications are sample content labelled “Demo”. Nothing is submitted to a server or saved. Forms validate in the browser and show a **Demo submission** confirmation. Switching dashboard roles is a preview, not authentication. Temporary case actions reset when the page reloads.
+**This is a demo.** Organization listings, case requests, impact figures, statuses, dashboards, and notifications are sample content labelled “Demo”, not verified operational data. Previous site copy inspired the mission and program descriptions, but this prototype does not verify past figures, activities or contact details. Nothing is submitted to a server or saved. Forms validate in the browser and show a **Demo submission** confirmation. Switching dashboard roles is a preview, not authentication. Temporary case actions reset when the page reloads.
 
 ## Run in Replit
 
