@@ -2,7 +2,8 @@ import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Layout from "./components/Layout";
 import type { Role } from "./types";
-import { Browse, Dashboard, HomePeace, Info, NgoDetail, PeaceInfo, Programs, Register, RequestHelpDemo, Volunteer } from "./pages/PrototypePages";
+import { Browse, Dashboard, HomePeace, Info, NgoDetail, PeaceInfo, Programs, Register, RequestHelpDemo } from "./pages/PrototypePages";
+import { Volunteer } from "./pages/Volunteer";
 
 export default function App() {
   const [role, setRole] = useState<Role>("HELP_SEEKER");

@@ -1,0 +1,1 @@
+- [Dependency cache after branch changes](dependency-cache-after-branch-changes.md) — sync missing packages and restart Vite after branch changes; a running server may retain failed imports.
