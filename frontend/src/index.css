@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap');
+@import "tailwindcss";
+
+:root {
+  --ink: #183b36;
+  --ink-soft: #42645d;
+  --paper: #f7f4ec;
+  --paper-deep: #ebe8dc;
+  --coral: #d9674f;
+  --coral-dark: #b94c39;
+  --sun: #eabf66;
+  --line: #d8d8c9;
+  --white: #fffdf7;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+  font-synthesis: none;
+}
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 320px; background: var(--paper); }
+button, input, textarea, select { font: inherit; }
+button { cursor: pointer; }
+h1,h2,h3 { font-family: 'Fraunces', serif; letter-spacing: -.03em; }
+.noise { position: fixed; inset: 0; pointer-events: none; opacity: .035; z-index: 20; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E"); }
+.fade { animation: fade .5s ease both; }
+@keyframes fade { from { opacity: 0; transform: translateY(8px) } to { opacity: 1; transform: none } }
+.field { width:100%; border:1px solid var(--line); border-radius: 12px; background: rgba(255,253,247,.8); padding:.78rem .9rem; outline:none; transition: border-color .2s, box-shadow .2s; }
+.field:focus { border-color: var(--coral); box-shadow: 0 0 0 3px rgba(217,103,79,.14); }
+.relative > .field.pl-9 { padding-left: 2.5rem; }
+.btn { display:inline-flex; align-items:center; justify-content:center; gap:.5rem; border:0; border-radius:999px; padding:.72rem 1.15rem; font-weight:700; transition:transform .2s, background .2s; }
+.btn:hover { transform: translateY(-2px); }
+.btn-primary { background:var(--coral); color:var(--white); }
+.btn-primary:hover { background:var(--coral-dark); }
+.btn-quiet { background:var(--ink); color:var(--white); }
+.btn-outline { border:1px solid var(--ink); color:var(--ink); background:transparent; }
+.eyebrow { color:var(--coral-dark); text-transform:uppercase; letter-spacing:.14em; font-size:.7rem; font-weight:700; }

@@ -1,29 +1,22 @@
-# Welcome to your Lovable project
+# NGO Help Network — UI prototype
 
-This project was built with [Lovable](https://lovable.dev).
+A responsive, frontend-only demonstration of a third-party platform that connects people seeking help with independent NGOs across India.
 
-## Build with Lovable
+**This is a demo.** Organizations, case requests, counts, statuses, dashboards, and notifications are sample content labelled “Demo”. Nothing is submitted to a server or saved. Forms validate in the browser and show a **Demo submission** confirmation. Switching dashboard roles is a preview, not authentication. Temporary case actions reset when the page reloads.
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
+## Run in Replit
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
+1. Install dependencies: `bun install --frozen-lockfile`
+2. Start the **Start application** workflow, or run `bun run dev`.
+3. Open the web preview on port 5000.
 
-## Development
+## Checks
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+- `bun run typecheck`
+- `bun run build`
 
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
-```
+The project uses React, TypeScript, Vite and Tailwind CSS. Source is in `frontend/src`, organized by pages, reusable components, mock data and types. There is no backend, database, API, sign-in service, payment processing or Supabase connection in this prototype. No environment variables or database migrations are needed.
 
-## Built with
+## Before using this for real requests
 
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
+This prototype is **not** suitable for collecting personal details or providing access to real cases. A production service would need a protected backend, authentication and role-based permissions, secure document storage, privacy and consent review, and a verified NGO onboarding process. Do not present demo submissions as requests sent to an NGO.

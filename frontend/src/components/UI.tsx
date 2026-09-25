@@ -1,0 +1,8 @@
+import type { ReactNode } from "react";
+import { AlertCircle, Check, FileText } from "lucide-react";
+
+export const Button = ({children, className="", ...props}: React.ButtonHTMLAttributes<HTMLButtonElement> & {children:ReactNode}) => <button className={`btn btn-primary ${className}`} {...props}>{children}</button>;
+export const Field = ({label, ...props}: React.InputHTMLAttributes<HTMLInputElement> & {label:string}) => <label className="text-sm font-semibold">{label}<input className="field mt-2" {...props}/></label>;
+export function Notice({children, tone="error"}:{children:ReactNode;tone?: "error"|"success"|"info"}) { const styles = tone==="success"?"bg-[#e7f0df] text-[#3f6937]":tone==="info"?"bg-[#e9efec] text-[var(--ink)]":"border border-[#e2aaa0] bg-[#fff1ed] text-[#873f32]"; return <div className={`flex gap-3 rounded-xl p-4 text-sm ${styles}`}>{tone==="success"?<Check size={18}/>:<AlertCircle size={18}/>}<span>{children}</span></div> }
+export function EmptyState({title, text}:{title:string;text:string}) { return <div className="rounded-2xl border border-dashed border-[var(--line)] p-10 text-center"><FileText className="mx-auto text-[var(--coral)]"/><h3 className="mt-4 text-2xl">{title}</h3><p className="mx-auto mt-2 max-w-md text-sm leading-6 text-[var(--ink-soft)]">{text}</p></div> }
+export function PageIntro({eyebrow,title,children}:{eyebrow:string;title:string;children?:ReactNode}) { return <div className="max-w-2xl"><div className="eyebrow">{eyebrow}</div><h1 className="mt-3 text-5xl leading-tight">{title}</h1>{children&&<div className="mt-4 text-lg leading-8 text-[var(--ink-soft)]">{children}</div>}</div> }

@@ -1,0 +1,42 @@
+Create a new, responsive frontend-only UI prototype called “NGO Help Network”.
+
+This is a third-party platform concept that connects people seeking help with independent NGOs across India. The goal is to demonstrate the website design and user journeys. Build only the frontend using React, TypeScript, Vite, and Tailwind CSS.
+
+IMPORTANT CONSTRAINTS
+- Do not create a backend, database, API, authentication service, payment integration, or Supabase connection.
+- Use local mock data for all NGO listings, requests, dashboards, and notifications.
+- Clearly label sample organizations and numbers as “Demo”.
+- Forms should demonstrate validation and then show a “Demo submission” confirmation. Do not claim that requests were sent or saved.
+- Dashboard role switching is for preview only; it is not real login or access control.
+- Do not add payment buttons that appear to collect real donations.
+
+DESIGN
+Make it polished, trustworthy, easy to understand, mobile-friendly, and accessible. Use a calm color palette, readable typography, cards, clear status badges, and consistent navigation. Write user-facing content in simple English. Add a language toggle to preview Hindi UI copy for the main pages if practical.
+
+BUILD THESE PAGES
+1. Home: hero section, “How it works” in three steps, help categories, featured demo NGOs, and clear calls to action.
+2. Browse NGOs: search and filters for category, state, and city. Show responsive NGO cards.
+3. NGO details: overview, support areas, locations, sample contact information, and a clearly labelled demo verification badge.
+4. Request Help: multi-step sample form with category, description, location, urgency, and contact preference. Validate required fields and display a demo confirmation screen.
+5. Register an NGO: sample organization information and service-area form with a demo confirmation.
+6. Volunteer: sample opportunities and an application form with a demo confirmation.
+7. Help Seeker Dashboard: sample requests and a visual status timeline.
+8. NGO Dashboard: sample incoming requests, active cases, and profile preview.
+9. Admin Dashboard: sample NGO review queue, help requests, matching suggestions, and summary cards.
+10. About, Contact, FAQ, Privacy Policy, and Terms pages with clearly marked sample content where business details are not yet provided.
+
+SUPPORT CATEGORIES
+Food, healthcare, education, shelter, clothing, women’s support, child welfare, elder care, disability support, animal rescue, disaster relief, employment and skills, legal aid, and environmental support.
+
+INTERACTIONS
+- Navigation and mobile menu must work.
+- Search, filters, tabs, and dashboard preview switching must work using local mock data.
+- Forms must validate inputs and show demo-only success messages.
+- Case status changes in the admin/NGO preview may update local React state for demonstration, but must be clearly labelled as temporary and reset on refresh.
+- Provide useful empty states when search has no results.
+- Ensure there are no broken links or nonfunctional primary buttons.
+
+PROJECT STRUCTURE
+Keep frontend code organized into pages, reusable components, mock data, and types. Add a README explaining how to run the project in Replit and clearly stating that this is a UI prototype with no backend or persistent data.
+
+First briefly list the pages and visual style you will create. Then implement and run the actual app in Replit. Check that it builds successfully and that the main pages and interactions work.
