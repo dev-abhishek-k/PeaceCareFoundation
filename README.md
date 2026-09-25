@@ -20,3 +20,13 @@ The project uses React, TypeScript, Vite and Tailwind CSS. Source is in `fronten
 ## Before using this for real requests
 
 This prototype is **not** suitable for collecting personal details or providing access to real cases. A production service would need a protected backend, authentication and role-based permissions, secure document storage, privacy and consent review, and a verified NGO onboarding process. Do not present demo submissions as requests sent to an NGO.
+
+## Tests
+
+Run the pledge and admin workflow tests with:
+
+```sh
+bun test
+```
+
+These tests use in-memory mock clients. They do not import the configured Supabase client, make network requests, or write to any Supabase project.

@@ -9,6 +9,7 @@
     "typecheck": "tsc -p frontend/tsconfig.json --noEmit",
     "preview": "vite preview --config frontend/vite.config.ts",
     "lint": "eslint .",
+    "test": "bun test",
     "format": "prettier --write ."
   },
   "overrides": {
