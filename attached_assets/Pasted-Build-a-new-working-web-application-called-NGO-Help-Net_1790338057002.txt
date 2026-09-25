@@ -1,0 +1,69 @@
+Build a new, working web application called “NGO Help Network”. It is a third-party coordination platform connecting people who need help with independent NGOs across India. Our platform receives requests, verifies participating NGOs, suggests suitable NGOs, and tracks each case. We do not claim to provide every service ourselves, and submitting a request does not guarantee assistance.
+
+Use a clear, scalable structure with separate frontend and backend folders. Use TypeScript throughout:
+- Frontend: React, Vite, Tailwind CSS
+- Backend: Node.js, Express, organized into routes, controllers, services, and repositories
+- Database: PostgreSQL with Prisma migrations
+- Authentication: secure email/password login with role-based access
+- Validation: Zod on the backend
+- Tests: meaningful tests for authorization and core request workflows
+
+Create a README with exact Replit setup, environment variables, database migration, development, testing, and deployment steps. Use one API that can later serve both the web app and a mobile app.
+
+ROLES
+1. Help seeker: submits help requests and tracks progress.
+2. NGO representative: registers an NGO, manages its profile, and handles cases assigned to it.
+3. Volunteer: applies to support approved opportunities.
+4. Admin: verifies NGOs, reviews requests, manages matching, and handles complaints.
+
+PUBLIC PAGES
+- Home: explain the three steps—request help, review and matching, NGO response.
+- NGO directory: search by name, location, and support category.
+- NGO profile: services, locations, contact preferences, and verification status.
+- Support categories.
+- Request Help.
+- Register Your NGO.
+- Become a Volunteer.
+- About, Contact, FAQ, Privacy Policy, and Terms.
+
+Use a clean, mobile-friendly design. Do not add fictional verified NGOs, testimonials, success numbers, or legal registration claims. Seed demo records only for the development environment and label them “Demo”.
+
+SUPPORT CATEGORIES
+Food, healthcare, education, shelter, clothing, women’s support, child welfare, elder care, disability support, animal rescue, disaster relief, employment and skills, legal aid, and environmental support. Admin can manage categories.
+
+HELP REQUEST WORKFLOW
+A help seeker can submit a request containing category, description, city, state, PIN code, urgency, preferred contact method, and optional supporting documents. Include consent before sharing private details with an NGO.
+
+Statuses:
+Submitted → Under Review → NGO Suggested → Shared With NGO → Accepted or Declined → In Progress → Resolved → Closed.
+
+Admin reviews each request and confirms the NGO match before sharing it. An NGO can accept or decline. If declined, admin can select another NGO. Keep a timestamped history of status changes and show it to the help seeker.
+
+NGO VERIFICATION
+NGOs submit organization details, registration details, service categories, locations, contact person, and verification documents. Admin can approve, request more information, reject, or suspend an NGO with a recorded reason. Show a “Verified” badge only after approval.
+
+DASHBOARDS
+- Help seeker: own requests, status timeline, and updates.
+- NGO: own profile, shared requests, active cases, and outcomes.
+- Volunteer: application and available approved opportunities.
+- Admin: pending NGO applications, help requests, suggested matches, active cases, complaints, and basic reports.
+
+SECURITY
+Enforce permissions on every backend API endpoint. A help seeker sees only their own private requests. An NGO sees only requests explicitly shared with it. Only authorized admins can verify NGOs or assign cases. Store documents privately; provide authorized downloads through the backend. Validate uploaded file type and size. Keep secrets in Replit environment variables. Add rate limiting to authentication and public forms.
+
+NOTIFICATIONS
+Create in-app notifications for important status changes. Add email notifications only if email credentials are configured. Clearly show when an email was not sent.
+
+DONATIONS
+For the first version, do not collect payments. You may show an informational “Support an NGO” page linking to an NGO’s verified public donation page if an admin has approved that link. Do not display fake payment success or receipts.
+
+HOW TO BUILD
+1. First explain the architecture, folder structure, database tables, roles, and page list in simple language.
+2. Then implement the complete project in Replit; do not stop after writing a plan.
+3. Create database migrations and an admin bootstrap method documented in the README. Do not make the first person who signs up an admin automatically.
+4. Build and connect the frontend forms, backend APIs, and database.
+5. Run migrations, type checks, and meaningful tests. Fix errors.
+6. Start the app and verify these flows: help seeker submits a request; admin reviews and shares it; NGO accepts or declines; help seeker sees the updated status.
+7. At the end, list what works, what needs environment variables, and what still needs manual verification.
+
+Make real working features. Do not present placeholder buttons or static example data as completed functionality.
