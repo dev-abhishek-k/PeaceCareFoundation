@@ -5,6 +5,6 @@ description: An environment-specific failure mode when setting up the mockup san
 
 Check that `node` resolves in the current environment before attempting mockup artifact creation. A declared Node module does not necessarily make its executable available in an already running shell; changing the module declaration alone may not fix bootstrap.
 
-**Why:** Mockup artifact setup invokes `node` directly. In this workspace it failed with a process-spawn error both before and after installing a different Node module, while the current shell still could not find the executable.
+**Why:** Mockup artifact setup invokes `node` directly. In this workspace it failed with a process-spawn error both before and after installing a different Node module, while the current shell still could not find the executable. Installing an alternate Node module may replace the declared original; uninstalling the alternate may then remove Node from the declaration entirely.
 
-**How to apply:** Verify the executable first. If it remains unavailable after supported environment setup, avoid repeated artifact-creation attempts; proceed with the existing app for direct page changes or wait until the runtime is available.
+**How to apply:** Verify the executable first. If it remains unavailable after supported environment setup, avoid repeated artifact-creation attempts; proceed with the existing app for direct page changes or wait until the runtime is available. If you changed Node modules during the attempt, restore the originally configured version before finishing.

@@ -115,19 +115,30 @@ export function About() {
         </div>
       </section>
 
-      <section aria-labelledby="mission-title" className="bg-[var(--ink)] text-white">
-        <div className="mx-auto grid max-w-7xl gap-6 px-5 py-16 md:grid-cols-[.4fr_1fr] md:gap-16 md:py-20">
-          <div className="text-xs font-bold uppercase tracking-[.16em] text-[var(--sun)]">Our mission</div>
+      <section aria-labelledby="mission-title" className="relative overflow-hidden bg-[var(--ink)] text-white">
+        <div aria-hidden="true" className="pointer-events-none absolute -right-32 -top-48 h-[35rem] w-[35rem] rounded-full border border-white/10" />
+        <div className="relative mx-auto grid max-w-7xl gap-8 px-5 py-16 md:grid-cols-[.32fr_1fr] md:gap-16 md:py-24">
+          <div className="flex items-center gap-3 self-start md:pt-3">
+            <span aria-hidden="true" className="h-px w-8 bg-[var(--sun)]" />
+            <span className="text-xs font-bold uppercase tracking-[.16em] text-[var(--sun)]">Our mission</span>
+          </div>
           <div>
-            <h2 id="mission-title" className="max-w-3xl text-3xl leading-tight text-white sm:text-4xl">
-              Make relevant support easier to find, and communities easier to reach.
+            <h2 id="mission-title" className="max-w-4xl text-balance text-4xl leading-[1.12] text-white sm:text-5xl lg:text-[3.75rem]">
+              Make relevant support <span className="text-[var(--sun)]">easier to find,</span> and communities easier to reach.
             </h2>
-            <p className="mt-5 max-w-2xl leading-7 text-white/80">
-              We want people to understand their options and find NGOs whose work may match
-              their needs. We also want independent organisations to be easier for their
-              communities to discover. Our role is to support the connection, not to operate
-              their programmes.
-            </p>
+            <div className="mt-9 grid gap-8 border-t border-white/20 pt-8 sm:grid-cols-[1.25fr_.75fr] sm:gap-10">
+              <p className="max-w-xl text-base leading-8 text-white/85 sm:text-lg">
+                We want people to understand their options and find NGOs whose work may match
+                their needs. We also want independent organisations to be easier for their
+                communities to discover.
+              </p>
+              <div className="self-start border-l-2 border-[var(--sun)] pl-5">
+                <p className="text-xs font-bold uppercase tracking-[.14em] text-[var(--sun)]">Our role</p>
+                <p className="mt-3 leading-7 text-white/80">
+                  Support the connection, not operate independent NGOs&apos; programmes.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
