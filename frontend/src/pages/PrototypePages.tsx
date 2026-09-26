@@ -3,7 +3,7 @@ import { ArrowRight, Check, MapPin, Search, ShieldCheck } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
 import { categories, ngos, notifications, opportunities, requests } from "../mockData";
 import { StateCityFields } from "../components/StateCityFields";
-import { directoryCities } from "../locations";
+import { citiesForState, states } from "../locations";
 import type { HelpRequest, NGO, Role } from "../types";
 import { Button, EmptyState, Field, Notice, PageIntro } from "../components/UI";
 
@@ -27,8 +27,7 @@ export function Browse() {
   const [cat, setCat] = useState(params.get("category") || "");
   const [state, setState] = useState("");
   const [city, setCity] = useState("");
-  const states = [...new Set(ngos.map(n => n.state))].sort((a, b) => a.localeCompare(b));
-  const cities = directoryCities(ngos, state);
+  const cities = citiesForState(state);
   const filtered = useMemo(() => ngos.filter(n =>
     (!q || n.name.toLowerCase().includes(q.toLowerCase())) &&
     (!cat || n.categories.includes(cat)) &&

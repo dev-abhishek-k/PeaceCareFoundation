@@ -1,8 +1,8 @@
-// Local examples for the location pickers. "Other city" keeps the preview usable
-// even when a smaller city is not listed here.
-import type { NGO } from "./types";
+// Offline city data plus current names and locations missing from the source.
+// The source list is not exhaustive; forms also offer an "Other city" entry.
+import cityRecords from "indian-states-cities/src/statescities.json";
 
-export const stateCities: Record<string, readonly string[]> = {
+const additionalCities: Record<string, readonly string[]> = {
   "Andaman and Nicobar Islands": ["Sri Vijaya Puram"],
   "Andhra Pradesh": ["Guntur", "Vijayawada", "Visakhapatnam"],
   "Arunachal Pradesh": ["Itanagar", "Naharlagun"],
@@ -23,7 +23,7 @@ export const stateCities: Record<string, readonly string[]> = {
   Ladakh: ["Kargil", "Leh"],
   Lakshadweep: ["Kavaratti"],
   "Madhya Pradesh": ["Bhopal", "Gwalior", "Indore", "Jabalpur"],
-  Maharashtra: ["Mumbai", "Nagpur", "Nashik", "Pune", "Thane"],
+  Maharashtra: ["Kolhapur", "Mumbai", "Nagpur", "Nashik", "Pune", "Thane"],
   Manipur: ["Imphal"],
   Meghalaya: ["Shillong"],
   Mizoram: ["Aizawl"],
@@ -41,10 +41,26 @@ export const stateCities: Record<string, readonly string[]> = {
   "West Bengal": ["Howrah", "Kolkata", "Siliguri"],
 };
 
+const mergedCities: Record<string, string[]> = Object.fromEntries(
+  Object.entries(additionalCities).map(([state, cities]) => [state, [...cities]]),
+);
+for (const { state, city } of cityRecords) {
+  const currentState =
+    state === "Dadra and Nagar Haveli" || state === "Daman and Diu"
+      ? "Dadra and Nagar Haveli and Daman and Diu"
+      : state;
+  (mergedCities[currentState] ??= []).push(city.trim());
+}
+
+export const stateCities: Record<string, readonly string[]> = Object.fromEntries(
+  Object.entries(mergedCities).map(([state, cities]) => [
+    state,
+    [...new Set(cities.filter(Boolean))].sort((a, b) => a.localeCompare(b)),
+  ]),
+);
+
 export const states = Object.keys(stateCities).sort((a, b) => a.localeCompare(b));
 
-export function directoryCities(organizations: readonly Pick<NGO, "state" | "cities">[], state: string): string[] {
-  if (!state) return [];
-  return [...new Set(organizations.filter((ngo) => ngo.state === state).flatMap((ngo) => ngo.cities))]
-    .sort((a, b) => a.localeCompare(b));
+export function citiesForState(state: string): readonly string[] {
+  return stateCities[state] ?? [];
 }

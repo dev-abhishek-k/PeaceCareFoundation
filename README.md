@@ -17,6 +17,8 @@ A responsive, frontend-only preview of Peace Care Foundation's mission—care fo
 
 The project uses React, TypeScript, Vite and Tailwind CSS. Source is in `frontend/src`, organized by pages, reusable components, mock data and types. There is no backend, database, API, sign-in service, payment processing or Supabase connection in this prototype. No environment variables or database migrations are needed.
 
+State and city selectors use the offline, MIT-licensed `indian-states-cities` list (1,218 city records), supplemented with newer names and sample locations. It is a broad list, not an official or exhaustive registry; the request and volunteer forms offer “Other city” for places not listed. Directory results remain sample profiles, so choosing a city without a listed NGO may show no matches.
+
 ## Before using this for real requests
 
 This prototype is **not** suitable for collecting personal details or providing access to real cases. A production service would need a protected backend, authentication and role-based permissions, secure document storage, privacy and consent review, and a verified NGO onboarding process. Do not present preview submissions as requests sent to an NGO.

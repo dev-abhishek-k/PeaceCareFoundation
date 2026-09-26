@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { stateCities, states } from "../locations";
+import { citiesForState, states } from "../locations";
 
 const otherCityValue = "__other_city__";
 
@@ -18,7 +18,7 @@ export function StateCityFields({
   onCityChange,
   className = "grid gap-4 sm:grid-cols-2",
 }: StateCityFieldsProps) {
-  const cities = stateCities[state] ?? [];
+  const cities = citiesForState(state);
   const [otherCity, setOtherCity] = useState(() => Boolean(city && !cities.includes(city)));
   const showOtherCity = otherCity || Boolean(city && !cities.includes(city));
 
