@@ -2,8 +2,23 @@ import { useState, type FormEvent } from "react";
 import { ArrowRight, Heart, RotateCcw, ShieldCheck } from "lucide-react";
 import { Notice } from "../components/UI";
 
-const amounts = [500, 1000, 2500, 5000];
-const careAreas = ["Across all care areas", "Street dogs", "Children", "Adults & elders"];
+const impactOptions = [
+  { id: "food-water", area: "Street dogs", title: "Food & water", amount: 500 },
+  { id: "basic-dog-care", area: "Street dogs", title: "Basic care", amount: 1000 },
+  { id: "dog-health", area: "Street dogs", title: "Health support", amount: 2500 },
+  { id: "foster-essentials", area: "Street dogs", title: "Foster essentials", amount: 4000 },
+  { id: "learning-materials", area: "Children", title: "Learning materials", amount: 750 },
+  { id: "school-essentials", area: "Children", title: "School essentials", amount: 1500 },
+  { id: "child-nutrition", area: "Children", title: "Nutrition support", amount: 3000 },
+  { id: "learning-circle", area: "Children", title: "Learning circle", amount: 5000 },
+  { id: "warmth-essentials", area: "Adults & elders", title: "Warmth essentials", amount: 1000 },
+  { id: "community-meals", area: "Adults & elders", title: "Community meals", amount: 2000 },
+  { id: "dignity-essentials", area: "Adults & elders", title: "Dignity essentials", amount: 3500 },
+  { id: "wellness-support", area: "Adults & elders", title: "Wellness support", amount: 6000 },
+] as const;
+
+type ImpactOption = (typeof impactOptions)[number];
+
 const rupees = (value: number) =>
   new Intl.NumberFormat("en-IN", {
     style: "currency",
@@ -12,28 +27,16 @@ const rupees = (value: number) =>
   }).format(value);
 
 export function Donate() {
-  const [amountChoice, setAmountChoice] = useState<number | "custom">(1000);
-  const [customAmount, setCustomAmount] = useState("");
-  const [careArea, setCareArea] = useState(careAreas[0]);
-  const [preview, setPreview] = useState<{ amount: number; area: string } | null>(null);
-  const [error, setError] = useState("");
+  const [selected, setSelected] = useState<ImpactOption>(impactOptions[1]);
+  const [preview, setPreview] = useState<ImpactOption | null>(null);
 
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const amount = amountChoice === "custom" ? Number(customAmount) : amountChoice;
-    if (!Number.isSafeInteger(amount) || amount < 1 || amount > 1_000_000) {
-      setError("Enter a whole amount between ₹1 and ₹10,00,000 to view the preview.");
-      return;
-    }
-    setError("");
-    setPreview({ amount, area: careArea });
+    setPreview(selected);
   }
 
   function reset() {
-    setAmountChoice(1000);
-    setCustomAmount("");
-    setCareArea(careAreas[0]);
-    setError("");
+    setSelected(impactOptions[1]);
     setPreview(null);
   }
 
@@ -86,7 +89,7 @@ export function Donate() {
                 </p>
                 <p className="mt-2 font-['Fraunces'] text-4xl">{rupees(preview.amount)}</p>
                 <p className="mt-4 border-t border-[var(--line)] pt-4 text-sm text-[var(--ink-soft)]">
-                  Care area: <strong className="text-[var(--ink)]">{preview.area}</strong>
+                  Care theme: <strong className="text-[var(--ink)]">{preview.title} · {preview.area}</strong>
                 </p>
               </div>
               <Notice tone="info">
@@ -98,71 +101,40 @@ export function Donate() {
               </button>
             </div>
           ) : (
-            <form onSubmit={submit} noValidate>
-              <div className="eyebrow">Your pledge · Preview only</div>
-              <h2 className="mt-3 text-3xl sm:text-4xl">Choose an amount to preview.</h2>
+            <form onSubmit={submit}>
+              <div className="eyebrow">Choose your focus · Preview only</div>
+              <h2 className="mt-3 text-3xl sm:text-4xl">Choose a care theme.</h2>
               <p className="mt-3 text-sm leading-6 text-[var(--ink-soft)]">
-                These amounts are examples, not suggested gifts or a payment request.
+                Twelve fixed-amount examples. These are not verified programmes, actual costs or a payment request.
               </p>
 
               <fieldset className="mt-8">
-                <legend className="text-sm font-bold">Amount in rupees</legend>
-                <div className="mt-3 grid grid-cols-2 gap-3">
-                  {amounts.map((amount) => (
+                <legend className="text-sm font-bold">Illustrative category and amount</legend>
+                <div className="mt-3 grid gap-3 sm:grid-cols-2">
+                  {impactOptions.map((option) => (
                     <button
                       type="button"
-                      key={amount}
-                      aria-pressed={amountChoice === amount}
-                      onClick={() => { setAmountChoice(amount); setError(""); }}
-                      className={`rounded-xl border px-4 py-4 text-left font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--coral)] ${
-                        amountChoice === amount
+                      key={option.id}
+                      aria-pressed={selected.id === option.id}
+                      onClick={() => setSelected(option)}
+                      className={`min-h-28 rounded-xl border px-4 py-3 text-left transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--coral)] ${
+                        selected.id === option.id
                           ? "border-[var(--ink)] bg-[var(--ink)] text-white"
                           : "border-[var(--line)] bg-[var(--paper)] hover:border-[var(--ink)]"
                       }`}
                     >
-                      {rupees(amount)}
+                      <span className={`block text-[11px] font-bold uppercase tracking-wider ${selected.id === option.id ? "text-white/75" : "text-[var(--coral-dark)]"}`}>{option.area}</span>
+                      <span className="mt-1 block text-sm font-bold leading-5">{option.title}</span>
+                      <span className="mt-2 block font-['Fraunces'] text-xl">{rupees(option.amount)}</span>
                     </button>
                   ))}
                 </div>
               </fieldset>
 
-              <label className="mt-6 block text-sm font-bold" htmlFor="custom-amount">
-                Or enter another amount
-              </label>
-              <div className="relative mt-2">
-                <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 font-bold" aria-hidden="true">₹</span>
-                <input
-                  id="custom-amount"
-                  className={`field pl-9 ${amountChoice === "custom" ? "border-[var(--ink)]" : ""}`}
-                  inputMode="numeric"
-                  pattern="[0-9]*"
-                  maxLength={7}
-                  placeholder="Whole rupees"
-                  aria-label="Custom preview amount in rupees"
-                  value={customAmount}
-                  onFocus={() => setAmountChoice("custom")}
-                  onChange={(event) => {
-                    setCustomAmount(event.target.value.replace(/\D/g, ""));
-                    setAmountChoice("custom");
-                    setError("");
-                  }}
-                />
+              <div className="mt-6 flex items-center justify-between gap-3 rounded-xl bg-[var(--paper-deep)] px-4 py-3 text-sm">
+                <span className="text-[var(--ink-soft)]">Selected for preview</span>
+                <strong className="text-right text-[var(--ink)]">{selected.title} · {rupees(selected.amount)}</strong>
               </div>
-              <p className="mt-2 text-xs text-[var(--ink-soft)]">For preview only · ₹1 to ₹10,00,000</p>
-
-              <label className="mt-6 block text-sm font-bold" htmlFor="care-area">
-                Care area to preview
-              </label>
-              <select
-                id="care-area"
-                className="field mt-2"
-                value={careArea}
-                onChange={(event) => setCareArea(event.target.value)}
-              >
-                {careAreas.map((area) => <option key={area} value={area}>{area}</option>)}
-              </select>
-
-              {error && <p role="alert" className="mt-5 rounded-xl border border-[#e2aaa0] bg-[#fff1ed] p-4 text-sm text-[#873f32]">{error}</p>}
               <button type="submit" className="btn btn-primary mt-7 w-full">
                 Show pledge preview <ArrowRight size={17} aria-hidden="true" />
               </button>
