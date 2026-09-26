@@ -1,5 +1,4 @@
 import { ArrowDown, ArrowRight, BookOpen, Heart, PawPrint } from "lucide-react";
-import { Link } from "react-router-dom";
 import { Notice } from "../components/UI";
 
 const careAreas = [
@@ -152,23 +151,6 @@ export function Programs() {
         ))}
       </div>
 
-      <section className="border-t border-[var(--line)] bg-[var(--paper-deep)]">
-        <div className="mx-auto grid max-w-7xl gap-8 px-5 py-14 md:grid-cols-[1fr_1.1fr] md:items-center md:gap-16 md:py-20">
-          <div>
-            <div className="eyebrow">Before you go</div>
-            <h2 className="mt-3 text-3xl leading-tight md:text-4xl">A story to explore, not a service to request.</h2>
-          </div>
-          <div>
-            <Notice tone="info">
-              No programme on this page is a live offer or fundraising appeal. Figures
-              and partnerships are intentionally omitted because they are not verified.
-            </Notice>
-            <Link to="/ngos/peace-care-foundation" className="btn btn-primary mt-6">
-              View preview profile <ArrowRight size={16} aria-hidden="true" />
-            </Link>
-          </div>
-        </div>
-      </section>
     </main>
   );
 }
