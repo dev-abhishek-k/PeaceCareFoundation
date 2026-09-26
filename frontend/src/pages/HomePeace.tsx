@@ -1,6 +1,5 @@
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Notice } from "../components/UI";
 
 const careCategories = [
   {
@@ -73,9 +72,6 @@ export function HomePeace() {
             <a className="inline-flex items-center gap-2 px-2 py-3 text-sm font-bold text-[var(--ink)] underline-offset-4 hover:underline focus-visible:underline" href="#community-photos">
               View photos <ArrowRight size={16} aria-hidden="true" />
             </a>
-          </div>
-          <div className="mt-6">
-            <Notice tone="info">The directory currently shows example listings. Requests, applications and donations are not sent or processed through this website.</Notice>
           </div>
         </div>
         <div className="flex min-w-0 flex-col gap-5">
