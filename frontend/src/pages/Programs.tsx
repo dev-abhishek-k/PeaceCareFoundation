@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { ArrowDown, ArrowRight, BookOpen, Heart, PawPrint } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import { Notice } from "../components/UI";
+import { programFocusAreas } from "../programFocusAreas";
 
 const careAreas = [
   {
@@ -120,7 +121,7 @@ export function Programs() {
 
       <section id="care-areas" className="scroll-mt-20 border-y border-[var(--line)] bg-[var(--paper-deep)]">
         <div className="mx-auto max-w-7xl px-5 py-12 md:py-16">
-          <div className="eyebrow">Three areas · One intention</div>
+          <div className="eyebrow">Three care areas · Twelve focus categories</div>
           <div className="mt-3 flex flex-col justify-between gap-4 md:flex-row md:items-end">
             <h2 className="max-w-2xl text-4xl leading-tight md:text-5xl">What care can look like.</h2>
             <p className="max-w-sm text-sm leading-6 text-[var(--ink-soft)]">
@@ -136,26 +137,45 @@ export function Programs() {
             id={id}
             key={id}
             aria-labelledby={`${id}-title`}
-            className="grid scroll-mt-24 overflow-hidden rounded-[2rem] border border-[var(--line)] bg-[var(--white)] md:grid-cols-2"
+            className="scroll-mt-24"
           >
-            <div className={`relative flex min-h-64 flex-col justify-between overflow-hidden p-7 sm:p-10 md:min-h-[410px] ${surface} ${index % 2 ? "md:order-2" : ""}`}>
-              <img src={image} alt={imageAlt} className="absolute inset-0 h-full w-full object-cover" loading="lazy" />
-              <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-[#102923]/35 via-transparent to-[#102923]/60" />
-              <span className="relative z-10 w-fit rounded-full bg-[var(--ink)]/80 px-4 py-2 text-xs font-bold uppercase tracking-[.15em] text-white">{number} / 03 · Illustrative artwork</span>
-              <span className="relative z-10 self-end rounded-full border border-white/50 bg-[var(--ink)]/80 px-4 py-2 text-xs font-semibold text-white">{label}</span>
+            <div className="grid overflow-hidden rounded-[2rem] border border-[var(--line)] bg-[var(--white)] md:grid-cols-2">
+              <div className={`relative flex min-h-64 flex-col justify-between overflow-hidden p-7 sm:p-10 md:min-h-[410px] ${surface} ${index % 2 ? "md:order-2" : ""}`}>
+                <img src={image} alt={imageAlt} className="absolute inset-0 h-full w-full object-cover" loading="lazy" />
+                <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-[#102923]/35 via-transparent to-[#102923]/60" />
+                <span className="relative z-10 w-fit rounded-full bg-[var(--ink)]/80 px-4 py-2 text-xs font-bold uppercase tracking-[.15em] text-white">{number} / 03 · Illustrative artwork</span>
+                <span className="relative z-10 self-end rounded-full border border-white/50 bg-[var(--ink)]/80 px-4 py-2 text-xs font-semibold text-white">{label}</span>
+              </div>
+              <div className="flex flex-col justify-center p-7 sm:p-10 lg:p-14">
+                <div className="eyebrow">Area {number}</div>
+                <h3 id={`${id}-title`} className="mt-4 text-4xl md:text-5xl">{title}</h3>
+                <p className="mt-5 max-w-md font-['Fraunces'] text-xl leading-snug text-[var(--ink)]">{summary}</p>
+                <p className="mt-5 max-w-lg leading-7 text-[var(--ink-soft)]">{description}</p>
+                <ul className="mt-7 flex flex-wrap gap-2" aria-label={`${title} illustrative activities`}>
+                  {details.map(detail => (
+                    <li key={detail} className="rounded-full border border-[var(--line)] bg-[var(--paper)] px-3 py-2 text-xs font-semibold text-[var(--ink-soft)]">
+                      {detail}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
-            <div className="flex flex-col justify-center p-7 sm:p-10 lg:p-14">
-              <div className="eyebrow">Area {number}</div>
-              <h3 id={`${id}-title`} className="mt-4 text-4xl md:text-5xl">{title}</h3>
-              <p className="mt-5 max-w-md font-['Fraunces'] text-xl leading-snug text-[var(--ink)]">{summary}</p>
-              <p className="mt-5 max-w-lg leading-7 text-[var(--ink-soft)]">{description}</p>
-              <ul className="mt-7 flex flex-wrap gap-2" aria-label={`${title} illustrative activities`}>
-                {details.map(detail => (
-                  <li key={detail} className="rounded-full border border-[var(--line)] bg-[var(--paper)] px-3 py-2 text-xs font-semibold text-[var(--ink-soft)]">
-                    {detail}
-                  </li>
+            <div className="mt-7">
+              <h4 className="text-2xl">Focus categories for {title.toLowerCase()}.</h4>
+              <p className="mt-2 text-sm leading-6 text-[var(--ink-soft)]">
+                Illustrative possibilities only; these are not verified or currently available services.
+              </p>
+              <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                {programFocusAreas[id].map((focus) => (
+                  <article key={focus.title} className="overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--white)]">
+                    <img src={focus.image} alt="" className="aspect-[3/2] w-full object-cover" loading="lazy" decoding="async" />
+                    <div className="p-5">
+                      <h5 className="text-lg">{focus.title}</h5>
+                      <p className="mt-2 text-sm leading-6 text-[var(--ink-soft)]">{focus.description}</p>
+                    </div>
+                  </article>
                 ))}
-              </ul>
+              </div>
             </div>
           </section>
         ))}
