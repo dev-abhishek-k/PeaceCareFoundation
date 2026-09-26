@@ -97,10 +97,6 @@ export function About() {
               across India. Our purpose is to make relevant organisations easier to find and
               make it simpler to understand how to ask for help or support a cause.
             </p>
-            <p className="mt-4 max-w-xl text-sm leading-6 text-[var(--ink-soft)]">
-              Referrals are not live yet. We do not run independent NGOs&apos; programmes, and
-              no request or suggested match can guarantee assistance.
-            </p>
             <Link to="/ngos" className="btn btn-primary mt-8 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--ink)]">
               Explore NGO profiles <ArrowRight size={17} aria-hidden="true" />
             </Link>
