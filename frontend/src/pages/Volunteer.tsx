@@ -69,7 +69,7 @@ export function Volunteer() {
       </PageIntro>
 
       <figure className="relative mt-9 overflow-hidden rounded-2xl">
-        <img src="/images/learning-care.jpg" alt="Illustration of hands turning the pages of a children's book." className="h-56 w-full object-cover object-[center_55%] md:h-72" />
+        <img src="/images/learning-moment.jpg" alt="Illustration of an adult and child drawing together at a courtyard table." className="h-56 w-full object-cover object-[center_55%] md:h-72" />
         <figcaption className="absolute bottom-4 left-4 rounded-full bg-[var(--ink)]/90 px-4 py-2 text-xs font-semibold text-white">Illustrative artwork · Not a live opportunity</figcaption>
       </figure>
 

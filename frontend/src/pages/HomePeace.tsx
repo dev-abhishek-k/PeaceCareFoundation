@@ -26,6 +26,29 @@ const moments = [
   },
 ];
 
+const visualIdeas = [
+  {
+    title: "Learning together",
+    image: "/images/learning-moment.jpg",
+    alt: "Illustration of an adult and child drawing together at a courtyard table.",
+  },
+  {
+    title: "Sharing meals",
+    image: "/images/food-sharing.jpg",
+    alt: "Illustration of hands arranging meals in reusable containers.",
+  },
+  {
+    title: "Health conversations",
+    image: "/images/health-outreach.jpg",
+    alt: "Illustration of a health information table with notebooks and a stethoscope.",
+  },
+  {
+    title: "Caring for green spaces",
+    image: "/images/tree-planting.jpg",
+    alt: "Illustration of hands planting a young tree in a neighborhood garden.",
+  },
+];
+
 export function HomePeace() {
   return (
     <main>
@@ -81,6 +104,26 @@ export function HomePeace() {
               </article>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-5 py-16 md:py-20" aria-labelledby="visual-ideas-title">
+        <div className="eyebrow">Visual ideas · Illustrative artwork</div>
+        <h2 id="visual-ideas-title" className="mt-3 text-4xl">Ways care can take shape.</h2>
+        <p className="mt-4 max-w-2xl leading-7 text-[var(--ink-soft)]">
+          These are original illustrations of possible community care, not photos of Peace Care
+          Foundation or evidence that these activities have taken place.
+        </p>
+        <div className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {visualIdeas.map((idea) => (
+            <figure key={idea.title} className="overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--white)]">
+              <img src={idea.image} alt={idea.alt} className="aspect-square w-full object-cover" loading="lazy" decoding="async" />
+              <figcaption className="px-5 py-4">
+                <span className="text-xs font-bold uppercase tracking-wider text-[var(--coral-dark)]">Illustrative</span>
+                <h3 className="mt-1 text-lg">{idea.title}</h3>
+              </figcaption>
+            </figure>
+          ))}
         </div>
       </section>
 
