@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { ArrowDown, ArrowRight, BookOpen, Heart, PawPrint } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import { Notice } from "../components/UI";
 import { programFocusAreas } from "../programFocusAreas";
@@ -12,9 +12,7 @@ const careAreas = [
     summary: "Care begins with noticing who is often overlooked.",
     description: "Feeding, injury response, sterilisation and vaccination, with foster and adoption pathways — an illustrative description, not verified services.",
     details: ["Feeding & injury response", "Sterilisation & vaccination", "Foster & adoption pathways"],
-    icon: PawPrint,
     surface: "bg-[#e9e9d6]",
-    accent: "text-[var(--ink)]",
     label: "For the ones on the street",
     image: "/images/street-dog-care.jpg",
     imageAlt: "Illustration of a street dog resting beside a bowl of water.",
@@ -26,9 +24,7 @@ const careAreas = [
     summary: "A little support can make room to learn.",
     description: "Learning circles, school kits, nutrition and health checks are illustrative ideas, not a report of activities delivered.",
     details: ["Learning circles", "School kits", "Nutrition & health checks"],
-    icon: BookOpen,
     surface: "bg-[#f5e1d5]",
-    accent: "text-[var(--coral-dark)]",
     label: "For growing minds",
     image: "/images/learning-care.jpg",
     imageAlt: "Illustration of hands sharing a children's book.",
@@ -40,9 +36,7 @@ const careAreas = [
     summary: "Dignity belongs in every season of life.",
     description: "Night meals, blankets, dignity kits and medical camps are presented as an illustrative care model, not as available or verified services.",
     details: ["Night meals & blankets", "Dignity kits", "Medical camps"],
-    icon: Heart,
     surface: "bg-[#e3e9e3]",
-    accent: "text-[var(--ink)]",
     label: "For every generation",
     image: "/images/community-care.jpg",
     imageAlt: "Illustration of an older adult and a younger adult sharing a meal.",
@@ -60,8 +54,8 @@ export function Programs() {
 
   return (
     <main>
-      <section className="mx-auto grid max-w-7xl gap-10 px-5 pb-16 pt-14 md:grid-cols-[1.1fr_.9fr] md:items-start md:gap-16 md:pb-24 md:pt-20">
-        <div className="md:pt-12">
+      <section className="mx-auto max-w-7xl px-5 pb-16 pt-14 md:pb-20 md:pt-20">
+        <div className="max-w-3xl">
           <div className="eyebrow">Our work · Care areas</div>
           <h1 className="mt-5 max-w-2xl text-5xl leading-[1.05] md:text-6xl lg:text-7xl">
             Care for every life, <em className="text-[var(--coral)]">every day.</em>
@@ -79,43 +73,6 @@ export function Programs() {
           <a href="#care-areas" className="btn btn-outline mt-7">
             Explore the care areas <ArrowDown size={16} aria-hidden="true" />
           </a>
-        </div>
-        <div className="relative isolate overflow-hidden rounded-[2rem] bg-[var(--ink)] px-7 py-9 text-white sm:px-10 sm:py-12">
-          <div aria-hidden="true" className="absolute -right-20 -top-24 -z-10 h-72 w-72 rounded-full border-[50px] border-white/5" />
-          <div className="flex items-center justify-between gap-4 border-b border-white/20 pb-6 text-xs font-bold uppercase tracking-[.15em] text-white/70">
-            <span>Peace Care Foundation</span>
-            <span>Illustrative overview</span>
-          </div>
-          <figure className="mt-7">
-            <img
-              src="/images/our-work-reference.jpg"
-              alt="Composite photo showing a health conversation, children learning, food sharing, and people planting a sapling."
-              className="aspect-video w-full rounded-2xl object-cover"
-            />
-            <figcaption className="mt-3 text-xs leading-5 text-white/75">
-              User-provided reference image. Pictured people and activities are not verified as Peace Care Foundation work.
-            </figcaption>
-          </figure>
-          <p className="mt-7 max-w-sm font-['Fraunces'] text-3xl leading-tight text-white sm:text-4xl">
-            Different needs.<br />The same spirit of care.
-          </p>
-          <div className="mt-10 space-y-3">
-            {careAreas.map(({ id, number, title, icon: Icon }) => (
-              <a
-                key={number}
-                href={`#${id}`}
-                className="group flex items-center gap-4 rounded-2xl border border-white/20 bg-white/5 px-4 py-3 transition-colors hover:bg-white/15 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--sun)]"
-              >
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[var(--sun)] text-[var(--ink)]">
-                  <Icon size={20} aria-hidden="true" />
-                </span>
-                <span className="flex-1 font-semibold">{title}</span>
-                <span className="text-xs text-white/60">{number}</span>
-                <ArrowRight size={16} className="text-white/70 transition-transform group-hover:translate-x-1" aria-hidden="true" />
-              </a>
-            ))}
-          </div>
-          <p className="mt-7 text-xs leading-5 text-white/65">Illustrative descriptions only. Not a service directory.</p>
         </div>
       </section>
 
