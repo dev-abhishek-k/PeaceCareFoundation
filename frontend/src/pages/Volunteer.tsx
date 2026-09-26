@@ -41,7 +41,7 @@ export function Volunteer() {
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (!selected || !form.name.trim() || !form.state || !form.city.trim() || form.motivation.trim().length < 10) {
-      setError("Choose an opportunity, then add your name, state, city, and a short reason (at least 10 characters).");
+      setError("Choose an opportunity and enter your name, state, city and a short reason (at least 10 characters).");
       return;
     }
     if (!form.consent) {
@@ -54,10 +54,9 @@ export function Volunteer() {
 
   return (
     <main className="mx-auto max-w-7xl px-5 py-14 md:py-20">
-      <PageIntro eyebrow="Volunteer · Preview only" title="Find a way to lend a hand.">
-        Browse an example opportunity and see what a volunteer interest form might ask.
-        This network is designed to help people discover independent NGOs, but there are no live
-        placements here. Nothing is sent or saved, and no one will follow up.
+      <PageIntro eyebrow="Volunteer · Preview only" title="Give your time where it fits.">
+        Fill out the volunteer registration preview and choose an illustrative area in the form.
+        This is not a live placement; nothing is sent or saved.
       </PageIntro>
 
       <figure className="mt-9 overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--white)]">
@@ -68,26 +67,26 @@ export function Volunteer() {
             className="h-60 w-full object-cover object-top md:h-72"
           />
           <span className="absolute bottom-4 left-4 rounded-full bg-[var(--ink)]/90 px-4 py-2 text-xs font-semibold text-white">
-            Reference photo · No verified affiliation
+            Reference photo · Affiliation unverified
           </span>
         </div>
         <figcaption className="px-5 py-3 text-xs leading-5 text-[var(--ink-soft)]">
-          Reference photo. The people pictured are not verified as volunteers or connected to any opportunity listed here.
+          User-provided image. The people and activity pictured are not verified as Peace Care Foundation volunteers or placements.
         </figcaption>
       </figure>
 
       <section id="volunteer-registration" className="mt-10 scroll-mt-24">
         <div className="grid gap-8 lg:grid-cols-[.75fr_1.25fr]">
           <div>
-            <div className="eyebrow">Explore volunteering · Preview</div>
-            <h2 className="mt-3 text-3xl">See what volunteering could involve</h2>
+            <div className="eyebrow">Your next step · Preview</div>
+            <h2 className="mt-3 text-3xl">Volunteer registration preview</h2>
             <p className="mt-4 leading-7 text-[var(--ink-soft)]">
-              This sample form shows the kinds of details an NGO might ask for when someone
-              offers to volunteer. It is not an application; nothing is sent or saved.
+              Try the form to see what a volunteer application might ask. Your details stay on this
+              page only and disappear when you leave or refresh.
             </p>
             <div className="mt-6">
               <Notice tone="info">
-                Opportunities here are previews, not live placements. No one receives your information or contacts you.
+                This is not a live opportunity. No one receives your information or contacts you.
               </Notice>
             </div>
           </div>
@@ -98,8 +97,8 @@ export function Volunteer() {
                 <div className="eyebrow">Preview complete</div>
                 <h3 className="text-3xl">Your preview is complete.</h3>
                 <p className="leading-7 text-[var(--ink-soft)]">
-                  You explored <strong>{selected?.title}</strong>. This was only a preview:
-                  nothing was sent or saved, no placement is reserved, and no one will follow up.
+                  You selected <strong>{selected?.title}</strong>. This was a preview only:
+                  nothing was sent or saved, and no placement has been reserved.
                 </p>
                 <Notice tone="success">Preview submission only—nothing sent or saved.</Notice>
                 <button
@@ -110,16 +109,15 @@ export function Volunteer() {
                     setSubmitted(false);
                   }}
                 >
-                  Explore another opportunity
+                  Try another registration
                 </button>
               </div>
             ) : (
               <form onSubmit={submit} className="space-y-5">
                 <div>
-                  <h3 className="text-2xl">What kind of volunteering interests you?</h3>
+                  <h3 className="text-2xl">Tell us how you would help</h3>
                   <p className="mt-2 text-sm text-[var(--ink-soft)]">
-                    Use made-up contact details here. Required fields are checked in your browser
-                    only; your answers are not sent or saved.
+                    All fields marked required are checked in this browser only.
                   </p>
                 </div>
 
@@ -220,11 +218,11 @@ export function Volunteer() {
                     checked={form.consent}
                     onChange={(event) => update("consent", event.target.checked)}
                   />
-                  <span>I understand this is only a preview; my application will not be sent or saved, and no one will follow up.</span>
+                  <span>I understand this is a preview and no application will be sent or saved.</span>
                 </label>
                 {error && <div role="alert"><Notice>{error}</Notice></div>}
                 <button type="submit" className="btn btn-primary w-full">
-                  See preview confirmation
+                  Show preview confirmation
                 </button>
               </form>
             )}

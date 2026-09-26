@@ -2,66 +2,66 @@ export const programFocusAreas = {
   "street-dogs": [
     {
       title: "Food & water",
-      description: "Food and clean water are everyday care ideas, not services confirmed here.",
+      description: "Meals and clean drinking water as an everyday care idea.",
       image: "/images/care-food-water.webp",
     },
     {
       title: "Basic care",
-      description: "Gentle handling and daily support are possible ways to care for dogs.",
+      description: "Gentle handling and daily support for dogs in need.",
       image: "/images/care-basic-dog-care.webp",
     },
     {
       title: "Health support",
-      description: "Injury care and preventive veterinary visits are possible pathways, not confirmed services.",
+      description: "Injury response and preventive veterinary care as possible pathways.",
       image: "/images/care-dog-health.webp",
     },
     {
       title: "Foster essentials",
-      description: "A temporary safe space and supplies may help while a longer-term home is explored.",
+      description: "A temporary safe space and supplies while a longer-term home is explored.",
       image: "/images/care-foster-essentials.webp",
     },
   ],
   children: [
     {
       title: "Learning materials",
-      description: "Books and supplies can make learning easier to access.",
+      description: "Books and supplies to make learning more accessible.",
       image: "/images/care-learning-materials.webp",
     },
     {
       title: "School essentials",
-      description: "Everyday school items can help children take part in learning.",
+      description: "Everyday school items that can help children participate.",
       image: "/images/care-school-essentials.webp",
     },
     {
       title: "Nutrition support",
-      description: "Food and wellbeing are possible areas of support, not confirmed services.",
+      description: "Food and wellbeing as a possible area of support.",
       image: "/images/care-child-nutrition.webp",
     },
     {
       title: "Learning circles",
-      description: "Shared reading and group learning are ideas communities may explore.",
+      description: "Shared reading and group learning as a community idea.",
       image: "/images/care-learning-circle.webp",
     },
   ],
   "adults-and-elders": [
     {
       title: "Warmth essentials",
-      description: "Seasonal comfort items are one possible area of support.",
+      description: "Seasonal comfort items as a possible support area.",
       image: "/images/care-warmth-essentials.webp",
     },
     {
       title: "Community meals",
-      description: "Shared food and connection are shown as an example, not a service offered here.",
+      description: "Shared food and connection in an illustrative care model.",
       image: "/images/care-community-meals.webp",
     },
     {
       title: "Dignity essentials",
-      description: "Personal-care basics can support comfort, dignity and privacy.",
+      description: "Personal-care basics framed around respect and privacy.",
       image: "/images/care-dignity-essentials.webp",
     },
     {
       title: "Wellness support",
-      description: "Health conversations and access to care are possible pathways, not confirmed services.",
+      description: "Health conversations and access to care as possible pathways.",
       image: "/images/care-wellness-support.webp",
     },
   ],

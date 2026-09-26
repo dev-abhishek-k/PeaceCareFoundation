@@ -15,17 +15,17 @@ const steps = [
   {
     number: "01",
     title: "People request help",
-    text: "Someone can describe the support they’re looking for and their location. Here, they can only preview the request journey; nothing is sent.",
+    text: "A person describes what they need and where they are. In this prototype, the request journey is a local preview only.",
   },
   {
     number: "02",
     title: "The platform suggests an NGO",
-    text: "The idea is to help people discover independent NGOs that may be relevant to their needs and location. Directory profiles here are examples, not verified listings.",
+    text: "The intended process is to review the request and suggest an independent NGO whose focus and location may be relevant.",
   },
   {
     number: "03",
     title: "The NGO decides",
-    text: "Each independent NGO would decide for itself whether it can help. A suggested match is never a guarantee of support.",
+    text: "The NGO would decide whether it has the capacity to assist. A suggestion is not a promise that help will be available.",
   },
 ];
 
@@ -33,25 +33,25 @@ const people = [
   {
     icon: Users,
     title: "Help seekers",
-    text: "Explore different kinds of support, browse NGO profiles and try out a request preview. No request is sent.",
+    text: "Explore support areas, discover NGO profiles and outline a need in the request preview.",
     background: "bg-[#e9f1e9]",
   },
   {
     icon: Building2,
     title: "Independent NGOs",
-    text: "Discover how a directory could help people find organisations like yours. Any listing or partnership journey here is a preview, and NGOs remain independent.",
+    text: "Connect with people looking for relevant support while keeping decisions about their own services.",
     background: "bg-[#f9e9de]",
   },
   {
     icon: HandHeart,
     title: "Volunteers",
-    text: "See example ways to share your time and skills. Opportunities and volunteer sign-up are previews, not active placements.",
+    text: "Explore possible ways to share time and skills. The opportunities shown here are illustrative.",
     background: "bg-[#f5ecd4]",
   },
   {
     icon: HeartHandshake,
     title: "Supporters",
-    text: "Explore causes and see how a contribution might work. This site does not accept donations or take payments.",
+    text: "Learn about causes and preview ways to contribute. This site does not take payments.",
     background: "bg-[#eae6f4]",
   },
 ];
@@ -60,17 +60,17 @@ const trustPlans = [
   {
     icon: ShieldCheck,
     title: "NGO verification",
-    text: "We hope to add checks that make directory listings easier to assess. Profiles shown here are examples and have not been verified.",
+    text: "We plan to introduce checks to help people understand who is listed. Profiles in this prototype are illustrative and not verified.",
   },
   {
     icon: ClipboardList,
     title: "Case updates",
-    text: "We hope to make it easier to follow a request’s progress. Updates shown here are examples, not live case tracking.",
+    text: "We plan to make request progress easier to follow. The updates shown in this prototype are examples, not live case tracking.",
   },
   {
     icon: LockKeyhole,
     title: "Privacy",
-    text: "Careful handling of requests is something we plan to build. This prototype does not send or save requests to a service.",
+    text: "Privacy-aware handling of requests is a planned platform feature. This frontend prototype does not send or save requests to a service.",
   },
 ];
 
@@ -92,14 +92,13 @@ export function About() {
               Connecting people with the <em className="text-[var(--coral)]">right help</em>
             </h1>
             <p className="mt-7 max-w-xl text-lg leading-8 text-[var(--ink-soft)]">
-              We’re building a way to explore independent NGOs, causes and ways to get involved
-              across India. Use this prototype to browse organisations and see what a request
-              might look like.
+              We envision a third-party coordination platform connecting people who need help
+              with independent NGOs, volunteers and supporters across India. Discover NGOs,
+              explore causes and preview how a request could be made.
             </p>
             <p className="mt-4 max-w-xl text-sm leading-6 text-[var(--ink-soft)]">
-              Our goal is a third-party coordination platform, not an NGO service provider.
-              This is a preview, not a live referral service; we don’t run NGO programmes or
-              guarantee assistance.
+              This is a UI prototype, not a live referral service. We do not directly run the
+              listed NGO programmes or guarantee that a request will receive help.
             </p>
             <Link to="/ngos" className="btn btn-primary mt-8 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--ink)]">
               Explore NGO profiles <ArrowRight size={17} aria-hidden="true" />
@@ -126,9 +125,9 @@ export function About() {
               Make relevant support easier to find, and communities easier to reach.
             </h2>
             <p className="mt-5 max-w-2xl leading-7 text-white/80">
-              We want to make it easier to discover independent NGOs whose work may fit a need,
-              and easier for organisations to be found. We help people explore connections; each
-              NGO runs its own programmes and decides what support it can offer.
+              The platform is designed to help people find NGOs whose work may match their needs,
+              while giving independent organisations a way to be discovered by the communities
+              they serve. Our role is to help make connections, not to operate their programmes.
             </p>
           </div>
         </div>
@@ -138,7 +137,7 @@ export function About() {
         <div className="eyebrow">An intended journey · Not a live referral service</div>
         <h2 id="how-title" className="mt-3 text-4xl sm:text-5xl">How it works</h2>
         <p className="mt-4 max-w-2xl leading-7 text-[var(--ink-soft)]">
-          Here’s how we imagine a connection could happen. For now, you can explore the steps, but no referral is made.
+          A simple path from asking for help to reaching an organisation that can make its own decision.
         </p>
         <ol className="mt-10 grid gap-4 md:grid-cols-3">
           {steps.map((step) => (
@@ -180,8 +179,8 @@ export function About() {
             <div className="eyebrow">Find an area of support</div>
             <h2 id="causes-title" className="mt-3 text-4xl sm:text-5xl">Causes we support</h2>
             <p className="mt-4 max-w-2xl leading-7 text-[var(--ink-soft)]">
-              Browse areas of work that independent NGOs may focus on. Categories and directory
-              entries are examples, not confirmation of a verified service available here.
+              Browse illustrative directory categories. A category describes a possible area of
+              NGO work, not a verified service available through this prototype.
             </p>
           </div>
           <Link to="/ngos" className="btn btn-outline self-start whitespace-nowrap focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--coral)]">
@@ -206,7 +205,7 @@ export function About() {
           <div className="eyebrow">What we want to build</div>
           <h2 id="trust-title" className="mt-3 text-4xl sm:text-5xl">Trust &amp; transparency</h2>
           <p className="mt-4 max-w-2xl leading-7 text-[var(--ink-soft)]">
-            We’d like to add these features over time. They aren’t active services or processes in this prototype.
+            These are planned features, not processes currently operating on this UI prototype.
           </p>
           <div className="mt-10 grid gap-4 md:grid-cols-3">
             {trustPlans.map((plan) => {
@@ -233,9 +232,8 @@ export function About() {
             Find your place in the network.
           </h2>
           <p className="mt-5 max-w-2xl leading-7 text-white/80">
-            Browse independent NGOs and explore ways to take part. The pages linked here are
-            previews: they don’t send help requests, accept volunteer or partner applications, or
-            create a partnership.
+            Discover NGOs and explore ways to get involved. These routes are previews; they do not
+            send a real request, register a volunteer or create a partnership.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             {actions.map((action, index) => (
