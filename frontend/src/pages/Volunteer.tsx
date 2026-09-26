@@ -68,9 +68,20 @@ export function Volunteer() {
         placements; completing the form does not send or save an application.
       </PageIntro>
 
-      <figure className="relative mt-9 overflow-hidden rounded-2xl">
-        <img src="/images/learning-moment.jpg" alt="Illustration of an adult and child drawing together at a courtyard table." className="h-56 w-full object-cover object-[center_55%] md:h-72" />
-        <figcaption className="absolute bottom-4 left-4 rounded-full bg-[var(--ink)]/90 px-4 py-2 text-xs font-semibold text-white">Illustrative artwork · Not a live opportunity</figcaption>
+      <figure className="mt-9 overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--white)]">
+        <div className="relative">
+          <img
+            src="/images/volunteer-reference.jpg"
+            alt="Photo of adults sharing school supplies with children at a table."
+            className="h-60 w-full object-cover object-top md:h-[420px]"
+          />
+          <span className="absolute bottom-4 left-4 rounded-full bg-[var(--ink)]/90 px-4 py-2 text-xs font-semibold text-white">
+            Reference photo · Affiliation unverified
+          </span>
+        </div>
+        <figcaption className="px-5 py-3 text-xs leading-5 text-[var(--ink-soft)]">
+          User-provided image. The people and activity pictured are not verified as Peace Care Foundation volunteers or placements.
+        </figcaption>
       </figure>
 
       <div className="mt-10 grid gap-4">
