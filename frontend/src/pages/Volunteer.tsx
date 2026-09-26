@@ -1,5 +1,6 @@
 import { useState, type FormEvent } from "react";
 import { opportunities } from "../mockData";
+import { StateCityFields } from "../components/StateCityFields";
 import { Notice, PageIntro } from "../components/UI";
 
 type VolunteerForm = {
@@ -7,6 +8,7 @@ type VolunteerForm = {
   name: string;
   email: string;
   phone: string;
+  state: string;
   city: string;
   availability: string;
   motivation: string;
@@ -18,6 +20,7 @@ const emptyForm: VolunteerForm = {
   name: "",
   email: "",
   phone: "",
+  state: "",
   city: "",
   availability: "",
   motivation: "",
@@ -46,8 +49,8 @@ export function Volunteer() {
 
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (!selected || !form.name.trim() || !form.city.trim() || form.motivation.trim().length < 10) {
-      setError("Choose an opportunity and enter your name, city and a short reason (at least 10 characters).");
+    if (!selected || !form.name.trim() || !form.state || !form.city.trim() || form.motivation.trim().length < 10) {
+      setError("Choose an opportunity and enter your name, state, city and a short reason (at least 10 characters).");
       return;
     }
     if (!form.consent) {
@@ -187,17 +190,16 @@ export function Volunteer() {
                       onChange={(event) => update("phone", event.target.value)}
                     />
                   </label>
-                  <label className="text-sm font-semibold">
-                    City <span aria-hidden="true">*</span>
-                    <input
-                      className="field mt-2"
-                      required
-                      maxLength={100}
-                      autoComplete="address-level2"
-                      value={form.city}
-                      onChange={(event) => update("city", event.target.value)}
-                    />
-                  </label>
+                  <StateCityFields
+                    className="grid gap-4 sm:col-span-2 sm:grid-cols-2"
+                    state={form.state}
+                    city={form.city}
+                    onStateChange={(value) => {
+                      setForm((current) => ({ ...current, state: value, city: "" }));
+                      setError("");
+                    }}
+                    onCityChange={(value) => update("city", value)}
+                  />
                 </div>
 
                 <label className="block text-sm font-semibold">

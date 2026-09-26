@@ -2,6 +2,8 @@ import { useMemo, useState } from "react";
 import { ArrowRight, Check, MapPin, Search, ShieldCheck } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
 import { categories, ngos, notifications, opportunities, requests } from "../mockData";
+import { StateCityFields } from "../components/StateCityFields";
+import { directoryCities } from "../locations";
 import type { HelpRequest, NGO, Role } from "../types";
 import { Button, EmptyState, Field, Notice, PageIntro } from "../components/UI";
 
@@ -25,12 +27,13 @@ export function Browse() {
   const [cat, setCat] = useState(params.get("category") || "");
   const [state, setState] = useState("");
   const [city, setCity] = useState("");
-  const states = [...new Set(ngos.map(n => n.state))];
+  const states = [...new Set(ngos.map(n => n.state))].sort((a, b) => a.localeCompare(b));
+  const cities = directoryCities(ngos, state);
   const filtered = useMemo(() => ngos.filter(n =>
     (!q || n.name.toLowerCase().includes(q.toLowerCase())) &&
     (!cat || n.categories.includes(cat)) &&
     (!state || n.state === state) &&
-    (!city || n.cities.some(c => c.toLowerCase().includes(city.toLowerCase())))
+    (!city || n.cities.includes(city))
   ), [q, cat, state, city]);
 
   return <Shell>
@@ -46,11 +49,14 @@ export function Browse() {
         <option value="">All categories</option>
         {categories.map(c => <option value={c.id} key={c.id}>{c.name}</option>)}
       </select>
-      <select className="field" aria-label="Filter by state" value={state} onChange={e => setState(e.target.value)}>
+      <select className="field" aria-label="Filter by state" value={state} onChange={e => { setState(e.target.value); setCity(""); }}>
         <option value="">All states</option>
         {states.map(s => <option key={s}>{s}</option>)}
       </select>
-      <input className="field" aria-label="Filter by city" placeholder="City" value={city} onChange={e => setCity(e.target.value)}/>
+      <select className="field" aria-label="Filter by city" value={city} onChange={e => setCity(e.target.value)} disabled={!state}>
+        <option value="">{state ? "All cities" : "Select a state first"}</option>
+        {cities.map(c => <option key={c} value={c}>{c}</option>)}
+      </select>
     </div>
     <div className="mt-10">
       {filtered.length
@@ -71,11 +77,22 @@ export function RequestHelpPreview() {
   const [step, setStep] = useState(1); const [consent, setConsent] = useState(false); const [done, setDone] = useState(false); const [feedback, setFeedback] = useState("");
   const [form, setForm] = useState({ category: "", description: "", city: "", state: "" });
   const update = (key: keyof typeof form, value: string) => setForm({ ...form, [key]: value });
-  const next = () => { setFeedback(""); if ((step === 1 && !form.category) || (step === 2 && (!form.description || !form.city || !form.state))) { setFeedback("Please complete the required fields before continuing."); return; } setStep(Math.min(3, step + 1)); };
+  const next = () => { setFeedback(""); if ((step === 1 && !form.category) || (step === 2 && (!form.description.trim() || !form.city.trim() || !form.state))) { setFeedback("Please complete the required fields before continuing."); return; } setStep(Math.min(3, step + 1)); };
   if (done) return <Shell><div className="mx-auto max-w-2xl rounded-3xl bg-[var(--ink)] p-9 text-white"><Check className="text-[var(--sun)]"/><h1 className="mt-5 text-4xl text-white">Preview submission complete.</h1><p className="mt-4 leading-7 text-white/75">Preview submission only—nothing sent or saved. This confirmation is only for the current form journey and will not appear in the dashboard after refresh.</p><Link to="/dashboard" className="btn btn-primary mt-7">View preview dashboard</Link></div></Shell>;
   return <Shell><PageIntro eyebrow="Request preview" title="Request help, one step at a time.">Required fields are validated locally. This form never sends a real request.</PageIntro><div className="mt-10 max-w-2xl"><div className="mb-6 flex gap-2">{[1,2,3].map(n=><span className={`h-2 flex-1 rounded-full ${n<=step ? "bg-[var(--coral)]" : "bg-[var(--paper-deep)]"}`} key={n}/>)}</div><div className="rounded-2xl border border-[var(--line)] bg-[var(--white)] p-6 md:p-8">
     {step===1&&<div className="grid gap-5"><h2 className="text-2xl">What kind of support?</h2><label className="text-sm font-semibold">Category<select className="field mt-2" value={form.category} onChange={e=>update("category",e.target.value)}><option value="">Choose one</option>{categories.map(c=><option key={c.id}>{c.name}</option>)}</select></label></div>}
-    {step===2&&<div className="grid gap-5"><h2 className="text-2xl">A little context</h2><label className="text-sm font-semibold">Description<textarea className="field mt-2 min-h-32" value={form.description} onChange={e=>update("description",e.target.value)} placeholder="What kind of support are you looking for?"/></label><div className="grid gap-4 sm:grid-cols-2"><Field label="City" required value={form.city} onChange={e=>update("city",e.target.value)}/><Field label="State" required value={form.state} onChange={e=>update("state",e.target.value)}/></div></div>}
+    {step===2&&<div className="grid gap-5">
+      <h2 className="text-2xl">A little context</h2>
+      <label className="text-sm font-semibold">Description
+        <textarea className="field mt-2 min-h-32" value={form.description} onChange={e=>update("description",e.target.value)} placeholder="What kind of support are you looking for?"/>
+      </label>
+      <StateCityFields
+        state={form.state}
+        city={form.city}
+        onStateChange={value => { setForm(current => ({...current, state: value, city: ""})); setFeedback(""); }}
+        onCityChange={value => { update("city", value); setFeedback(""); }}
+      />
+    </div>}
     {step===3&&<div className="grid gap-5"><h2 className="text-2xl">Consent and preferences</h2><label className="flex gap-3 text-sm leading-6"><input type="checkbox" checked={consent} onChange={e=>{setConsent(e.target.checked);setFeedback("")}}/> I understand this is a preview submission and no help is guaranteed.</label><p className="text-sm text-[var(--ink-soft)]">This confirmation will not create a request or update your dashboard.</p></div>}
     {feedback&&<Notice>{feedback}</Notice>}<div className="mt-8 flex justify-between">{step>1?<button className="btn btn-outline" onClick={()=>setStep(step-1)}>Back</button>:<span/>}{step<3?<Button onClick={next}>Continue <ArrowRight size={16}/></Button>:<Button disabled={!consent} onClick={()=>consent?setDone(true):setFeedback("Please confirm the preview consent before showing the confirmation.")}>Show preview confirmation <Check size={16}/></Button>}</div>
   </div></div></Shell>;
