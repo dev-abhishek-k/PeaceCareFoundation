@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Notice } from "../components/UI";
+import { impactOptions, rupees } from "../donationOptions";
 
 const moments = [
   {
@@ -89,6 +90,37 @@ export function HomePeace() {
             the “secure pledge” button pictured is not functional. No payment is taken here.
           </figcaption>
         </figure>
+        <section className="rounded-[2rem] border border-[var(--line)] bg-[var(--white)] p-6 sm:p-8 md:col-span-2" aria-labelledby="care-theme-title">
+          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div>
+              <div className="eyebrow">12 care themes · Preview only</div>
+              <h2 id="care-theme-title" className="mt-2 text-3xl sm:text-4xl">Support a day of care.</h2>
+            </div>
+            <p className="max-w-lg text-sm leading-6 text-[var(--ink-soft)]">
+              Choose a fixed-amount example to open its pledge preview. The controls printed in the image above
+              are not interactive; no payment or verified impact is offered.
+            </p>
+          </div>
+          <div className="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {impactOptions.map((option) => (
+              <Link
+                key={option.id}
+                to={`/donate?theme=${option.id}`}
+                className="group rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-4 transition-colors hover:border-[var(--ink)] hover:bg-[var(--paper-deep)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--coral)]"
+                aria-label={`${option.area}: ${option.title}, ${rupees(option.amount)}. Open pledge preview`}
+              >
+                <span className="text-[11px] font-bold uppercase tracking-wider text-[var(--coral-dark)]">{option.area}</span>
+                <span className="mt-1 block text-sm font-bold">{option.title}</span>
+                <span className="mt-2 flex items-center justify-between font-['Fraunces'] text-xl">
+                  {rupees(option.amount)} <ArrowRight size={17} className="transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                </span>
+              </Link>
+            ))}
+          </div>
+          <p className="mt-5 text-xs leading-5 text-[var(--ink-soft)]">
+            These amounts are illustrative UI examples, not actual programme prices or a fundraising request.
+          </p>
+        </section>
       </section>
 
       <section id="community-photos" className="scroll-mt-24 border-y border-[var(--line)] bg-[var(--paper-deep)]" aria-labelledby="community-photos-title">

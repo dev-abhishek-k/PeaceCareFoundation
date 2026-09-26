@@ -1,33 +1,14 @@
 import { useState, type FormEvent } from "react";
 import { ArrowRight, Heart, RotateCcw, ShieldCheck } from "lucide-react";
+import { useSearchParams } from "react-router-dom";
 import { Notice } from "../components/UI";
-
-const impactOptions = [
-  { id: "food-water", area: "Street dogs", title: "Food & water", amount: 500 },
-  { id: "basic-dog-care", area: "Street dogs", title: "Basic care", amount: 1000 },
-  { id: "dog-health", area: "Street dogs", title: "Health support", amount: 2500 },
-  { id: "foster-essentials", area: "Street dogs", title: "Foster essentials", amount: 4000 },
-  { id: "learning-materials", area: "Children", title: "Learning materials", amount: 750 },
-  { id: "school-essentials", area: "Children", title: "School essentials", amount: 1500 },
-  { id: "child-nutrition", area: "Children", title: "Nutrition support", amount: 3000 },
-  { id: "learning-circle", area: "Children", title: "Learning circle", amount: 5000 },
-  { id: "warmth-essentials", area: "Adults & elders", title: "Warmth essentials", amount: 1000 },
-  { id: "community-meals", area: "Adults & elders", title: "Community meals", amount: 2000 },
-  { id: "dignity-essentials", area: "Adults & elders", title: "Dignity essentials", amount: 3500 },
-  { id: "wellness-support", area: "Adults & elders", title: "Wellness support", amount: 6000 },
-] as const;
-
-type ImpactOption = (typeof impactOptions)[number];
-
-const rupees = (value: number) =>
-  new Intl.NumberFormat("en-IN", {
-    style: "currency",
-    currency: "INR",
-    maximumFractionDigits: 0,
-  }).format(value);
+import { impactOptions, rupees, type ImpactOption } from "../donationOptions";
 
 export function Donate() {
-  const [selected, setSelected] = useState<ImpactOption>(impactOptions[1]);
+  const [searchParams] = useSearchParams();
+  const [selected, setSelected] = useState<ImpactOption>(
+    () => impactOptions.find((option) => option.id === searchParams.get("theme")) ?? impactOptions[1]
+  );
   const [preview, setPreview] = useState<ImpactOption | null>(null);
 
   function submit(event: FormEvent<HTMLFormElement>) {
@@ -108,7 +89,12 @@ export function Donate() {
                 Twelve fixed-amount examples. These are not verified programmes, actual costs or a payment request.
               </p>
 
-              <fieldset className="mt-8">
+              <div className="mt-6 flex items-center justify-between gap-3 rounded-xl bg-[var(--paper-deep)] px-4 py-3 text-sm">
+                <span className="text-[var(--ink-soft)]">Selected for preview</span>
+                <strong className="text-right text-[var(--ink)]">{selected.title} · {rupees(selected.amount)}</strong>
+              </div>
+
+              <fieldset className="mt-6">
                 <legend className="text-sm font-bold">Illustrative category and amount</legend>
                 <div className="mt-3 grid gap-3 sm:grid-cols-2">
                   {impactOptions.map((option) => (
@@ -131,10 +117,6 @@ export function Donate() {
                 </div>
               </fieldset>
 
-              <div className="mt-6 flex items-center justify-between gap-3 rounded-xl bg-[var(--paper-deep)] px-4 py-3 text-sm">
-                <span className="text-[var(--ink-soft)]">Selected for preview</span>
-                <strong className="text-right text-[var(--ink)]">{selected.title} · {rupees(selected.amount)}</strong>
-              </div>
               <button type="submit" className="btn btn-primary mt-7 w-full">
                 Show pledge preview <ArrowRight size={17} aria-hidden="true" />
               </button>
