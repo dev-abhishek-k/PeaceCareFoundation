@@ -2,23 +2,26 @@ import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Notice } from "../components/UI";
 
-const moments = [
+const careCategories = [
   {
-    time: "Morning",
+    id: "street-dogs",
+    number: "01",
     title: "Street dogs",
     text: "Feeding, injury response, sterilisation and vaccination, with foster and adoption pathways described as illustrative work.",
     image: "/images/street-dog-care.jpg",
     alt: "Illustration of a dog resting beside a bowl of water in a warm courtyard.",
   },
   {
-    time: "Afternoon",
+    id: "children",
+    number: "02",
     title: "Children",
     text: "Learning circles, school kits, nutrition and health checks — illustrative programme ideas, not a verified report.",
     image: "/images/learning-care.jpg",
     alt: "Illustration of hands turning pages in a children's book at a sunny table.",
   },
   {
-    time: "Evening",
+    id: "adults-and-elders",
+    number: "03",
     title: "Adults & elders",
     text: "Night meals, blankets, dignity kits and medical camps, shown here as an illustrative care model.",
     image: "/images/community-care.jpg",
@@ -91,6 +94,37 @@ export function HomePeace() {
         </figure>
       </section>
 
+      <section id="care-categories" className="border-y border-[var(--line)] bg-[var(--white)]" aria-labelledby="care-categories-title">
+        <div className="mx-auto max-w-7xl px-5 py-16 md:py-20">
+          <div className="eyebrow">Care categories · Illustrative overview</div>
+          <div className="mt-3 flex flex-col justify-between gap-4 md:flex-row md:items-end">
+            <h2 id="care-categories-title" className="text-4xl">Explore care categories.</h2>
+            <p className="max-w-md text-sm leading-6 text-[var(--ink-soft)]">
+              These are illustrative areas of care, not verified programmes or live services.
+            </p>
+          </div>
+          <div className="mt-10 grid gap-4 md:grid-cols-3">
+            {careCategories.map((category) => (
+              <Link
+                className="group flex h-full flex-col overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--paper)] transition-colors hover:border-[var(--ink)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--coral)]"
+                key={category.id}
+                to={`/programs#${category.id}`}
+              >
+                <img src={category.image} alt={category.alt} className="h-52 w-full object-cover" loading="lazy" decoding="async" />
+                <div className="flex flex-1 flex-col p-6">
+                  <div className="text-xs font-bold uppercase tracking-wider text-[var(--coral-dark)]">Care area {category.number} · Illustration</div>
+                  <h3 className="mt-3 text-2xl">{category.title}</h3>
+                  <p className="mt-3 text-sm leading-6 text-[var(--ink-soft)]">{category.text}</p>
+                  <span className="mt-auto inline-flex items-center gap-2 pt-6 text-sm font-bold text-[var(--ink)]">
+                    Explore area <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section id="community-photos" className="scroll-mt-24 border-y border-[var(--line)] bg-[var(--paper-deep)]" aria-labelledby="community-photos-title">
         <div className="mx-auto max-w-7xl px-5 py-16 md:py-20">
           <div className="eyebrow">User-provided photos · Reference gallery</div>
@@ -110,25 +144,6 @@ export function HomePeace() {
                   {photo.note && <p className="mt-2 text-xs leading-5 text-[var(--ink-soft)]">{photo.note}</p>}
                 </figcaption>
               </figure>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="border-y border-[var(--line)] bg-[var(--paper-deep)]">
-        <div className="mx-auto max-w-7xl px-5 py-16">
-          <div className="eyebrow">A day of care · Illustrative overview</div>
-          <h2 className="mt-3 max-w-2xl text-4xl">Care meets people where the day finds them.</h2>
-          <div className="mt-10 grid gap-4 md:grid-cols-3">
-            {moments.map((moment) => (
-              <article className="overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--paper)]" key={moment.time}>
-                <img src={moment.image} alt={moment.alt} className="h-52 w-full object-cover" loading="lazy" />
-                <div className="p-6">
-                  <div className="text-sm font-bold text-[var(--coral-dark)]">{moment.time} · Illustration</div>
-                  <h3 className="mt-5 text-2xl">{moment.title}</h3>
-                  <p className="mt-3 text-sm leading-6 text-[var(--ink-soft)]">{moment.text}</p>
-                </div>
-              </article>
             ))}
           </div>
         </div>

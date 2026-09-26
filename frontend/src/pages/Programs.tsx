@@ -1,4 +1,6 @@
+import { useEffect } from "react";
 import { ArrowDown, ArrowRight, BookOpen, Heart, PawPrint } from "lucide-react";
+import { useLocation } from "react-router-dom";
 import { Notice } from "../components/UI";
 
 const careAreas = [
@@ -47,6 +49,14 @@ const careAreas = [
 ] as const;
 
 export function Programs() {
+  const { hash } = useLocation();
+
+  useEffect(() => {
+    if (hash) {
+      document.getElementById(hash.slice(1))?.scrollIntoView();
+    }
+  }, [hash]);
+
   return (
     <main>
       <section className="mx-auto grid max-w-7xl gap-10 px-5 pb-16 pt-14 md:grid-cols-[1.1fr_.9fr] md:items-start md:gap-16 md:pb-24 md:pt-20">
