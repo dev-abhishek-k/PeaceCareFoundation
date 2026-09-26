@@ -8,19 +8,19 @@ const waysToPartner = [
     number: "01",
     icon: PackageOpen,
     title: "Share resources",
-    text: "Explore in-kind support such as supplies, materials or practical equipment. Real needs would need to be confirmed together first.",
+    text: "Consider whether supplies, materials or practical equipment might be useful to an independent NGO. Any real needs would need to be confirmed directly first.",
   },
   {
     number: "02",
     icon: Lightbulb,
     title: "Offer expertise",
-    text: "Bring skills in planning, training, communication or logistics to a conversation about what could be useful.",
+    text: "Think about how skills in planning, training, communication or logistics might support an independent NGO’s work.",
   },
   {
     number: "03",
     icon: UsersRound,
     title: "Connect communities",
-    text: "Consider introductions or local collaboration with people and groups working toward more accessible care.",
+    text: "Explore introductions or local connections with people and groups working toward more accessible care.",
   },
 ];
 
@@ -40,18 +40,19 @@ export function BecomePartner() {
           <div className="flex flex-col justify-center px-7 py-12 text-white sm:px-10 lg:px-14 lg:py-20">
             <div className="text-xs font-bold uppercase tracking-[.16em] text-[var(--sun)]">Partnerships · Preview only</div>
             <h1 className="mt-5 max-w-xl text-5xl leading-[1.07] text-white sm:text-6xl">
-              Become a <em className="text-[var(--sun)]">partner.</em>
+              Explore ways to <em className="text-[var(--sun)]">collaborate.</em>
             </h1>
             <p className="mt-6 max-w-lg text-lg leading-8 text-white/80">
-              Explore how organisations, businesses and community groups might work together
-              around care. These are possibilities, not established partnerships or verified programmes.
+              NGO Help Network is designed to help people discover independent NGOs and ways to
+              support causes across India. These are ideas to explore—not open opportunities,
+              established partnerships or verified programmes.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-5">
               <a className="btn btn-primary" href="#partner-interest">
                 Try the interest preview <ArrowRight size={17} aria-hidden="true" />
               </a>
               <Link className="border-b border-white/60 pb-1 text-sm font-semibold text-white hover:border-white" to="/programs">
-                Explore our work
+                Explore causes
               </Link>
             </div>
           </div>
@@ -62,7 +63,7 @@ export function BecomePartner() {
               className="absolute inset-0 h-full w-full object-cover object-[75%_center]"
             />
             <figcaption className="absolute bottom-5 left-5 right-5 w-fit rounded-xl bg-[var(--ink)]/90 px-4 py-2 text-xs font-semibold leading-5 text-white">
-              Reference photo · People pictured are not verified Peace Care Foundation partners.
+              Reference photo · People pictured are not verified as partners.
             </figcaption>
           </figure>
         </div>
@@ -71,9 +72,9 @@ export function BecomePartner() {
       <section className="mx-auto max-w-7xl px-5 py-16 md:py-20">
         <div className="eyebrow">Ways to explore</div>
         <div className="mt-3 flex flex-col justify-between gap-5 md:flex-row md:items-end">
-          <h2 className="max-w-xl text-4xl leading-tight sm:text-5xl">There is more than one way to help.</h2>
+          <h2 className="max-w-xl text-4xl leading-tight sm:text-5xl">A few ways to explore collaboration.</h2>
           <p className="max-w-md text-sm leading-6 text-[var(--ink-soft)]">
-            These are starting points for a possible conversation. They do not represent open projects or confirmed needs.
+            These ideas are only starting points. They are not open projects or confirmed needs, and NGO Help Network does not run NGO programmes.
           </p>
         </div>
         <div className="mt-9 grid gap-4 md:grid-cols-3">
@@ -101,13 +102,13 @@ export function BecomePartner() {
             <div className="eyebrow">Partnership interest · Preview</div>
             <h2 className="mt-3 max-w-md text-4xl leading-tight sm:text-5xl">Start with an idea.</h2>
             <p className="mt-5 max-w-md leading-8 text-[var(--ink-soft)]">
-              Try the form to see what a future partnership enquiry might ask.
-              No message is delivered, no application is created, and no one will contact you from this preview.
+              See what a collaboration enquiry might ask. This preview does not create a partnership
+              or application: nothing is sent or saved, and no one will follow up.
             </p>
             <div className="mt-7 max-w-md">
               <Notice tone="info">
-                Please do not enter sensitive information. Anything typed here stays in this browser
-                and disappears after submission or refresh.
+                Please don’t enter sensitive information. Anything you type is only used to show this
+                preview; it is not sent or saved and disappears when you leave or refresh.
               </Notice>
             </div>
           </div>
@@ -118,8 +119,8 @@ export function BecomePartner() {
                 <div className="eyebrow">Preview complete · Nothing submitted</div>
                 <h3 className="text-3xl">Your idea, in preview.</h3>
                 <p className="leading-7 text-[var(--ink-soft)]">
-                  You selected <strong className="text-[var(--ink)]">{previewInterest}</strong> as a possible
-                  way to collaborate. This is not a partnership request or confirmation.
+                  You explored <strong className="text-[var(--ink)]">{previewInterest}</strong> as one
+                  possible way to collaborate. This is not a partnership request or confirmation.
                 </p>
                 <Notice tone="success">Nothing was sent or saved. No one will contact you from this form.</Notice>
                 <button type="button" className="btn btn-outline" onClick={() => setPreviewInterest(null)}>
@@ -129,9 +130,9 @@ export function BecomePartner() {
             ) : (
               <form onSubmit={submit} className="space-y-5">
                 <div>
-                  <h3 className="text-2xl">Preview your interest</h3>
+                  <h3 className="text-2xl">What would you like to explore?</h3>
                   <p className="mt-2 text-sm leading-6 text-[var(--ink-soft)]">
-                    Required fields are checked here only. No details are sent or stored.
+                    Required fields are checked in this browser only. No details are sent or saved.
                   </p>
                 </div>
                 <div className="grid gap-4 sm:grid-cols-2">
@@ -170,7 +171,7 @@ export function BecomePartner() {
                   <span>I understand this is a preview and no enquiry will be sent or saved.</span>
                 </label>
                 <button className="btn btn-primary w-full" type="submit">
-                  Show interest preview <ArrowRight size={17} aria-hidden="true" />
+                  Show my preview <ArrowRight size={17} aria-hidden="true" />
                 </button>
               </form>
             )}

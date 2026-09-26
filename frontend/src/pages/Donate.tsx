@@ -54,7 +54,7 @@ export function Donate() {
               </h1>
             </div>
             <p className="mt-4 max-w-md text-sm leading-6 text-[var(--ink-soft)] lg:mt-0">
-              Explore an illustrative pledge amount. No live payments are offered.
+              See what choosing an amount could look like. This page is a local preview—no payment is made.
             </p>
           </div>
 
@@ -82,7 +82,8 @@ export function Donate() {
                 </div>
               </div>
               <figcaption className="px-5 py-4 text-xs leading-5 text-[var(--ink-soft)]">
-                User-provided photo. The people and activity pictured are not verified as Peace Care Foundation work.
+                User-provided reference photo. The people and activity shown are not verified as
+                part of this platform or any listed NGO.
               </figcaption>
             </figure>
 
@@ -93,23 +94,23 @@ export function Donate() {
                     <Heart size={26} aria-hidden="true" />
                   </span>
                   <div>
-                    <div className="eyebrow">Preview complete · Nothing submitted</div>
+                    <div className="eyebrow">Your choice · Just a preview</div>
                     <h2 className="mt-3 text-3xl sm:text-4xl">Here’s your pledge preview.</h2>
                     <p className="mt-3 leading-7 text-[var(--ink-soft)]">
-                      This is only an illustration of a donation choice. It is not a receipt,
-                      commitment, or confirmation of payment.
+                      You’ve explored a possible donation amount and frequency. This isn’t a
+                      donation, commitment, receipt or confirmation of payment.
                     </p>
                   </div>
                   <div className="rounded-2xl bg-[var(--paper)] p-6">
-                    <p className="text-xs font-bold uppercase tracking-[.14em] text-[var(--coral-dark)]">Preview amount</p>
+                    <p className="text-xs font-bold uppercase tracking-[.14em] text-[var(--coral-dark)]">Amount you explored</p>
                     <p className="mt-2 font-['Fraunces'] text-4xl">{rupees(preview.amount)}</p>
                     <p className="mt-4 border-t border-[var(--line)] pt-4 text-sm text-[var(--ink-soft)]">
                       Frequency: <strong className="text-[var(--ink)]">{preview.frequency} · illustrative only</strong>
                     </p>
                   </div>
                   <Notice tone="info">
-                    No payment was taken. Nothing was sent or saved; this preview resets
-                    when you leave or refresh the page.
+                    No payment was taken, and nothing was sent or saved. This local preview will
+                    clear when you leave or refresh the page.
                   </Notice>
                   <button type="button" className="btn btn-outline self-start" onClick={reset}>
                     <RotateCcw size={16} aria-hidden="true" /> Try another preview
@@ -119,11 +120,11 @@ export function Donate() {
                 <form onSubmit={submit} noValidate>
                   <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-[.14em] text-[var(--ink)]">
                     <span className="h-2 w-2 rounded-full bg-[#62a66d]" aria-hidden="true" />
-                    Choose amount · Preview only
+                    Explore an amount
                   </div>
                   <h2 className="mt-3 text-3xl sm:text-4xl">Choose an amount.</h2>
                   <p className="mt-3 text-sm leading-6 text-[var(--ink-soft)]">
-                    These amounts are illustrative choices, not actual costs or a payment request.
+                    These sample amounts are for exploring options only. They aren’t actual costs or a request for payment.
                   </p>
 
                   <fieldset className="mt-6">
@@ -198,7 +199,7 @@ export function Donate() {
                       />
                     </label>
                     <p id="other-amount-help" className="mt-2 text-xs leading-5 text-[var(--ink-soft)]">
-                      Whole rupees only, up to ₹10,00,000. Preview only.
+                      Enter whole rupees, up to ₹10,00,000. This won’t make a payment.
                     </p>
                   </fieldset>
 
@@ -208,11 +209,11 @@ export function Donate() {
                   </div>
                   {error && <div id="other-amount-error" role="alert" className="mt-4"><Notice>{error}</Notice></div>}
                   <button type="submit" className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl bg-[var(--ink)] px-6 py-3.5 text-sm font-bold text-white transition-colors hover:bg-[#285b52] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--coral)]">
-                    Continue to pledge preview <ArrowRight size={17} aria-hidden="true" />
+                    See your pledge preview <ArrowRight size={17} aria-hidden="true" />
                   </button>
                   <p className="mt-4 flex items-start gap-2 text-xs leading-5 text-[var(--ink-soft)]">
                     <ShieldCheck size={16} className="mt-0.5 shrink-0" aria-hidden="true" />
-                    No card details or personal information is required. Frequency choices are only a preview.
+                    No card or personal details needed. Your choices stay in this page and are only a preview.
                   </p>
                 </form>
               )}
