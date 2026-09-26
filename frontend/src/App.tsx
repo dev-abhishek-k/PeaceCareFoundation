@@ -1,16 +1,13 @@
-import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Layout from "./components/Layout";
-import type { Role } from "./types";
-import { Browse, Dashboard, HomePeace, Info, NgoDetail, PeaceInfo, Programs, Register, RequestHelpPreview } from "./pages/PrototypePages";
+import { Browse, HomePeace, Info, NgoDetail, PeaceInfo, Programs, Register, RequestHelpPreview } from "./pages/PrototypePages";
 import { Volunteer } from "./pages/Volunteer";
 import { Donate } from "./pages/Donate";
 import { BecomePartner } from "./pages/BecomePartner";
 import { About } from "./pages/About";
 
 export default function App() {
-  const [role, setRole] = useState<Role>("HELP_SEEKER");
-  return <Layout role={role} setRole={setRole}><Routes>
+  return <Layout><Routes>
     <Route path="/" element={<HomePeace/>}/>
     <Route path="/programs" element={<Programs/>}/>
     <Route path="/donate" element={<Donate/>}/>
@@ -20,7 +17,6 @@ export default function App() {
     <Route path="/register-ngo" element={<Register/>}/>
     <Route path="/volunteer" element={<Volunteer/>}/>
     <Route path="/become-a-partner" element={<BecomePartner/>}/>
-    <Route path="/dashboard" element={<Dashboard role={role} setRole={setRole}/>}/>
     <Route path="/about" element={<About/>}/>
     <Route path="/contact" element={<PeaceInfo kind="contact"/>}/>
     <Route path="/faq" element={<PeaceInfo kind="faq"/>}/>

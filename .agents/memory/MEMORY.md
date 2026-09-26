@@ -3,3 +3,4 @@
 - [Prototype copy convention](prototype-copy-convention.md) — avoid “Sample” labels and named-founder storytelling in public copy; keep clear preview and verification disclosures.
 - [Visual asset QA](visual-asset-qa.md) — ImageMagick contact sheets may fail on font configuration; verify generated imagery directly and in app previews.
 - [Our Work category layout](our-work-category-layout.md) — preserve the full image/text feature and focus-card pattern for broad support categories.
+- [Dashboard removal](dashboard-removal.md) — do not restore the preview dashboard or link forms to it; its removal was intentional.
