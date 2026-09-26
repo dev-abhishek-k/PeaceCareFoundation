@@ -64,7 +64,6 @@ export function Browse() {
     <PageIntro eyebrow="Browse NGOs · Explore by need" title="Find the right area of support.">
       Search by cause and location to explore the kinds of support an NGO may focus on.
     </PageIntro>
-    <p className="mt-4 text-sm text-[var(--ink-soft)]">Example organisations and locations · No live referrals</p>
     <div className="mt-10 grid gap-3 rounded-2xl bg-[var(--paper-deep)] p-4 md:grid-cols-4">
       <label className="relative">
         <Search className="absolute left-3 top-3.5" size={16} aria-hidden="true"/>
