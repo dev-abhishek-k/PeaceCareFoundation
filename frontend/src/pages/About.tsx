@@ -60,17 +60,17 @@ const trustPlans = [
   {
     icon: ShieldCheck,
     title: "NGO verification",
-    text: "We plan to introduce checks so people can understand who is listed. Current directory profiles are examples, not verified organisations.",
+    text: "We plan to introduce identity and information checks so people can better understand the organisations they find.",
   },
   {
     icon: ClipboardList,
     title: "Case updates",
-    text: "We plan to make request progress easier to follow. The updates shown on this site are examples, not live case tracking.",
+    text: "We plan to make it easier for people to follow a request from the first enquiry through any response.",
   },
   {
     icon: LockKeyhole,
     title: "Privacy",
-    text: "Privacy-aware handling of requests is planned. The current form does not send or save requests to a service.",
+    text: "We plan to give people clearer control over what they share and how their information is handled.",
   },
 ];
 
@@ -181,8 +181,8 @@ export function About() {
             <div className="eyebrow">Find an area of support</div>
             <h2 id="causes-title" className="mt-3 text-4xl sm:text-5xl">Causes we support</h2>
             <p className="mt-4 max-w-2xl leading-7 text-[var(--ink-soft)]">
-              Explore the areas where people may need support and where independent NGOs may
-              focus their work. Directory listings are examples until real organisations are verified.
+              Explore areas where people may need support and where independent NGOs may
+              focus their work. Choose a cause to see related directory profiles.
             </p>
           </div>
           <Link to="/ngos" className="btn btn-outline self-start whitespace-nowrap focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--coral)]">

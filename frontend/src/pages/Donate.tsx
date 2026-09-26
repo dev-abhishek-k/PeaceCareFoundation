@@ -124,8 +124,7 @@ export function Donate() {
                   </div>
                   <h2 className="mt-3 text-3xl sm:text-4xl">Choose an amount.</h2>
                     <p className="mt-3 text-sm leading-6 text-[var(--ink-soft)]">
-                      Set an amount in rupees to explore a possible pledge. These choices
-                      are not actual programme costs or a payment request.
+                      Set an amount in rupees and choose how often you would like to give.
                     </p>
 
                   <fieldset className="mt-6">

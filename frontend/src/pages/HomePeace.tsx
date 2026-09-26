@@ -130,8 +130,7 @@ export function HomePeace() {
           <div className="mt-3 flex flex-col justify-between gap-4 md:flex-row md:items-end">
             <h2 id="care-categories-title" className="text-4xl">Explore care categories.</h2>
             <p className="max-w-md text-sm leading-6 text-[var(--ink-soft)]">
-              Learn what different kinds of support can involve. These are not verified programmes
-              or services currently available through this website.
+              Explore what support can look like, from immediate essentials to longer-term guidance.
             </p>
           </div>
           <div className="mt-10 grid gap-4 md:grid-cols-3">

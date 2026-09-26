@@ -74,8 +74,8 @@ export function BecomePartner() {
         <div className="mt-3 flex flex-col justify-between gap-5 md:flex-row md:items-end">
           <h2 className="max-w-xl text-4xl leading-tight sm:text-5xl">There is more than one way to help.</h2>
           <p className="max-w-md text-sm leading-6 text-[var(--ink-soft)]">
-            Start with what you can offer and what a community may need. No partnerships or
-            open projects are confirmed through this website yet.
+            Start with what you can offer and what a community may need. Strong partnerships
+            take shape around shared goals and practical contributions.
           </p>
         </div>
         <div className="mt-9 grid gap-4 md:grid-cols-3">

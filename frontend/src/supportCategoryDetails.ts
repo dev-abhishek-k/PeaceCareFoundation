@@ -18,7 +18,7 @@ export const supportCategoryDetails: Record<(typeof supportCategories)[number]["
   Education: {
     id: "education",
     summary: "A little support can make room to learn.",
-    description: "Education support can include study guidance, school supplies and information about scholarships. This website does not confirm any available programme.",
+    description: "Education support can include study guidance, school supplies and information about scholarships.",
     tags: ["Study support", "School supplies", "Scholarships"],
     label: "For growing minds",
     focus: [
@@ -31,7 +31,7 @@ export const supportCategoryDetails: Record<(typeof supportCategories)[number]["
   Healthcare: {
     id: "healthcare",
     summary: "Health support starts with access and understanding.",
-    description: "Medical camps, treatment support and health conversations are possible areas of care, not services confirmed here.",
+    description: "Health needs can involve access to medical camps, treatment support and conversations with qualified professionals.",
     tags: ["Medical camps", "Treatment support", "Health awareness"],
     label: "For wellbeing",
     focus: [
@@ -44,7 +44,7 @@ export const supportCategoryDetails: Record<(typeof supportCategories)[number]["
   "Food & Nutrition": {
     id: "food-and-nutrition",
     summary: "Good food can support everyday dignity.",
-    description: "Ration, meals and nutrition are examples of possible support, not a report of food programmes delivered.",
+    description: "Food support can range from immediate meals and household rations to longer-term nutrition guidance.",
     tags: ["Ration", "Meals", "Nutrition"],
     label: "For daily nourishment",
     focus: [
@@ -57,7 +57,7 @@ export const supportCategoryDetails: Record<(typeof supportCategories)[number]["
   "Shelter & Housing": {
     id: "shelter-and-housing",
     summary: "A safe place can make the next step possible.",
-    description: "People facing unsafe housing may need short-term shelter and a path to longer-term stability. This website does not offer accommodation.",
+    description: "People facing unsafe housing may need short-term shelter and a path to longer-term stability.",
     tags: ["Temporary shelter", "Housing support", "Essentials"],
     label: "For safer spaces",
     focus: [
@@ -70,7 +70,7 @@ export const supportCategoryDetails: Record<(typeof supportCategories)[number]["
   "Women Empowerment": {
     id: "women-empowerment",
     summary: "Opportunity grows when skills and support meet.",
-    description: "Skills, livelihood pathways and support services are possible themes, not verified activities of the foundation.",
+    description: "Skills, livelihood pathways and access to support services can help women shape safer, more independent futures.",
     tags: ["Skills", "Livelihood", "Support services"],
     label: "For greater opportunity",
     focus: [
@@ -83,7 +83,7 @@ export const supportCategoryDetails: Record<(typeof supportCategories)[number]["
   "Child Welfare": {
     id: "children",
     summary: "A little support can make room to learn.",
-    description: "Children may need a combination of safety, learning and nutrition support. The focus areas below describe needs, not activities delivered by this platform.",
+    description: "Children may need a combination of safety, learning and nutrition support as they grow.",
     tags: ["Child protection", "Education", "Nutrition"],
     label: "For growing minds",
     heroImage: "/images/learning-care.jpg",
@@ -92,7 +92,7 @@ export const supportCategoryDetails: Record<(typeof supportCategories)[number]["
   "Elder Care": {
     id: "adults-and-elders",
     summary: "Dignity belongs in every season of life.",
-    description: "Food, warmth, personal care and health guidance can help older people maintain dignity and wellbeing. These are areas of need, not services available here.",
+    description: "Food, warmth, personal care and health guidance can help older people maintain dignity and wellbeing.",
     tags: ["Daily care", "Dignity essentials", "Wellness"],
     label: "For every generation",
     heroImage: "/images/community-care.jpg",
@@ -101,7 +101,7 @@ export const supportCategoryDetails: Record<(typeof supportCategories)[number]["
   "Disability Support": {
     id: "disability-support",
     summary: "Access should be part of everyday life.",
-    description: "Accessibility, assistive devices and training are possible areas of support, not confirmed programmes.",
+    description: "Accessible spaces, assistive devices and skills training can help remove barriers to everyday participation.",
     tags: ["Accessibility", "Assistive devices", "Training"],
     label: "For inclusive spaces",
     focus: [
@@ -114,7 +114,7 @@ export const supportCategoryDetails: Record<(typeof supportCategories)[number]["
   "Animal Welfare": {
     id: "street-dogs",
     summary: "Care begins with noticing who is often overlooked.",
-    description: "Street dogs may need urgent treatment, regular food and safe pathways into foster or adoptive care. No rescue service is dispatched from this website.",
+    description: "Street dogs may need urgent treatment, regular food and safe pathways into foster or adoptive care.",
     tags: ["Rescue", "Treatment", "Adoption pathways"],
     label: "For the ones on the street",
     heroImage: "/images/street-dog-care.jpg",
@@ -123,7 +123,7 @@ export const supportCategoryDetails: Record<(typeof supportCategories)[number]["
   "Disaster Relief": {
     id: "disaster-relief",
     summary: "In an emergency, timely help matters.",
-    description: "After floods, fires and other emergencies, people may need shelter, food and reliable information. This site does not operate an emergency response service.",
+    description: "After floods, fires and other emergencies, people may need shelter, food and reliable information.",
     tags: ["Emergency supplies", "Safe shelter", "Recovery"],
     label: "For urgent moments",
     focus: [
@@ -136,7 +136,7 @@ export const supportCategoryDetails: Record<(typeof supportCategories)[number]["
   Environment: {
     id: "environment",
     summary: "Healthy surroundings support healthy communities.",
-    description: "Tree planting and waste management are examples of possible environmental action, not verified projects.",
+    description: "Tree planting and better waste management can help communities care for shared spaces.",
     tags: ["Tree planting", "Waste management", "Local care"],
     label: "For shared spaces",
     focus: [
@@ -149,7 +149,7 @@ export const supportCategoryDetails: Record<(typeof supportCategories)[number]["
   "Livelihood & Skills": {
     id: "livelihood-and-skills",
     summary: "Useful skills can open new possibilities.",
-    description: "Skills training and self-employment support can help people build more stable livelihoods. No course or job placement is offered on this website.",
+    description: "Skills training and self-employment support can help people build more stable livelihoods.",
     tags: ["Job training", "Practical skills", "Self-employment"],
     label: "For new pathways",
     focus: [
@@ -162,7 +162,7 @@ export const supportCategoryDetails: Record<(typeof supportCategories)[number]["
   "Rural Development": {
     id: "rural-development",
     summary: "Local priorities should shape local progress.",
-    description: "Basic services and village development are broad possibilities, not verified work in any specific village.",
+    description: "Access to basic services and local infrastructure can make a lasting difference in rural communities.",
     tags: ["Basic services", "Village needs", "Local planning"],
     label: "For village communities",
     focus: [
@@ -175,7 +175,7 @@ export const supportCategoryDetails: Record<(typeof supportCategories)[number]["
   "Water & Sanitation": {
     id: "water-and-sanitation",
     summary: "Clean water and hygiene are everyday needs.",
-    description: "Safe water, toilets and hygiene are possible areas of support, not facilities confirmed as available.",
+    description: "Safe water, toilets and practical hygiene information are essential to everyday health.",
     tags: ["Clean water", "Toilets", "Hygiene"],
     label: "For healthier living",
     focus: [
@@ -188,7 +188,7 @@ export const supportCategoryDetails: Record<(typeof supportCategories)[number]["
   "Mental Health": {
     id: "mental-health",
     summary: "Listening can be a meaningful first step.",
-    description: "Mental health support can include awareness, counselling and access to qualified care. This site is not a clinical or crisis support service.",
+    description: "Mental health needs can call for awareness, counselling and access to qualified care.",
     tags: ["Counselling", "Awareness", "Peer support"],
     label: "For emotional wellbeing",
     focus: [
@@ -201,7 +201,7 @@ export const supportCategoryDetails: Record<(typeof supportCategories)[number]["
   "Legal Aid & Rights": {
     id: "legal-aid-and-rights",
     summary: "Understanding rights helps people make informed choices.",
-    description: "Knowing your rights and where to seek qualified help can be a first step. This website does not provide legal advice or legal services.",
+    description: "Knowing your rights and where to seek qualified legal help can be an important first step.",
     tags: ["Legal guidance", "Rights awareness", "Information"],
     label: "For informed choices",
     focus: [
@@ -214,7 +214,7 @@ export const supportCategoryDetails: Record<(typeof supportCategories)[number]["
   "Homeless Support": {
     id: "homeless-support",
     summary: "Support should start with dignity.",
-    description: "Food, shelter and rehabilitation pathways are possible areas of care, not confirmed services or placements.",
+    description: "People without stable housing may need food, shelter and support toward longer-term stability.",
     tags: ["Food", "Shelter", "Rehabilitation"],
     label: "For people without housing",
     focus: [
@@ -227,7 +227,7 @@ export const supportCategoryDetails: Record<(typeof supportCategories)[number]["
   "Community Development": {
     id: "community-development",
     summary: "Strong communities start with local voices.",
-    description: "Neighbourhood priorities can shape efforts around public spaces, essential services and local participation. No project is verified as underway here.",
+    description: "Neighbourhood priorities can shape efforts around public spaces, essential services and local participation.",
     tags: ["Local needs", "Shared projects", "Participation"],
     label: "For stronger communities",
     focus: [

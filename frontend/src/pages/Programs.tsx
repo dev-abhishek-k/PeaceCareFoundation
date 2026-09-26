@@ -45,6 +45,10 @@ export function Programs() {
         <div className="mx-auto max-w-7xl px-5 py-16 md:py-20">
           <div className="eyebrow">Support categories · Areas of need</div>
           <h2 id="support-categories-title" className="mt-3 max-w-2xl text-4xl md:text-5xl">Explore ways to help.</h2>
+          <p className="mt-4 max-w-3xl text-sm leading-6 text-[var(--ink-soft)]">
+            Learn about common needs and the kinds of work independent NGOs may focus on.
+            This website cannot dispatch emergency, medical or legal assistance.
+          </p>
           <nav aria-label="Jump to a support category" className="mt-9 flex flex-wrap gap-2">
             {supportCategories.map((category) => (
               <a key={category.name} href={`#${supportCategoryDetails[category.name].id}`} className="rounded-full border border-[var(--line)] bg-[var(--paper)] px-4 py-2 text-sm font-semibold text-[var(--ink)] transition-colors hover:border-[var(--ink)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--coral)]">
@@ -73,7 +77,7 @@ export function Programs() {
                 <p className="mt-5 max-w-md font-['Fraunces'] text-xl leading-snug text-[var(--ink)]">{detail.summary}</p>
                 <p className="mt-5 max-w-lg leading-7 text-[var(--ink-soft)]">{detail.description}</p>
                 <p className="mt-3 text-sm leading-6 text-[var(--ink-soft)]">Possible help: {category.help}</p>
-                <ul className="mt-6 flex flex-wrap gap-2" aria-label={`${category.name} illustrative themes`}>
+                <ul className="mt-6 flex flex-wrap gap-2" aria-label={`${category.name} themes`}>
                   {detail.tags.map(tag => (
                     <li key={tag} className="rounded-full border border-[var(--line)] bg-[var(--paper)] px-3 py-2 text-xs font-semibold text-[var(--ink-soft)]">
                       {tag}
@@ -84,9 +88,6 @@ export function Programs() {
             </div>
             <div className="mt-7">
               <h4 className="text-2xl">Focus categories for {category.name.toLowerCase()}.</h4>
-              <p className="mt-2 text-sm leading-6 text-[var(--ink-soft)]">
-                Illustrative possibilities only; these are not verified or currently available services.
-              </p>
               <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
                 {detail.focus.map((item) => (
                   <article key={item.title} className="overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--white)]">
