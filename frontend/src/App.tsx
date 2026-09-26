@@ -5,6 +5,7 @@ import type { Role } from "./types";
 import { Browse, Dashboard, HomePeace, Info, NgoDetail, PeaceInfo, Programs, Register, RequestHelpPreview } from "./pages/PrototypePages";
 import { Volunteer } from "./pages/Volunteer";
 import { Donate } from "./pages/Donate";
+import { BecomePartner } from "./pages/BecomePartner";
 
 export default function App() {
   const [role, setRole] = useState<Role>("HELP_SEEKER");
@@ -17,6 +18,7 @@ export default function App() {
     <Route path="/request-help" element={<RequestHelpPreview/>}/>
     <Route path="/register-ngo" element={<Register/>}/>
     <Route path="/volunteer" element={<Volunteer/>}/>
+    <Route path="/become-a-partner" element={<BecomePartner/>}/>
     <Route path="/dashboard" element={<Dashboard role={role} setRole={setRole}/>}/>
     <Route path="/about" element={<PeaceInfo kind="about"/>}/>
     <Route path="/contact" element={<PeaceInfo kind="contact"/>}/>
