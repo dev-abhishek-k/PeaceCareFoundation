@@ -50,8 +50,8 @@ const careAreas = [
 export function Programs() {
   return (
     <main>
-      <section className="mx-auto grid max-w-7xl gap-10 px-5 pb-16 pt-14 md:grid-cols-[1.1fr_.9fr] md:items-center md:gap-16 md:pb-24 md:pt-20">
-        <div>
+      <section className="mx-auto grid max-w-7xl gap-10 px-5 pb-16 pt-14 md:grid-cols-[1.1fr_.9fr] md:items-start md:gap-16 md:pb-24 md:pt-20">
+        <div className="md:pt-12">
           <div className="eyebrow">Our work · Care areas</div>
           <h1 className="mt-5 max-w-2xl text-5xl leading-[1.05] md:text-6xl lg:text-7xl">
             Care for every life, <em className="text-[var(--coral)]">every day.</em>
@@ -76,8 +76,17 @@ export function Programs() {
             <span>Peace Care Foundation</span>
             <span>Illustrative overview</span>
           </div>
-          <img src="/images/hero-care.jpg" alt="Illustration of a dog in a courtyard beside books and a folded shawl." className="mt-7 h-40 w-full rounded-2xl object-cover object-[center_55%]" />
-          <p className="mt-8 max-w-sm font-['Fraunces'] text-3xl leading-tight text-white sm:text-4xl">
+          <figure className="mt-7">
+            <img
+              src="/images/our-work-reference.jpg"
+              alt="Composite photo showing a health conversation, children learning, food sharing, and people planting a sapling."
+              className="aspect-video w-full rounded-2xl object-cover"
+            />
+            <figcaption className="mt-3 text-xs leading-5 text-white/75">
+              User-provided reference image. Pictured people and activities are not verified as Peace Care Foundation work.
+            </figcaption>
+          </figure>
+          <p className="mt-7 max-w-sm font-['Fraunces'] text-3xl leading-tight text-white sm:text-4xl">
             Different needs.<br />The same spirit of care.
           </p>
           <div className="mt-10 space-y-3">

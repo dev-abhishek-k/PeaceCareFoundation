@@ -7,7 +7,28 @@ import { citiesForState, states } from "../locations";
 import type { HelpRequest, NGO, Role } from "../types";
 import { Button, EmptyState, Field, Notice, PageIntro } from "../components/UI";
 
-const Shell = ({children}:{children:React.ReactNode}) => <main className="mx-auto min-h-[60vh] max-w-7xl px-5 py-14 md:py-20"><figure className="relative mb-10 h-36 overflow-hidden rounded-2xl sm:h-44"><img src="/images/hero-care.jpg" alt="Illustration of a dog, books and a folded shawl in a neighborhood courtyard." className="h-full w-full object-cover object-[center_48%]" /><figcaption className="absolute bottom-3 left-3 rounded-full bg-[var(--ink)]/90 px-3 py-1 text-xs font-semibold text-white">Illustrative artwork</figcaption></figure>{children}</main>;
+const defaultArtwork = {
+  src: "/images/hero-care.jpg",
+  alt: "Illustration of a dog, books and a folded shawl in a neighborhood courtyard.",
+  caption: "Illustrative artwork",
+};
+
+const requestHelpPhoto = {
+  src: "/images/request-help-reference.jpg",
+  alt: "Photo of an adult writing at a table with another adult and a child.",
+  caption: "Reference photo · Affiliation unverified",
+};
+
+const Shell = ({children, image}:{children:React.ReactNode; image?: typeof defaultArtwork}) => {
+  const artwork = image ?? defaultArtwork;
+  return <main className="mx-auto min-h-[60vh] max-w-7xl px-5 py-14 md:py-20">
+    <figure className={`relative mb-10 overflow-hidden rounded-2xl ${image ? "h-56 sm:h-72" : "h-36 sm:h-44"}`}>
+      <img src={artwork.src} alt={artwork.alt} className={`h-full w-full object-cover ${image ? "object-[center_28%]" : "object-[center_48%]"}`} />
+      <figcaption className="absolute bottom-3 left-3 max-w-[calc(100%-1.5rem)] rounded-full bg-[var(--ink)]/90 px-3 py-1 text-xs font-semibold text-white">{artwork.caption}</figcaption>
+    </figure>
+    {children}
+  </main>;
+};
 export { HomePeace } from "./HomePeace";
 
 export { Programs } from "./Programs";
@@ -77,8 +98,8 @@ export function RequestHelpPreview() {
   const [form, setForm] = useState({ category: "", description: "", city: "", state: "" });
   const update = (key: keyof typeof form, value: string) => setForm({ ...form, [key]: value });
   const next = () => { setFeedback(""); if ((step === 1 && !form.category) || (step === 2 && (!form.description.trim() || !form.city.trim() || !form.state))) { setFeedback("Please complete the required fields before continuing."); return; } setStep(Math.min(3, step + 1)); };
-  if (done) return <Shell><div className="mx-auto max-w-2xl rounded-3xl bg-[var(--ink)] p-9 text-white"><Check className="text-[var(--sun)]"/><h1 className="mt-5 text-4xl text-white">Preview submission complete.</h1><p className="mt-4 leading-7 text-white/75">Preview submission only—nothing sent or saved. This confirmation is only for the current form journey and will not appear in the dashboard after refresh.</p><Link to="/dashboard" className="btn btn-primary mt-7">View preview dashboard</Link></div></Shell>;
-  return <Shell><PageIntro eyebrow="Request preview" title="Request help, one step at a time.">Required fields are validated locally. This form never sends a real request.</PageIntro><div className="mt-10 max-w-2xl"><div className="mb-6 flex gap-2">{[1,2,3].map(n=><span className={`h-2 flex-1 rounded-full ${n<=step ? "bg-[var(--coral)]" : "bg-[var(--paper-deep)]"}`} key={n}/>)}</div><div className="rounded-2xl border border-[var(--line)] bg-[var(--white)] p-6 md:p-8">
+  if (done) return <Shell image={requestHelpPhoto}><div className="mx-auto max-w-2xl rounded-3xl bg-[var(--ink)] p-9 text-white"><Check className="text-[var(--sun)]"/><h1 className="mt-5 text-4xl text-white">Preview submission complete.</h1><p className="mt-4 leading-7 text-white/75">Preview submission only—nothing sent or saved. This confirmation is only for the current form journey and will not appear in the dashboard after refresh.</p><Link to="/dashboard" className="btn btn-primary mt-7">View preview dashboard</Link></div></Shell>;
+  return <Shell image={requestHelpPhoto}><PageIntro eyebrow="Request preview" title="Request help, one step at a time.">Required fields are validated locally. This form never sends a real request. The people pictured are not verified as Peace Care Foundation staff or service users.</PageIntro><div className="mt-10 max-w-2xl"><div className="mb-6 flex gap-2">{[1,2,3].map(n=><span className={`h-2 flex-1 rounded-full ${n<=step ? "bg-[var(--coral)]" : "bg-[var(--paper-deep)]"}`} key={n}/>)}</div><div className="rounded-2xl border border-[var(--line)] bg-[var(--white)] p-6 md:p-8">
     {step===1&&<div className="grid gap-5"><h2 className="text-2xl">What kind of support?</h2><label className="text-sm font-semibold">Category<select className="field mt-2" value={form.category} onChange={e=>update("category",e.target.value)}><option value="">Choose one</option>{categories.map(c=><option key={c.id}>{c.name}</option>)}</select></label></div>}
     {step===2&&<div className="grid gap-5">
       <h2 className="text-2xl">A little context</h2>
