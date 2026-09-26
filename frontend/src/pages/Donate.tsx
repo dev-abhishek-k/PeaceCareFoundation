@@ -23,8 +23,8 @@ export function Donate() {
 
   return (
     <main>
-      <section className="mx-auto grid max-w-7xl gap-10 px-5 pb-16 pt-14 lg:grid-cols-[.9fr_1.1fr] lg:items-start lg:gap-16 lg:pb-24 lg:pt-20">
-        <div>
+      <section className="mx-auto flex max-w-7xl flex-col gap-10 px-5 pb-16 pt-14 lg:flex-row lg:items-start lg:gap-16 lg:pb-24 lg:pt-20">
+        <div className="min-w-0 lg:w-[43%] lg:shrink-0">
           <figure className="mb-10">
             <div className="relative">
               <img
@@ -50,7 +50,7 @@ export function Donate() {
           </p>
         </div>
 
-        <div id="pledge-preview" className="scroll-mt-24 rounded-[2rem] border border-[var(--line)] bg-[var(--white)] p-6 shadow-[0_20px_60px_rgba(24,59,54,.06)] sm:p-9">
+        <div id="pledge-preview" className="w-full min-w-0 scroll-mt-24 rounded-[2rem] border border-[var(--line)] bg-[var(--white)] p-6 shadow-[0_20px_60px_rgba(24,59,54,.06)] sm:p-9 lg:flex-1">
           {preview ? (
             <div role="status" className="space-y-6">
               <span className="flex h-14 w-14 items-center justify-center rounded-full bg-[#e7f0df] text-[var(--ink)]">
@@ -97,24 +97,24 @@ export function Donate() {
 
               <fieldset className="mt-6">
                 <legend className="text-sm font-bold">Illustrative category and amount</legend>
-                <div className="mt-3 grid gap-3 sm:grid-cols-2">
+                <div className="mt-3 flex flex-col gap-3">
                   {impactOptions.map((option) => (
                     <button
                       type="button"
                       key={option.id}
                       aria-pressed={selected.id === option.id}
                       onClick={() => setSelected(option)}
-                      className={`overflow-hidden rounded-2xl border text-left transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--coral)] ${
+                      className={`flex w-full flex-col overflow-hidden rounded-2xl border text-left transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--coral)] sm:flex-row ${
                         selected.id === option.id
                           ? "border-[var(--ink)] bg-[var(--ink)] text-white"
                           : "border-[var(--line)] bg-[var(--paper)] hover:border-[var(--ink)] hover:bg-[var(--paper-deep)]"
                       }`}
                     >
-                      <img src={option.image} alt="" loading="lazy" decoding="async" className="aspect-[3/2] w-full object-cover" />
-                      <span className="block p-4">
+                      <img src={option.image} alt="" loading="lazy" decoding="async" className="aspect-[3/2] w-full object-cover sm:aspect-auto sm:h-40 sm:w-52 sm:shrink-0" />
+                      <span className="flex min-w-0 flex-1 flex-col justify-center p-4 sm:p-5">
                         <span className={`block text-[11px] font-bold uppercase tracking-wider ${selected.id === option.id ? "text-white/75" : "text-[var(--coral-dark)]"}`}>{option.area}</span>
                         <span className="mt-1 block text-sm font-bold leading-5">{option.title}</span>
-                        <span className="mt-2 flex items-center justify-between font-['Fraunces'] text-xl">
+                        <span className="mt-3 flex items-center justify-between font-['Fraunces'] text-xl">
                           {rupees(option.amount)}
                           {selected.id === option.id && <Check size={18} aria-hidden="true" />}
                         </span>
