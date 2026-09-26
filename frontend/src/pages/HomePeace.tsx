@@ -98,7 +98,7 @@ export function HomePeace() {
             </div>
             <p className="max-w-lg text-sm leading-6 text-[var(--ink-soft)]">
               Choose a fixed-amount example to open its pledge preview. The controls printed in the image above
-              are not interactive; no payment or verified impact is offered.
+              are not interactive; no payment or verified impact is offered. Card artwork is illustrative.
             </p>
           </div>
           <div className="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -106,19 +106,23 @@ export function HomePeace() {
               <Link
                 key={option.id}
                 to={`/donate?theme=${option.id}`}
-                className="group rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-4 transition-colors hover:border-[var(--ink)] hover:bg-[var(--paper-deep)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--coral)]"
+                className="group overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--paper)] transition-colors hover:border-[var(--ink)] hover:bg-[var(--paper-deep)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--coral)]"
                 aria-label={`${option.area}: ${option.title}, ${rupees(option.amount)}. Open pledge preview`}
               >
-                <span className="text-[11px] font-bold uppercase tracking-wider text-[var(--coral-dark)]">{option.area}</span>
-                <span className="mt-1 block text-sm font-bold">{option.title}</span>
-                <span className="mt-2 flex items-center justify-between font-['Fraunces'] text-xl">
-                  {rupees(option.amount)} <ArrowRight size={17} className="transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                <img src={option.image} alt="" loading="lazy" decoding="async" className="aspect-[3/2] w-full object-cover" />
+                <span className="block p-4">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-[var(--coral-dark)]">{option.area}</span>
+                  <span className="mt-1 block text-sm font-bold">{option.title}</span>
+                  <span className="mt-2 flex items-center justify-between font-['Fraunces'] text-xl">
+                    {rupees(option.amount)} <ArrowRight size={17} className="transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                  </span>
                 </span>
               </Link>
             ))}
           </div>
           <p className="mt-5 text-xs leading-5 text-[var(--ink-soft)]">
-            These amounts are illustrative UI examples, not actual programme prices or a fundraising request.
+            These images are illustrative artwork, not records of foundation activities. Amounts are UI examples,
+            not actual programme prices or a fundraising request.
           </p>
         </section>
       </section>

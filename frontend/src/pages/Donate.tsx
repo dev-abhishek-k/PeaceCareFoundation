@@ -86,7 +86,8 @@ export function Donate() {
               <div className="eyebrow">Choose your focus · Preview only</div>
               <h2 className="mt-3 text-3xl sm:text-4xl">Choose a care theme.</h2>
               <p className="mt-3 text-sm leading-6 text-[var(--ink-soft)]">
-                Twelve fixed-amount examples. These are not verified programmes, actual costs or a payment request.
+                Twelve fixed-amount examples with illustrative artwork. These are not verified programmes,
+                actual costs or a payment request.
               </p>
 
               <div className="mt-6 flex items-center justify-between gap-3 rounded-xl bg-[var(--paper-deep)] px-4 py-3 text-sm">
@@ -103,15 +104,18 @@ export function Donate() {
                       key={option.id}
                       aria-pressed={selected.id === option.id}
                       onClick={() => setSelected(option)}
-                      className={`min-h-28 rounded-xl border px-4 py-3 text-left transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--coral)] ${
+                      className={`flex min-h-28 items-center gap-3 rounded-xl border p-3 text-left transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--coral)] ${
                         selected.id === option.id
                           ? "border-[var(--ink)] bg-[var(--ink)] text-white"
                           : "border-[var(--line)] bg-[var(--paper)] hover:border-[var(--ink)]"
                       }`}
                     >
-                      <span className={`block text-[11px] font-bold uppercase tracking-wider ${selected.id === option.id ? "text-white/75" : "text-[var(--coral-dark)]"}`}>{option.area}</span>
-                      <span className="mt-1 block text-sm font-bold leading-5">{option.title}</span>
-                      <span className="mt-2 block font-['Fraunces'] text-xl">{rupees(option.amount)}</span>
+                      <img src={option.image} alt="" loading="lazy" decoding="async" className="h-20 w-20 shrink-0 rounded-lg object-cover" />
+                      <span className="min-w-0">
+                        <span className={`block text-[11px] font-bold uppercase tracking-wider ${selected.id === option.id ? "text-white/75" : "text-[var(--coral-dark)]"}`}>{option.area}</span>
+                        <span className="mt-1 block text-sm font-bold leading-5">{option.title}</span>
+                        <span className="mt-2 block font-['Fraunces'] text-xl">{rupees(option.amount)}</span>
+                      </span>
                     </button>
                   ))}
                 </div>
