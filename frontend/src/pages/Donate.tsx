@@ -61,6 +61,10 @@ export function Donate() {
           </a>
           <div className="mt-10 rounded-[2rem] bg-[var(--ink)] p-7 text-white sm:p-9">
             <Heart size={30} className="text-[var(--sun)]" aria-hidden="true" />
+            <figure className="relative mt-6 overflow-hidden rounded-2xl">
+              <img src="/images/community-care.jpg" alt="Illustration of an older adult and a younger adult sharing a meal." className="h-52 w-full object-cover" loading="lazy" />
+              <figcaption className="absolute bottom-3 left-3 rounded-full bg-[var(--ink)]/90 px-3 py-1 text-xs font-semibold">Illustrative artwork</figcaption>
+            </figure>
             <p className="mt-6 font-['Fraunces'] text-2xl leading-snug sm:text-3xl">
               One story. Many ways to imagine showing up.
             </p>

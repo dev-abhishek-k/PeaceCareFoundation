@@ -14,6 +14,8 @@ const careAreas = [
     surface: "bg-[#e9e9d6]",
     accent: "text-[var(--ink)]",
     label: "For the ones on the street",
+    image: "/images/street-dog-care.jpg",
+    imageAlt: "Illustration of a street dog resting beside a bowl of water.",
   },
   {
     id: "children",
@@ -26,6 +28,8 @@ const careAreas = [
     surface: "bg-[#f5e1d5]",
     accent: "text-[var(--coral-dark)]",
     label: "For growing minds",
+    image: "/images/learning-care.jpg",
+    imageAlt: "Illustration of hands sharing a children's book.",
   },
   {
     id: "adults-and-elders",
@@ -38,6 +42,8 @@ const careAreas = [
     surface: "bg-[#e3e9e3]",
     accent: "text-[var(--ink)]",
     label: "For every generation",
+    image: "/images/community-care.jpg",
+    imageAlt: "Illustration of an older adult and a younger adult sharing a meal.",
   },
 ] as const;
 
@@ -70,7 +76,8 @@ export function Programs() {
             <span>Peace Care Foundation</span>
             <span>Illustrative overview</span>
           </div>
-          <p className="mt-12 max-w-sm font-['Fraunces'] text-3xl leading-tight text-white sm:text-4xl">
+          <img src="/images/hero-care.jpg" alt="Illustration of a dog in a courtyard beside books and a folded shawl." className="mt-7 h-40 w-full rounded-2xl object-cover object-[center_55%]" />
+          <p className="mt-8 max-w-sm font-['Fraunces'] text-3xl leading-tight text-white sm:text-4xl">
             Different needs.<br />The same spirit of care.
           </p>
           <div className="mt-10 space-y-3">
@@ -106,7 +113,7 @@ export function Programs() {
       </section>
 
       <div className="mx-auto max-w-7xl space-y-10 px-5 py-14 md:space-y-16 md:py-20">
-        {careAreas.map(({ id, number, title, summary, description, details, icon: Icon, surface, accent, label }, index) => (
+        {careAreas.map(({ id, number, title, summary, description, details, surface, label, image, imageAlt }, index) => (
           <section
             id={id}
             key={id}
@@ -114,10 +121,10 @@ export function Programs() {
             className="grid scroll-mt-24 overflow-hidden rounded-[2rem] border border-[var(--line)] bg-[var(--white)] md:grid-cols-2"
           >
             <div className={`relative flex min-h-64 flex-col justify-between overflow-hidden p-7 sm:p-10 md:min-h-[410px] ${surface} ${index % 2 ? "md:order-2" : ""}`}>
-              <span className="text-xs font-bold uppercase tracking-[.15em]">{number} / 03 · Care area preview</span>
-              <Icon size={148} strokeWidth={1} aria-hidden="true" className={`relative z-10 my-6 self-center ${accent} sm:h-44 sm:w-44`} />
-              <div aria-hidden="true" className="absolute -right-16 top-12 h-56 w-56 rounded-full border-[34px] border-white/35 sm:h-72 sm:w-72" />
-              <span className="relative z-10 self-end rounded-full border border-current/25 px-4 py-2 text-xs font-semibold">{label}</span>
+              <img src={image} alt={imageAlt} className="absolute inset-0 h-full w-full object-cover" loading="lazy" />
+              <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-[#102923]/35 via-transparent to-[#102923]/60" />
+              <span className="relative z-10 w-fit rounded-full bg-[var(--ink)]/80 px-4 py-2 text-xs font-bold uppercase tracking-[.15em] text-white">{number} / 03 · Illustrative artwork</span>
+              <span className="relative z-10 self-end rounded-full border border-white/50 bg-[var(--ink)]/80 px-4 py-2 text-xs font-semibold text-white">{label}</span>
             </div>
             <div className="flex flex-col justify-center p-7 sm:p-10 lg:p-14">
               <div className="eyebrow">Area {number}</div>
