@@ -77,9 +77,6 @@ export function Volunteer() {
             >
               Explore roles <ArrowRight size={17} aria-hidden="true" />
             </a>
-            <p className="mt-5 text-xs font-medium text-[var(--ink-soft)]">
-              Preview only · No live placements or applications
-            </p>
           </div>
           <div className="relative flex h-[370px] items-end justify-center overflow-hidden px-3 sm:h-[440px] lg:h-full lg:min-h-[570px] lg:items-center lg:px-5">
             <div aria-hidden="true" className="absolute bottom-[-13rem] right-[-7rem] h-[35rem] w-[35rem] rounded-full bg-[#eef5f0] sm:bottom-[-11rem] lg:bottom-[-14rem]" />

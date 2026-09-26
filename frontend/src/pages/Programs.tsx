@@ -35,9 +35,6 @@ export function Programs() {
             alt="Composite photo showing a health conversation, children learning, food sharing, and people planting a sapling."
             className="aspect-video w-full rounded-[2rem] object-cover"
           />
-          <figcaption className="mt-3 text-xs leading-5 text-[var(--ink-soft)]">
-            User-provided reference image. Pictured people and activities are not verified as Peace Care Foundation work.
-          </figcaption>
         </figure>
       </section>
 
