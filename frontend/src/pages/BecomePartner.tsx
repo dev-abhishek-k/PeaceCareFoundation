@@ -132,7 +132,8 @@ export function BecomePartner() {
                 <div>
                   <h3 className="text-2xl">What would you like to explore?</h3>
                   <p className="mt-2 text-sm leading-6 text-[var(--ink-soft)]">
-                    Required fields are checked in this browser only. No details are sent or saved.
+                    Use made-up contact details here. Required fields are checked in your browser
+                    only; no details are sent or saved.
                   </p>
                 </div>
                 <div className="grid gap-4 sm:grid-cols-2">

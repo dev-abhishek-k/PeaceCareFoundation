@@ -157,10 +157,10 @@ export function HomePeace() {
 
       <section id="community-photos" className="scroll-mt-24 border-y border-[var(--line)] bg-[var(--paper-deep)]" aria-labelledby="community-photos-title">
         <div className="mx-auto max-w-7xl px-5 py-16 md:py-20">
-          <div className="eyebrow">Reference photos · Shared for this preview</div>
-          <h2 id="community-photos-title" className="mt-3 text-4xl">Photos shared as references.</h2>
+          <div className="eyebrow">Reference photos · Preview</div>
+          <h2 id="community-photos-title" className="mt-3 text-4xl">A gallery of reference photos.</h2>
           <p className="mt-4 max-w-3xl leading-7 text-[var(--ink-soft)]">
-            These photos were provided for this preview. The people, events and organisations shown
+            These photos show how a gallery might look. The people, events and organisations shown
             have not been verified as activities of NGO Help Network or any listed NGO. One health-camp
             photo displays another organisation&apos;s branding; that does not imply an affiliation.
           </p>

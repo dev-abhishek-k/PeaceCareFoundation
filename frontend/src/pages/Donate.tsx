@@ -82,7 +82,7 @@ export function Donate() {
                 </div>
               </div>
               <figcaption className="px-5 py-4 text-xs leading-5 text-[var(--ink-soft)]">
-                User-provided reference photo. The people and activity shown are not verified as
+                Reference photo. The people and activity shown are not verified as
                 part of this platform or any listed NGO.
               </figcaption>
             </figure>

@@ -72,7 +72,7 @@ export function Volunteer() {
           </span>
         </div>
         <figcaption className="px-5 py-3 text-xs leading-5 text-[var(--ink-soft)]">
-          User-provided image. The people pictured are not verified as volunteers or connected to any opportunity listed here.
+          Reference photo. The people pictured are not verified as volunteers or connected to any opportunity listed here.
         </figcaption>
       </figure>
 
@@ -118,7 +118,8 @@ export function Volunteer() {
                 <div>
                   <h3 className="text-2xl">What kind of volunteering interests you?</h3>
                   <p className="mt-2 text-sm text-[var(--ink-soft)]">
-                    Required fields are checked in this browser only. Your answers are not sent or saved.
+                    Use made-up contact details here. Required fields are checked in your browser
+                    only; your answers are not sent or saved.
                   </p>
                 </div>
 

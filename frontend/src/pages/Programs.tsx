@@ -37,7 +37,7 @@ export function Programs() {
             className="aspect-video w-full rounded-[2rem] object-cover"
           />
           <figcaption className="mt-3 text-xs leading-5 text-[var(--ink-soft)]">
-            User-provided reference image. The people and activities shown are not verified as work by NGO Help Network or any listed NGO.
+            Reference image. The people and activities shown are not verified as work by NGO Help Network or any listed NGO.
           </figcaption>
         </figure>
       </section>
