@@ -44,12 +44,7 @@ export function Programs() {
       <section id="support-categories" className="scroll-mt-20 border-y border-[var(--line)] bg-[var(--white)]" aria-labelledby="support-categories-title">
         <div className="mx-auto max-w-7xl px-5 py-16 md:py-20">
           <div className="eyebrow">Support categories · Illustrative overview</div>
-          <div className="mt-3 flex flex-col justify-between gap-4 md:flex-row md:items-end">
-            <h2 id="support-categories-title" className="max-w-2xl text-4xl md:text-5xl">Explore ways to help.</h2>
-            <p className="max-w-md text-sm leading-6 text-[var(--ink-soft)]">
-              These categories describe possible kinds of support, not verified programmes or services currently offered.
-            </p>
-          </div>
+          <h2 id="support-categories-title" className="mt-3 max-w-2xl text-4xl md:text-5xl">Explore ways to help.</h2>
           <nav aria-label="Jump to a support category" className="mt-9 flex flex-wrap gap-2">
             {supportCategories.map((category) => (
               <a key={category.name} href={`#${supportCategoryDetails[category.name].id}`} className="rounded-full border border-[var(--line)] bg-[var(--paper)] px-4 py-2 text-sm font-semibold text-[var(--ink)] transition-colors hover:border-[var(--ink)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--coral)]">
