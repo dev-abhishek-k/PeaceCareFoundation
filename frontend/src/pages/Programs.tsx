@@ -1,47 +1,8 @@
 import { useEffect } from "react";
 import { ArrowDown } from "lucide-react";
 import { useLocation } from "react-router-dom";
-import { programFocusAreas } from "../programFocusAreas";
 import { supportCategories } from "../supportCategories";
-
-const careAreas = [
-  {
-    id: "street-dogs",
-    number: "01",
-    title: "Street dogs",
-    summary: "Care begins with noticing who is often overlooked.",
-    description: "Feeding, injury response, sterilisation and vaccination, with foster and adoption pathways — an illustrative description, not verified services.",
-    details: ["Feeding & injury response", "Sterilisation & vaccination", "Foster & adoption pathways"],
-    surface: "bg-[#e9e9d6]",
-    label: "For the ones on the street",
-    image: "/images/street-dog-care.jpg",
-    imageAlt: "Illustration of a street dog resting beside a bowl of water.",
-  },
-  {
-    id: "children",
-    number: "02",
-    title: "Children",
-    summary: "A little support can make room to learn.",
-    description: "Learning circles, school kits, nutrition and health checks are illustrative ideas, not a report of activities delivered.",
-    details: ["Learning circles", "School kits", "Nutrition & health checks"],
-    surface: "bg-[#f5e1d5]",
-    label: "For growing minds",
-    image: "/images/learning-care.jpg",
-    imageAlt: "Illustration of hands sharing a children's book.",
-  },
-  {
-    id: "adults-and-elders",
-    number: "03",
-    title: "Adults & elders",
-    summary: "Dignity belongs in every season of life.",
-    description: "Night meals, blankets, dignity kits and medical camps are presented as an illustrative care model, not as available or verified services.",
-    details: ["Night meals & blankets", "Dignity kits", "Medical camps"],
-    surface: "bg-[#e3e9e3]",
-    label: "For every generation",
-    image: "/images/community-care.jpg",
-    imageAlt: "Illustration of an older adult and a younger adult sharing a meal.",
-  },
-] as const;
+import { supportCategoryDetails } from "../supportCategoryDetails";
 
 export function Programs() {
   const { hash } = useLocation();
@@ -89,80 +50,63 @@ export function Programs() {
               These categories describe possible kinds of support, not verified programmes or services currently offered.
             </p>
           </div>
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <nav aria-label="Jump to a support category" className="mt-9 flex flex-wrap gap-2">
             {supportCategories.map((category) => (
-              <article key={category.name} className="overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--paper)]">
-                <img src={category.image} alt="" loading="lazy" decoding="async" className="aspect-[3/2] w-full object-cover" />
-                <div className="p-5">
-                  <h3 className="text-xl">{category.name}</h3>
-                  <p className="mt-3 text-sm leading-6 text-[var(--ink-soft)]">{category.help}</p>
-                </div>
-              </article>
+              <a key={category.name} href={`#${supportCategoryDetails[category.name].id}`} className="rounded-full border border-[var(--line)] bg-[var(--paper)] px-4 py-2 text-sm font-semibold text-[var(--ink)] transition-colors hover:border-[var(--ink)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--coral)]">
+                {category.name}
+              </a>
             ))}
-          </div>
+          </nav>
         </div>
       </section>
 
-      <section id="care-areas" className="scroll-mt-20 border-y border-[var(--line)] bg-[var(--paper-deep)]">
-        <div className="mx-auto max-w-7xl px-5 py-12 md:py-16">
-          <div className="eyebrow">Featured care areas · Twelve focus categories</div>
-          <div className="mt-3 flex flex-col justify-between gap-4 md:flex-row md:items-end">
-            <h2 className="max-w-2xl text-4xl leading-tight md:text-5xl">What care can look like.</h2>
-            <p className="max-w-sm text-sm leading-6 text-[var(--ink-soft)]">
-              The areas below are illustrative. They are not a list of currently available programmes.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <div className="mx-auto max-w-7xl space-y-10 px-5 py-14 md:space-y-16 md:py-20">
-        {careAreas.map(({ id, number, title, summary, description, details, surface, label, image, imageAlt }, index) => (
-          <section
-            id={id}
-            key={id}
-            aria-labelledby={`${id}-title`}
-            className="scroll-mt-24"
-          >
+      <div id="care-areas" className="mx-auto max-w-7xl space-y-14 px-5 py-14 md:space-y-20 md:py-20">
+        {supportCategories.map((category, index) => {
+          const detail = supportCategoryDetails[category.name];
+          return (
+          <section id={detail.id} key={detail.id} aria-labelledby={`${detail.id}-title`} className="scroll-mt-24">
             <div className="grid overflow-hidden rounded-[2rem] border border-[var(--line)] bg-[var(--white)] md:grid-cols-2">
-              <div className={`relative flex min-h-64 flex-col justify-between overflow-hidden p-7 sm:p-10 md:min-h-[410px] ${surface} ${index % 2 ? "md:order-2" : ""}`}>
-                <img src={image} alt={imageAlt} className="absolute inset-0 h-full w-full object-cover" loading="lazy" />
+              <div className="relative flex min-h-64 flex-col justify-between overflow-hidden bg-[var(--paper-deep)] p-7 sm:p-10 md:order-2 md:min-h-[410px]">
+                <img src={detail.heroImage ?? category.image} alt="" className="absolute inset-0 h-full w-full object-cover" loading={index === 0 ? "eager" : "lazy"} decoding="async" />
                 <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-[#102923]/35 via-transparent to-[#102923]/60" />
-                <span className="relative z-10 w-fit rounded-full bg-[var(--ink)]/80 px-4 py-2 text-xs font-bold uppercase tracking-[.15em] text-white">{number} / 03 · Illustrative artwork</span>
-                <span className="relative z-10 self-end rounded-full border border-white/50 bg-[var(--ink)]/80 px-4 py-2 text-xs font-semibold text-white">{label}</span>
+                <span className="relative z-10 w-fit rounded-full bg-[var(--ink)]/80 px-4 py-2 text-xs font-bold uppercase tracking-[.15em] text-white">Illustrative artwork</span>
+                <span className="relative z-10 self-end rounded-full border border-white/50 bg-[var(--ink)]/80 px-4 py-2 text-xs font-semibold text-white">{detail.label}</span>
               </div>
               <div className="flex flex-col justify-center p-7 sm:p-10 lg:p-14">
-                <div className="eyebrow">Area {number}</div>
-                <h3 id={`${id}-title`} className="mt-4 text-4xl md:text-5xl">{title}</h3>
-                <p className="mt-5 max-w-md font-['Fraunces'] text-xl leading-snug text-[var(--ink)]">{summary}</p>
-                <p className="mt-5 max-w-lg leading-7 text-[var(--ink-soft)]">{description}</p>
-                <ul className="mt-7 flex flex-wrap gap-2" aria-label={`${title} illustrative activities`}>
-                  {details.map(detail => (
-                    <li key={detail} className="rounded-full border border-[var(--line)] bg-[var(--paper)] px-3 py-2 text-xs font-semibold text-[var(--ink-soft)]">
-                      {detail}
+                <div className="eyebrow">Support category</div>
+                <h3 id={`${detail.id}-title`} className="mt-4 text-4xl md:text-5xl">{category.name}</h3>
+                <p className="mt-5 max-w-md font-['Fraunces'] text-xl leading-snug text-[var(--ink)]">{detail.summary}</p>
+                <p className="mt-5 max-w-lg leading-7 text-[var(--ink-soft)]">{detail.description}</p>
+                <p className="mt-3 text-sm leading-6 text-[var(--ink-soft)]">Possible help: {category.help}</p>
+                <ul className="mt-6 flex flex-wrap gap-2" aria-label={`${category.name} illustrative themes`}>
+                  {detail.tags.map(tag => (
+                    <li key={tag} className="rounded-full border border-[var(--line)] bg-[var(--paper)] px-3 py-2 text-xs font-semibold text-[var(--ink-soft)]">
+                      {tag}
                     </li>
                   ))}
                 </ul>
               </div>
             </div>
             <div className="mt-7">
-              <h4 className="text-2xl">Focus categories for {title.toLowerCase()}.</h4>
+              <h4 className="text-2xl">Focus categories for {category.name.toLowerCase()}.</h4>
               <p className="mt-2 text-sm leading-6 text-[var(--ink-soft)]">
                 Illustrative possibilities only; these are not verified or currently available services.
               </p>
               <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                {programFocusAreas[id].map((focus) => (
-                  <article key={focus.title} className="overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--white)]">
-                    <img src={focus.image} alt="" className="aspect-[3/2] w-full object-cover" loading="lazy" decoding="async" />
+                {detail.focus.map((item) => (
+                  <article key={item.title} className="overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--white)]">
+                    <img src={item.image} alt="" className="aspect-[3/2] w-full object-cover" loading="lazy" decoding="async" />
                     <div className="p-5">
-                      <h5 className="text-lg">{focus.title}</h5>
-                      <p className="mt-2 text-sm leading-6 text-[var(--ink-soft)]">{focus.description}</p>
+                      <h5 className="text-lg">{item.title}</h5>
+                      <p className="mt-2 text-sm leading-6 text-[var(--ink-soft)]">{item.description}</p>
                     </div>
                   </article>
                 ))}
               </div>
             </div>
           </section>
-        ))}
+          );
+        })}
       </div>
 
     </main>
