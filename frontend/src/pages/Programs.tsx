@@ -65,10 +65,9 @@ export function Programs() {
           return (
           <section id={detail.id} key={detail.id} aria-labelledby={`${detail.id}-title`} className="scroll-mt-24">
             <div className="grid overflow-hidden rounded-[2rem] border border-[var(--line)] bg-[var(--white)] md:grid-cols-2">
-              <div className="relative flex min-h-64 flex-col justify-between overflow-hidden bg-[var(--paper-deep)] p-7 sm:p-10 md:order-2 md:min-h-[410px]">
+              <div className="relative flex min-h-64 flex-col justify-end overflow-hidden bg-[var(--paper-deep)] p-7 sm:p-10 md:order-2 md:min-h-[410px]">
                 <img src={detail.heroImage ?? category.image} alt="" className="absolute inset-0 h-full w-full object-cover" loading={index === 0 ? "eager" : "lazy"} decoding="async" />
                 <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-[#102923]/35 via-transparent to-[#102923]/60" />
-                <span className="relative z-10 w-fit rounded-full bg-[var(--ink)]/80 px-4 py-2 text-xs font-bold uppercase tracking-[.15em] text-white">Illustrative artwork</span>
                 <span className="relative z-10 self-end rounded-full border border-white/50 bg-[var(--ink)]/80 px-4 py-2 text-xs font-semibold text-white">{detail.label}</span>
               </div>
               <div className="flex flex-col justify-center p-7 sm:p-10 lg:p-14">
