@@ -88,10 +88,6 @@ export function HomePeace() {
             className="mx-auto block h-auto w-full max-w-[500px]"
             fetchPriority="high"
           />
-          <figcaption className="border-t border-[var(--line)] bg-[var(--white)] px-6 py-4 text-xs leading-5 text-[var(--ink-soft)]">
-            Screenshot mockup, not an impact report. Its “96%” figure is unverified;
-            the “secure pledge” button pictured is not functional. No payment is taken here.
-          </figcaption>
         </figure>
       </section>
 
