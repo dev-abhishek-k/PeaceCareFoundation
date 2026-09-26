@@ -54,7 +54,7 @@ export function Programs() {
 
   return (
     <main>
-      <section className="mx-auto max-w-7xl px-5 pb-16 pt-14 md:pb-20 md:pt-20">
+      <section className="mx-auto grid max-w-7xl gap-10 px-5 pb-16 pt-14 md:grid-cols-[1.1fr_.9fr] md:items-center md:gap-16 md:pb-20 md:pt-20">
         <div className="max-w-3xl">
           <div className="eyebrow">Our work · Care areas</div>
           <h1 className="mt-5 max-w-2xl text-5xl leading-[1.05] md:text-6xl lg:text-7xl">
@@ -74,6 +74,16 @@ export function Programs() {
             Explore the care areas <ArrowDown size={16} aria-hidden="true" />
           </a>
         </div>
+        <figure className="min-w-0">
+          <img
+            src="/images/our-work-reference.jpg"
+            alt="Composite photo showing a health conversation, children learning, food sharing, and people planting a sapling."
+            className="aspect-video w-full rounded-[2rem] object-cover"
+          />
+          <figcaption className="mt-3 text-xs leading-5 text-[var(--ink-soft)]">
+            User-provided reference image. Pictured people and activities are not verified as Peace Care Foundation work.
+          </figcaption>
+        </figure>
       </section>
 
       <section id="care-areas" className="scroll-mt-20 border-y border-[var(--line)] bg-[var(--paper-deep)]">
