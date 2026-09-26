@@ -1,8 +1,8 @@
 # Peace Care Foundation — UI prototype
 
-A responsive, frontend-only demonstration of Peace Care Foundation's mission—care for homeless dogs, children, adults and elders—alongside sample journeys for finding support, volunteering and exploring independent NGO profiles.
+A responsive, frontend-only preview of Peace Care Foundation's mission—care for homeless dogs, children, adults and elders—alongside sample journeys for finding support, volunteering and exploring independent NGO profiles.
 
-**This is a demo.** Organization listings, case requests, impact figures, statuses, dashboards, and notifications are sample content labelled “Demo”, not verified operational data. Previous site copy inspired the mission and program descriptions, but this prototype does not verify past figures, activities or contact details. Nothing is submitted to a server or saved. Forms validate in the browser and show a **Demo submission** confirmation. Switching dashboard roles is a preview, not authentication. Temporary case actions reset when the page reloads.
+**This is a UI preview.** Organization listings, case requests, impact figures, statuses, dashboards, and notifications are sample content labelled “Sample” or “Preview”, not verified operational data. Previous site copy inspired the mission and program descriptions, but this prototype does not verify past figures, activities or contact details. Nothing is submitted to a server or saved. Forms validate in the browser and show a **Preview submission** confirmation. Switching dashboard roles is a preview, not authentication. Temporary case actions reset when the page reloads.
 
 ## Run in Replit
 
@@ -19,7 +19,7 @@ The project uses React, TypeScript, Vite and Tailwind CSS. Source is in `fronten
 
 ## Before using this for real requests
 
-This prototype is **not** suitable for collecting personal details or providing access to real cases. A production service would need a protected backend, authentication and role-based permissions, secure document storage, privacy and consent review, and a verified NGO onboarding process. Do not present demo submissions as requests sent to an NGO.
+This prototype is **not** suitable for collecting personal details or providing access to real cases. A production service would need a protected backend, authentication and role-based permissions, secure document storage, privacy and consent review, and a verified NGO onboarding process. Do not present preview submissions as requests sent to an NGO.
 
 ## Tests
 

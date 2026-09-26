@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Layout from "./components/Layout";
 import type { Role } from "./types";
-import { Browse, Dashboard, HomePeace, Info, NgoDetail, PeaceInfo, Programs, Register, RequestHelpDemo } from "./pages/PrototypePages";
+import { Browse, Dashboard, HomePeace, Info, NgoDetail, PeaceInfo, Programs, Register, RequestHelpPreview } from "./pages/PrototypePages";
 import { Volunteer } from "./pages/Volunteer";
 
 export default function App() {
@@ -12,7 +12,7 @@ export default function App() {
     <Route path="/programs" element={<Programs/>}/>
     <Route path="/ngos" element={<Browse/>}/>
     <Route path="/ngos/:id" element={<NgoDetail/>}/>
-    <Route path="/request-help" element={<RequestHelpDemo/>}/>
+    <Route path="/request-help" element={<RequestHelpPreview/>}/>
     <Route path="/register-ngo" element={<Register/>}/>
     <Route path="/volunteer" element={<Volunteer/>}/>
     <Route path="/dashboard" element={<Dashboard role={role} setRole={setRole}/>}/>

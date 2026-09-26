@@ -51,7 +51,7 @@ export function Volunteer() {
       return;
     }
     if (!form.consent) {
-      setError("Please confirm that you understand this is only a demo.");
+      setError("Please confirm that you understand this is only a sample preview.");
       return;
     }
     setError("");
@@ -60,7 +60,7 @@ export function Volunteer() {
 
   return (
     <main className="mx-auto max-w-7xl px-5 py-14 md:py-20">
-      <PageIntro eyebrow="Volunteer · Demo" title="Give your time where it fits.">
+      <PageIntro eyebrow="Volunteer · Sample preview" title="Give your time where it fits.">
         Explore sample opportunities and preview a volunteer registration. These are fictional
         placements; completing the form does not send or save an application.
       </PageIntro>
@@ -94,7 +94,7 @@ export function Volunteer() {
       <section id="volunteer-registration" className="mt-14 scroll-mt-24">
         <div className="grid gap-8 lg:grid-cols-[.75fr_1.25fr]">
           <div>
-            <div className="eyebrow">Your next step · Demo</div>
+            <div className="eyebrow">Your next step · Preview</div>
             <h2 className="mt-3 text-3xl">Volunteer registration preview</h2>
             <p className="mt-4 leading-7 text-[var(--ink-soft)]">
               Try the form to see what a volunteer application might ask. Your details stay on this
@@ -110,13 +110,13 @@ export function Volunteer() {
           <div className="rounded-2xl border border-[var(--line)] bg-[var(--white)] p-6 md:p-8">
             {submitted ? (
               <div role="status" className="space-y-5">
-                <div className="eyebrow">Demo complete</div>
+                <div className="eyebrow">Preview complete</div>
                 <h3 className="text-3xl">Your preview is complete.</h3>
                 <p className="leading-7 text-[var(--ink-soft)]">
-                  You selected <strong>{selected?.title}</strong>. This was a demonstration only:
+                  You selected <strong>{selected?.title}</strong>. This was a sample preview only:
                   nothing was sent or saved, and no placement has been reserved.
                 </p>
-                <Notice tone="success">Demo registration complete. Your information is not stored.</Notice>
+                <Notice tone="success">Preview submission only—nothing sent or saved.</Notice>
                 <button
                   type="button"
                   className="btn btn-outline"
@@ -235,11 +235,11 @@ export function Volunteer() {
                     checked={form.consent}
                     onChange={(event) => update("consent", event.target.checked)}
                   />
-                  <span>I understand this is a demo and no application will be sent or saved.</span>
+                  <span>I understand this is a preview and no application will be sent or saved.</span>
                 </label>
                 {error && <div role="alert"><Notice>{error}</Notice></div>}
                 <button type="submit" className="btn btn-primary w-full">
-                  Show demo confirmation
+                  Show preview confirmation
                 </button>
               </form>
             )}
