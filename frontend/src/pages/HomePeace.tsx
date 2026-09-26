@@ -78,17 +78,19 @@ export function HomePeace() {
             <Notice tone="info">The directory currently shows example listings. Requests, applications and donations are not sent or processed through this website.</Notice>
           </div>
         </div>
-        <figure className="overflow-hidden rounded-[2rem] border border-[var(--line)] bg-[var(--paper)]">
-          <div className="bg-[var(--ink)] px-6 py-3 text-xs font-bold uppercase tracking-wider text-white">
-            Design reference only · No live donation flow
-          </div>
-          <img
-            src="/images/home-design-reference.png"
-            alt="Design-reference screenshot depicting a child, an adult and a dog with a mock 96 percent figure and pledge controls."
-            className="mx-auto block h-auto w-full max-w-[500px]"
-            fetchPriority="high"
-          />
-        </figure>
+        <div className="flex min-w-0 flex-col gap-5">
+          <figure className="overflow-hidden rounded-[2rem] border border-[var(--line)] bg-[var(--paper)]">
+            <img
+              src="/images/home-design-reference.png"
+              alt="Design-reference screenshot depicting a child, an adult and a dog with a mock 96 percent figure and pledge controls."
+              className="mx-auto block h-auto w-full max-w-[500px]"
+              fetchPriority="high"
+            />
+          </figure>
+          <Link className="btn btn-primary self-center" to="/donate">
+            Donate <ArrowRight size={16} aria-hidden="true" />
+          </Link>
+        </div>
       </section>
 
       <section aria-labelledby="home-about-title" className="border-y border-[var(--line)] bg-[var(--white)]">
