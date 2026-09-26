@@ -111,9 +111,6 @@ export function About() {
               alt="People talking near tables with plants, books and supplies at an indoor event."
               className="h-72 w-full object-cover object-[center_12%] sm:h-96 md:h-[490px]"
             />
-            <figcaption className="px-5 py-3 text-xs leading-5 text-[var(--ink-soft)]">
-              Reference photo only · People and activities pictured are not verified as part of this platform.
-            </figcaption>
           </figure>
         </div>
       </section>
