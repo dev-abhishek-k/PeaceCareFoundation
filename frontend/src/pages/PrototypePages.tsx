@@ -19,11 +19,18 @@ const requestHelpPhoto = {
   caption: "Reference photo · Affiliation unverified",
 };
 
-const Shell = ({children, image}:{children:React.ReactNode; image?: typeof defaultArtwork}) => {
+const browsePhoto = {
+  src: "/images/browse-ngos-reference.jpg",
+  alt: "Photo of people talking beside tables with plants, books and supplies at an indoor event.",
+  caption: "Reference photo · Affiliation unverified",
+  position: "object-[center_12%]",
+};
+
+const Shell = ({children, image}:{children:React.ReactNode; image?: typeof defaultArtwork & {position?: string}}) => {
   const artwork = image ?? defaultArtwork;
   return <main className="mx-auto min-h-[60vh] max-w-7xl px-5 py-14 md:py-20">
     <figure className={`relative mb-10 overflow-hidden rounded-2xl ${image ? "h-56 sm:h-72" : "h-36 sm:h-44"}`}>
-      <img src={artwork.src} alt={artwork.alt} className={`h-full w-full object-cover ${image ? "object-[center_28%]" : "object-[center_48%]"}`} />
+      <img src={artwork.src} alt={artwork.alt} className={`h-full w-full object-cover ${image?.position ?? (image ? "object-[center_28%]" : "object-[center_48%]")}`} />
       <figcaption className="absolute bottom-3 left-3 max-w-[calc(100%-1.5rem)] rounded-full bg-[var(--ink)]/90 px-3 py-1 text-xs font-semibold text-white">{artwork.caption}</figcaption>
     </figure>
     {children}
@@ -56,9 +63,10 @@ export function Browse() {
     (!city || n.cities.includes(city))
   ), [q, cat, state, city]);
 
-  return <Shell>
+  return <Shell image={browsePhoto}>
     <PageIntro eyebrow="Directory preview" title="Find an NGO, not a promise.">
       Every profile below is illustrative content for this UI prototype, not a verified listing.
+      The reference photo does not document any of the listed NGOs or their activities.
     </PageIntro>
     <div className="mt-10 grid gap-3 rounded-2xl bg-[var(--paper-deep)] p-4 md:grid-cols-4">
       <label className="relative">
