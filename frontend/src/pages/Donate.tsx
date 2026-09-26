@@ -23,9 +23,9 @@ export function Donate() {
 
   return (
     <main>
-      <section className="mx-auto flex max-w-7xl flex-col gap-10 px-5 pb-16 pt-14 lg:flex-row lg:items-start lg:gap-16 lg:pb-24 lg:pt-20">
-        <div className="min-w-0 lg:w-[43%] lg:shrink-0">
-          <figure className="mb-10">
+      <section className="mx-auto flex max-w-7xl flex-col gap-10 px-5 pb-16 pt-14 lg:gap-16 lg:pb-24 lg:pt-20">
+        <div className="grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-16">
+          <figure>
             <div className="relative">
               <img
                 src="/images/donate-reference.jpg"
@@ -40,19 +40,21 @@ export function Donate() {
               User-provided photo. The people and activity pictured are not verified as Peace Care Foundation work.
             </figcaption>
           </figure>
-          <div className="eyebrow">Donate · Preview only</div>
-          <h1 className="mt-5 max-w-xl text-5xl leading-[1.05] sm:text-6xl">
-            Giving begins with <em className="text-[var(--coral)]">care.</em>
-          </h1>
-          <p className="mt-7 max-w-lg text-lg leading-8 text-[var(--ink-soft)]">
-            Explore how a donation pledge could look for the care areas described here:
-            homeless dogs, children, adults and elders.
-          </p>
+          <div>
+            <div className="eyebrow">Donate · Preview only</div>
+            <h1 className="mt-5 max-w-xl text-5xl leading-[1.05] sm:text-6xl">
+              Giving begins with <em className="text-[var(--coral)]">care.</em>
+            </h1>
+            <p className="mt-7 max-w-lg text-lg leading-8 text-[var(--ink-soft)]">
+              Explore how a donation pledge could look for the care areas described here:
+              homeless dogs, children, adults and elders.
+            </p>
+          </div>
         </div>
 
-        <div id="pledge-preview" className="w-full min-w-0 scroll-mt-24 rounded-[2rem] border border-[var(--line)] bg-[var(--white)] p-6 shadow-[0_20px_60px_rgba(24,59,54,.06)] sm:p-9 lg:flex-1">
+        <div id="pledge-preview" className="w-full min-w-0 scroll-mt-24 rounded-[2rem] border border-[var(--line)] bg-[var(--white)] p-6 shadow-[0_20px_60px_rgba(24,59,54,.06)] sm:p-9">
           {preview ? (
-            <div role="status" className="space-y-6">
+            <div role="status" className="mx-auto max-w-2xl space-y-6">
               <span className="flex h-14 w-14 items-center justify-center rounded-full bg-[#e7f0df] text-[var(--ink)]">
                 <Heart size={26} aria-hidden="true" />
               </span>
@@ -85,7 +87,7 @@ export function Donate() {
             <form onSubmit={submit}>
               <div className="eyebrow">Choose your focus · Preview only</div>
               <h2 className="mt-3 text-3xl sm:text-4xl">Choose a care theme.</h2>
-              <p className="mt-3 text-sm leading-6 text-[var(--ink-soft)]">
+              <p className="mt-3 max-w-2xl text-sm leading-6 text-[var(--ink-soft)]">
                 Twelve fixed-amount examples with illustrative artwork. These are not verified programmes,
                 actual costs or a payment request.
               </p>
@@ -97,7 +99,7 @@ export function Donate() {
 
               <fieldset className="mt-6">
                 <legend className="text-sm font-bold">Illustrative category and amount</legend>
-                <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
                   {impactOptions.map((option) => (
                     <button
                       type="button"
@@ -124,7 +126,7 @@ export function Donate() {
                 </div>
               </fieldset>
 
-              <button type="submit" className="btn btn-primary mt-7 w-full">
+              <button type="submit" className="btn btn-primary mt-7 w-full sm:w-auto">
                 Show pledge preview <ArrowRight size={17} aria-hidden="true" />
               </button>
               <p className="mt-4 flex items-start gap-2 text-xs leading-5 text-[var(--ink-soft)]">
