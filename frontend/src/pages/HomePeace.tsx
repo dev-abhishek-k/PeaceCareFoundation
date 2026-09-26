@@ -74,20 +74,19 @@ export function HomePeace() {
             <Notice tone="info">Illustrative content; organisations and programmes are not verified. No payments or live services are offered.</Notice>
           </div>
         </div>
-        <figure className="relative min-h-[440px] overflow-hidden rounded-[2rem] bg-[var(--ink)] text-white">
+        <figure className="overflow-hidden rounded-[2rem] border border-[var(--line)] bg-[var(--paper)]">
+          <div className="bg-[var(--ink)] px-6 py-3 text-xs font-bold uppercase tracking-wider text-white">
+            Design reference only · No live donation flow
+          </div>
           <img
-            src="/images/hero-care.jpg"
-            alt="Illustration of a dog receiving water in a courtyard, with books and a folded shawl nearby."
-            className="absolute inset-0 h-full w-full object-cover"
+            src="/images/home-design-reference.png"
+            alt="Design-reference screenshot depicting a child, an adult and a dog with a mock 96 percent figure and pledge controls."
+            className="mx-auto block h-auto w-full max-w-[500px]"
             fetchPriority="high"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#102923]/85 via-transparent to-[#102923]/25" aria-hidden="true" />
-          <figcaption className="relative flex min-h-[440px] flex-col justify-between p-7 sm:p-9">
-            <span className="w-fit rounded-full border border-white/70 bg-[var(--ink)]/65 px-4 py-2 text-xs font-bold uppercase tracking-wider">Illustrative artwork</span>
-            <div>
-              <p className="max-w-sm font-['Fraunces'] text-3xl leading-snug text-white">Care starts with noticing.</p>
-              <p className="mt-3 text-sm text-white/90">A visual interpretation, not a record of delivered services.</p>
-            </div>
+          <figcaption className="border-t border-[var(--line)] bg-[var(--white)] px-6 py-4 text-xs leading-5 text-[var(--ink-soft)]">
+            Screenshot mockup, not an impact report. Its “96%” figure is unverified;
+            the “secure pledge” button pictured is not functional. No payment is taken here.
           </figcaption>
         </figure>
       </section>
