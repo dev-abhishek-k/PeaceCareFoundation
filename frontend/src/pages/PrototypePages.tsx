@@ -42,11 +42,10 @@ export { Programs } from "./Programs";
 
 export function PeaceInfo({kind}:{kind:string}) {
   const content: Record<string,{title:string; eyebrow:string; text:string; extra?:string}> = {
-    about: { eyebrow:"About Peace Care Foundation · Preview", title:"A story about showing up.", text:"This illustrative Peace Care Foundation profile focuses on care for homeless dogs, children, adults and elders. The guiding ideas are dignity first, consistent attention and local care. This is a frontend prototype; the organisation and programme descriptions are not independently verified.", extra:"The care areas are presented as possibilities, not evidence that services are being delivered." },
     contact: { eyebrow:"Contact · Preview", title:"A quiet place to start.", text:"Contact details for Peace Care Foundation have not been provided or verified. This prototype does not send messages, accept service requests by email, or publish a live contact channel.", extra:"Use the local preview journeys to explore a request, volunteer application or dashboard preview." },
     faq: { eyebrow:"FAQ · Preview", title:"Questions worth answering.", text:"Is Peace Care Foundation verified? No; this is an illustrative profile. Are the programmes, partnerships or impact figures verified? No, so unverified figures and partnerships are omitted. Can I donate or request live help? No. The Donate page is a local-only pledge preview; this interface has no payments, backend, or live service connection.", extra:"The forms show validation only and reset when refreshed." }
   };
-  const item = content[kind] || content.about;
+  const item = content[kind] || content.contact;
   return <Shell><PageIntro eyebrow={item.eyebrow} title={item.title}>Illustrative content; organisations and programmes are not verified.</PageIntro><div className="mt-10 max-w-2xl rounded-2xl border border-[var(--line)] bg-[var(--white)] p-7 text-lg leading-8 text-[var(--ink-soft)]"><p>{item.text}</p>{item.extra&&<p className="mt-6 border-l-2 border-[var(--sun)] pl-4 text-base">{item.extra}</p>}</div></Shell>;
 }
 export function Browse() {

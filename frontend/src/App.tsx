@@ -6,6 +6,7 @@ import { Browse, Dashboard, HomePeace, Info, NgoDetail, PeaceInfo, Programs, Reg
 import { Volunteer } from "./pages/Volunteer";
 import { Donate } from "./pages/Donate";
 import { BecomePartner } from "./pages/BecomePartner";
+import { About } from "./pages/About";
 
 export default function App() {
   const [role, setRole] = useState<Role>("HELP_SEEKER");
@@ -20,7 +21,7 @@ export default function App() {
     <Route path="/volunteer" element={<Volunteer/>}/>
     <Route path="/become-a-partner" element={<BecomePartner/>}/>
     <Route path="/dashboard" element={<Dashboard role={role} setRole={setRole}/>}/>
-    <Route path="/about" element={<PeaceInfo kind="about"/>}/>
+    <Route path="/about" element={<About/>}/>
     <Route path="/contact" element={<PeaceInfo kind="contact"/>}/>
     <Route path="/faq" element={<PeaceInfo kind="faq"/>}/>
     <Route path="/privacy" element={<Info kind="privacy"/>}/>

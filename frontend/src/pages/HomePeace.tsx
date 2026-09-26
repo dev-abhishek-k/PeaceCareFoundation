@@ -94,6 +94,35 @@ export function HomePeace() {
         </figure>
       </section>
 
+      <section aria-labelledby="home-about-title" className="border-y border-[var(--line)] bg-[var(--white)]">
+        <div className="mx-auto grid max-w-7xl items-center gap-9 px-5 py-16 md:grid-cols-[.9fr_1.1fr] md:gap-16 md:py-20">
+          <figure className="overflow-hidden rounded-[2rem] border border-[var(--line)] bg-[var(--paper)]">
+            <img
+              src="/images/hero-care.jpg"
+              alt="Illustration of a dog, books and a folded shawl in a neighborhood courtyard."
+              className="h-64 w-full object-cover sm:h-80 md:h-96"
+              loading="lazy"
+            />
+            <figcaption className="px-5 py-3 text-xs text-[var(--ink-soft)]">Illustrative artwork · Not a photo of platform activities</figcaption>
+          </figure>
+          <div>
+            <div className="eyebrow">About us</div>
+            <h2 id="home-about-title" className="mt-3 text-4xl leading-tight sm:text-5xl">
+              A connection to the right support starts here.
+            </h2>
+            <p className="mt-5 max-w-xl leading-7 text-[var(--ink-soft)]">
+              We envision a third-party platform connecting people who need help with independent
+              NGOs, volunteers and supporters across India. Explore NGO profiles, preview a request
+              and discover ways to support causes. This is a frontend prototype, not a live referral
+              service or a guarantee of assistance.
+            </p>
+            <Link to="/about" className="btn btn-outline mt-7 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--coral)]">
+              Learn More <ArrowRight size={16} aria-hidden="true" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
       <section id="care-categories" className="border-y border-[var(--line)] bg-[var(--white)]" aria-labelledby="care-categories-title">
         <div className="mx-auto max-w-7xl px-5 py-16 md:py-20">
           <div className="eyebrow">Care categories · Illustrative overview</div>
