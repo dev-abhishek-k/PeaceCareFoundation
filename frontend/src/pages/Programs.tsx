@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { ArrowDown } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import { programFocusAreas } from "../programFocusAreas";
+import { supportCategories } from "../supportCategories";
 
 const careAreas = [
   {
@@ -60,11 +61,11 @@ export function Programs() {
             Care for every life, <em className="text-[var(--coral)]">every day.</em>
           </h1>
           <p className="mt-7 max-w-xl text-lg leading-8 text-[var(--ink-soft)]">
-            The care areas shown here include homeless dogs, children, adults and elders.
-            One idea connects them: show up with dignity.
+            Explore possible areas of support for people, animals and communities.
+            Different needs, one idea: show up with dignity.
           </p>
-          <a href="#care-areas" className="btn btn-outline mt-7">
-            Explore the care areas <ArrowDown size={16} aria-hidden="true" />
+          <a href="#support-categories" className="btn btn-outline mt-7">
+            Explore categories <ArrowDown size={16} aria-hidden="true" />
           </a>
         </div>
         <figure className="min-w-0">
@@ -79,9 +80,32 @@ export function Programs() {
         </figure>
       </section>
 
+      <section id="support-categories" className="scroll-mt-20 border-y border-[var(--line)] bg-[var(--white)]" aria-labelledby="support-categories-title">
+        <div className="mx-auto max-w-7xl px-5 py-16 md:py-20">
+          <div className="eyebrow">18 support categories · Illustrative overview</div>
+          <div className="mt-3 flex flex-col justify-between gap-4 md:flex-row md:items-end">
+            <h2 id="support-categories-title" className="max-w-2xl text-4xl md:text-5xl">Explore ways to help.</h2>
+            <p className="max-w-md text-sm leading-6 text-[var(--ink-soft)]">
+              These categories describe possible kinds of support, not verified programmes or services currently offered.
+            </p>
+          </div>
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {supportCategories.map((category, index) => (
+              <article key={category.name} className="rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-5">
+                <div className="text-xs font-bold uppercase tracking-wider text-[var(--coral-dark)]">
+                  Category {String(index + 1).padStart(2, "0")}
+                </div>
+                <h3 className="mt-4 text-xl">{category.name}</h3>
+                <p className="mt-3 text-sm leading-6 text-[var(--ink-soft)]">{category.help}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section id="care-areas" className="scroll-mt-20 border-y border-[var(--line)] bg-[var(--paper-deep)]">
         <div className="mx-auto max-w-7xl px-5 py-12 md:py-16">
-          <div className="eyebrow">Three care areas · Twelve focus categories</div>
+          <div className="eyebrow">Featured care areas · Twelve focus categories</div>
           <div className="mt-3 flex flex-col justify-between gap-4 md:flex-row md:items-end">
             <h2 className="max-w-2xl text-4xl leading-tight md:text-5xl">What care can look like.</h2>
             <p className="max-w-sm text-sm leading-6 text-[var(--ink-soft)]">
