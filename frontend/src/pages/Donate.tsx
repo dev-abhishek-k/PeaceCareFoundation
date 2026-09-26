@@ -78,9 +78,6 @@ export function Donate() {
                   </div>
                 </div>
               </div>
-              <figcaption className="px-5 py-4 text-xs leading-5 text-[var(--ink-soft)]">
-                User-provided photo. The people and activity pictured are not verified as Peace Care Foundation work.
-              </figcaption>
             </figure>
 
             <div id="pledge-preview" className="min-w-0 scroll-mt-24 bg-[#fcfdfb] p-6 sm:p-9 lg:p-10">
