@@ -1,6 +1,5 @@
 import { useState, type FormEvent } from "react";
 import { ArrowRight, Heart, RotateCcw, ShieldCheck } from "lucide-react";
-import { Link } from "react-router-dom";
 import { Notice } from "../components/UI";
 
 const amounts = [500, 1000, 2500, 5000];
@@ -41,7 +40,22 @@ export function Donate() {
   return (
     <main>
       <section className="mx-auto grid max-w-7xl gap-10 px-5 pb-16 pt-14 lg:grid-cols-[.9fr_1.1fr] lg:items-start lg:gap-16 lg:pb-24 lg:pt-20">
-        <div className="lg:pt-8">
+        <div>
+          <figure className="mb-10">
+            <div className="relative">
+              <img
+                src="/images/donate-reference.jpg"
+                alt="Photo of adults and a child holding a box of school supplies."
+                className="aspect-video w-full rounded-[2rem] object-cover"
+              />
+              <span className="absolute bottom-3 left-3 rounded-full bg-[var(--ink)]/90 px-3 py-1 text-xs font-semibold text-white">
+                Reference photo · Affiliation unverified
+              </span>
+            </div>
+            <figcaption className="mt-3 text-xs leading-5 text-[var(--ink-soft)]">
+              User-provided photo. The people and activity pictured are not verified as Peace Care Foundation work.
+            </figcaption>
+          </figure>
           <div className="eyebrow">Donate · Preview only</div>
           <h1 className="mt-5 max-w-xl text-5xl leading-[1.05] sm:text-6xl">
             Giving begins with <em className="text-[var(--coral)]">care.</em>
@@ -59,37 +73,6 @@ export function Donate() {
           <a href="#pledge-preview" className="btn btn-primary mt-7">
             Try the pledge preview <ArrowRight size={16} aria-hidden="true" />
           </a>
-          <div className="mt-10 rounded-[2rem] bg-[var(--ink)] p-7 text-white sm:p-9">
-            <Heart size={30} className="text-[var(--sun)]" aria-hidden="true" />
-            <figure className="mt-6">
-              <div className="relative overflow-hidden rounded-2xl">
-                <img
-                  src="/images/donate-reference.jpg"
-                  alt="Photo of adults and a child holding a box of school supplies."
-                  className="h-52 w-full object-cover object-top"
-                />
-                <span className="absolute bottom-3 left-3 rounded-full bg-[var(--ink)]/90 px-3 py-1 text-xs font-semibold">
-                  Reference photo · Affiliation unverified
-                </span>
-              </div>
-              <figcaption className="mt-3 text-xs leading-5 text-white/70">
-                User-provided photo. The people and activity pictured are not verified as Peace Care Foundation work.
-              </figcaption>
-            </figure>
-            <p className="mt-6 font-['Fraunces'] text-2xl leading-snug sm:text-3xl">
-              Many ways to imagine showing up.
-            </p>
-            <p className="mt-4 text-sm leading-6 text-white/70">
-              Select an amount and a care area to see a local-only example. This does not
-              fund a programme or reserve a donation.
-            </p>
-            <Link
-              to="/programs"
-              className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-[var(--sun)] underline-offset-4 hover:underline focus-visible:underline"
-            >
-              Explore care areas <ArrowRight size={16} aria-hidden="true" />
-            </Link>
-          </div>
         </div>
 
         <div id="pledge-preview" className="scroll-mt-24 rounded-[2rem] border border-[var(--line)] bg-[var(--white)] p-6 shadow-[0_20px_60px_rgba(24,59,54,.06)] sm:p-9">
