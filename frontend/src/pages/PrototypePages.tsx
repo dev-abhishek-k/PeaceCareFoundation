@@ -13,11 +13,6 @@ const defaultArtwork = {
   caption: "Illustrative artwork",
 };
 
-const requestHelpPhoto = {
-  src: "/images/request-help-reference.jpg",
-  alt: "Photo of an adult writing at a table with another adult and a child.",
-};
-
 const browsePhoto = {
   src: "/images/browse-ngos-reference.jpg",
   alt: "Photo of people talking beside tables with plants, books and supplies at an indoor event.",
@@ -119,13 +114,50 @@ function Seeker({requests:items}:{requests:HelpRequest[]}){return <div className
 export function Register(){const [done,setDone]=useState(false);return <Shell><PageIntro eyebrow="NGO registration · Form demo" title="Tell people what your NGO does.">A clear profile can help people understand an organisation’s focus and service locations. This form shows the information a future registration might request; it does not create an account or listing.</PageIntro>{done?<div className="mt-10 max-w-2xl"><Notice tone="success">Form demo complete—nothing sent or saved. No profile was created.</Notice></div>:<form className="mt-10 grid max-w-2xl gap-4 rounded-2xl border border-[var(--line)] bg-[var(--white)] p-6 md:grid-cols-2" onSubmit={e=>{e.preventDefault();setDone(true)}}><Field label="Organisation name" required/><Field label="Registration details" required/><label className="text-sm font-semibold md:col-span-2">Description<textarea required className="field mt-2 min-h-28"/></label><Field label="Service locations" placeholder="Cities or states" required/><Field label="Contact email" type="email" required/><label className="text-sm font-semibold md:col-span-2">Support categories<select required className="field mt-2"><option value="">Choose a category</option>{categories.map(c=><option key={c.id}>{c.name}</option>)}</select></label><label className="text-sm md:col-span-2"><input type="checkbox" required className="mr-2"/>I understand this is a preview submission.</label><Button className="md:col-span-2">Show preview confirmation</Button></form>}</Shell>}
 export function Info({kind}:{kind:string}){const content:{[key:string]:[string,string]}={privacy:["Privacy information.","This website does not send the information entered into its demonstration forms to an organisation. Form entries remain local to the current page and disappear on refresh. A live request service would need its own privacy safeguards before launch."],terms:["Using this website.","Peace Care Foundation is developing a way to connect people and independent NGOs. Current directory profiles and dashboard records are examples, and forms do not submit real requests, applications or payments."]};const [title,text]=content[kind]||["Page unavailable.","That page does not exist. Use the navigation to return home or explore the support areas."];return <Shell><PageIntro eyebrow={content[kind]?`${kind} · Important information`:"Page not found"} title={title}>{text}</PageIntro><div className="mt-10 max-w-2xl rounded-2xl border border-[var(--line)] bg-[var(--white)] p-7 text-lg leading-8 text-[var(--ink-soft)]">{text}</div>{!content[kind]&&<Link className="btn btn-primary mt-6" to="/">Return home</Link>}</Shell>}
 
+function RequestHelpLayout({ children, showCta = true }: { children: React.ReactNode; showCta?: boolean }) {
+  return (
+    <main className="mx-auto max-w-7xl px-5 pb-16 pt-8 md:pb-24 md:pt-12">
+      <section className="overflow-hidden rounded-[2rem] border border-[#d5e1df] bg-white shadow-[0_22px_55px_rgba(24,59,54,.09)]">
+        <div className="grid items-center lg:min-h-[510px] lg:grid-cols-[1fr_1fr]">
+          <div className="px-7 pt-12 sm:px-12 lg:py-16 lg:pl-16 lg:pr-6">
+            <div className="eyebrow">Request help · Start with your needs</div>
+            <h1
+              className="mt-6 max-w-xl text-[clamp(3.1rem,5vw,5rem)] font-bold leading-[1.04] tracking-[-.06em] text-[var(--ink)]"
+              style={{ fontFamily: "'DM Sans', sans-serif" }}
+            >
+              Need support?<br /><span className="text-[var(--coral)]">Start here.</span>
+            </h1>
+            <p className="mt-6 max-w-lg text-base leading-8 text-[var(--ink-soft)] sm:text-lg">
+              Describe what you need and where you need it. Explore the request steps in this preview;
+              nothing you enter is sent or saved.
+            </p>
+            {showCta && (
+              <a href="#request-form" className="btn btn-primary mt-8 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--ink)]">
+                Explore the form <ArrowRight size={17} aria-hidden="true" />
+              </a>
+            )}
+          </div>
+          <div className="flex items-center justify-center p-7 sm:p-12 lg:p-10">
+            <img
+              src="/images/request-help-hands.png"
+              alt="Four colorful illustrations of hands reaching out and offering support."
+              className="block h-auto w-full max-w-[360px]"
+            />
+          </div>
+        </div>
+      </section>
+      {children}
+    </main>
+  );
+}
+
 export function RequestHelpPreview() {
   const [step, setStep] = useState(1); const [consent, setConsent] = useState(false); const [done, setDone] = useState(false); const [feedback, setFeedback] = useState("");
   const [form, setForm] = useState({ category: "", description: "", city: "", state: "" });
   const update = (key: keyof typeof form, value: string) => setForm({ ...form, [key]: value });
   const next = () => { setFeedback(""); if ((step === 1 && !form.category) || (step === 2 && (!form.description.trim() || !form.city.trim() || !form.state))) { setFeedback("Please complete the required fields before continuing."); return; } setStep(Math.min(3, step + 1)); };
-  if (done) return <Shell image={requestHelpPhoto}><div className="mx-auto max-w-2xl rounded-3xl bg-[var(--ink)] p-9 text-white"><Check className="text-[var(--sun)]"/><h1 className="mt-5 text-4xl text-white">Preview submission complete.</h1><p className="mt-4 leading-7 text-white/75">Preview submission only—nothing sent or saved. This confirmation is only for the current form journey and will not appear in the dashboard after refresh.</p><Link to="/dashboard" className="btn btn-primary mt-7">View preview dashboard</Link></div></Shell>;
-  return <Shell image={requestHelpPhoto}><PageIntro eyebrow="Request help · Understand the steps" title="Request help, one step at a time.">A useful request explains the need and where support is needed. This form demonstrates that journey but does not send a request. The people pictured are not verified as Peace Care Foundation staff or service users.</PageIntro><div className="mt-10 max-w-2xl"><div className="mb-6 flex gap-2">{[1,2,3].map(n=><span className={`h-2 flex-1 rounded-full ${n<=step ? "bg-[var(--coral)]" : "bg-[var(--paper-deep)]"}`} key={n}/>)}</div><div className="rounded-2xl border border-[var(--line)] bg-[var(--white)] p-6 md:p-8">
+  if (done) return <RequestHelpLayout showCta={false}><div className="mx-auto mt-16 max-w-2xl rounded-3xl bg-[var(--ink)] p-9 text-white"><Check className="text-[var(--sun)]"/><h2 className="mt-5 text-4xl text-white">Preview submission complete.</h2><p className="mt-4 leading-7 text-white/75">Preview submission only—nothing sent or saved. This confirmation is only for the current form journey and will not appear in the dashboard after refresh.</p><Link to="/dashboard" className="btn btn-primary mt-7">View preview dashboard</Link></div></RequestHelpLayout>;
+  return <RequestHelpLayout><div id="request-form" className="mx-auto mt-16 max-w-2xl scroll-mt-24"><div className="mb-6 flex gap-2">{[1,2,3].map(n=><span className={`h-2 flex-1 rounded-full ${n<=step ? "bg-[var(--coral)]" : "bg-[var(--paper-deep)]"}`} key={n}/>)}</div><div className="rounded-2xl border border-[var(--line)] bg-[var(--white)] p-6 md:p-8">
     {step===1&&<div className="grid gap-5"><h2 className="text-2xl">What kind of support?</h2><label className="text-sm font-semibold">Category<select className="field mt-2" value={form.category} onChange={e=>update("category",e.target.value)}><option value="">Choose one</option>{categories.map(c=><option key={c.id}>{c.name}</option>)}</select></label></div>}
     {step===2&&<div className="grid gap-5">
       <h2 className="text-2xl">A little context</h2>
@@ -141,7 +173,7 @@ export function RequestHelpPreview() {
     </div>}
     {step===3&&<div className="grid gap-5"><h2 className="text-2xl">Consent and preferences</h2><label className="flex gap-3 text-sm leading-6"><input type="checkbox" checked={consent} onChange={e=>{setConsent(e.target.checked);setFeedback("")}}/> I understand this is a preview submission and no help is guaranteed.</label><p className="text-sm text-[var(--ink-soft)]">This confirmation will not create a request or update your dashboard.</p></div>}
     {feedback&&<Notice>{feedback}</Notice>}<div className="mt-8 flex justify-between">{step>1?<button className="btn btn-outline" onClick={()=>setStep(step-1)}>Back</button>:<span/>}{step<3?<Button onClick={next}>Continue <ArrowRight size={16}/></Button>:<Button disabled={!consent} onClick={()=>consent?setDone(true):setFeedback("Please confirm the preview consent before showing the confirmation.")}>Show preview confirmation <Check size={16}/></Button>}</div>
-  </div></div></Shell>;
+  </div></div></RequestHelpLayout>;
 }
 
 function NgoPreview({ requests: items, setRequests }: { requests: HelpRequest[]; setRequests: (r: HelpRequest[]) => void }) {
