@@ -67,9 +67,6 @@ export function Donate() {
                   className="absolute inset-0 h-full w-full object-cover"
                 />
                 <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-[#102923]/75 via-transparent to-[#102923]/20" />
-                <span className="absolute left-5 top-5 rounded-full bg-[var(--ink)]/90 px-3 py-1.5 text-xs font-semibold text-white">
-                  Reference photo · Affiliation unverified
-                </span>
                 <div className="absolute inset-x-5 bottom-5">
                   <p className="mb-3 text-xs font-bold uppercase tracking-[.14em] text-white">Featured amounts · Preview only</p>
                   <div className="max-w-sm overflow-hidden rounded-xl shadow-lg">
