@@ -4,12 +4,14 @@ import Layout from "./components/Layout";
 import type { Role } from "./types";
 import { Browse, Dashboard, HomePeace, Info, NgoDetail, PeaceInfo, Programs, Register, RequestHelpPreview } from "./pages/PrototypePages";
 import { Volunteer } from "./pages/Volunteer";
+import { Donate } from "./pages/Donate";
 
 export default function App() {
   const [role, setRole] = useState<Role>("HELP_SEEKER");
   return <Layout role={role} setRole={setRole}><Routes>
     <Route path="/" element={<HomePeace/>}/>
     <Route path="/programs" element={<Programs/>}/>
+    <Route path="/donate" element={<Donate/>}/>
     <Route path="/ngos" element={<Browse/>}/>
     <Route path="/ngos/:id" element={<NgoDetail/>}/>
     <Route path="/request-help" element={<RequestHelpPreview/>}/>
