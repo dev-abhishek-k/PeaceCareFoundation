@@ -9,24 +9,37 @@ type Frequency = (typeof frequencies)[number];
 const fixedAmounts = [...new Set(impactOptions.map((option) => option.amount))].sort((a, b) => a - b);
 const featuredAmounts = [500, 1000, 2500, 5000];
 const ribbonColors = ["bg-[#f3dfb9] text-[var(--ink)]", "bg-[#d9e8d9] text-[var(--ink)]", "bg-[#a9cbc0] text-[var(--ink)]", "bg-[#245e54] text-white"];
+const maxOtherAmount = 1_000_000;
 
 export function Donate() {
   const [searchParams] = useSearchParams();
-  const [selectedAmount, setSelectedAmount] = useState<number>(
+  const [selectedAmount, setSelectedAmount] = useState<number | null>(
     () => impactOptions.find((option) => option.id === searchParams.get("theme"))?.amount ?? impactOptions[1].amount
   );
+  const [otherAmount, setOtherAmount] = useState("");
   const [frequency, setFrequency] = useState<Frequency>("One-time");
   const [preview, setPreview] = useState<{ amount: number; frequency: Frequency } | null>(null);
+  const [error, setError] = useState("");
+  const customValue = Number(otherAmount);
+  const validOtherAmount = otherAmount.trim() !== "" && Number.isSafeInteger(customValue) && customValue >= 1 && customValue <= maxOtherAmount;
+  const amountToPreview = selectedAmount ?? (validOtherAmount ? customValue : null);
 
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setPreview({ amount: selectedAmount, frequency });
+    if (amountToPreview === null) {
+      setError("Enter a whole-rupee amount between ₹1 and ₹10,00,000.");
+      return;
+    }
+    setError("");
+    setPreview({ amount: amountToPreview, frequency });
   }
 
   function reset() {
     setSelectedAmount(impactOptions[1].amount);
+    setOtherAmount("");
     setFrequency("One-time");
     setPreview(null);
+    setError("");
   }
 
   return (
@@ -41,7 +54,7 @@ export function Donate() {
               </h1>
             </div>
             <p className="mt-4 max-w-md text-sm leading-6 text-[var(--ink-soft)] lg:mt-0">
-              Explore an illustrative fixed-amount pledge. No live payments are offered.
+              Explore an illustrative pledge amount. No live payments are offered.
             </p>
           </div>
 
@@ -103,12 +116,12 @@ export function Donate() {
                   </button>
                 </div>
               ) : (
-                <form onSubmit={submit}>
+                <form onSubmit={submit} noValidate>
                   <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-[.14em] text-[var(--ink)]">
                     <span className="h-2 w-2 rounded-full bg-[#62a66d]" aria-hidden="true" />
                     Choose amount · Preview only
                   </div>
-                  <h2 className="mt-3 text-3xl sm:text-4xl">Choose a fixed amount.</h2>
+                  <h2 className="mt-3 text-3xl sm:text-4xl">Choose an amount.</h2>
                   <p className="mt-3 text-sm leading-6 text-[var(--ink-soft)]">
                     These amounts are illustrative choices, not actual costs or a payment request.
                   </p>
@@ -140,7 +153,11 @@ export function Donate() {
                           type="button"
                           key={amount}
                           aria-pressed={selectedAmount === amount}
-                          onClick={() => setSelectedAmount(amount)}
+                          onClick={() => {
+                            setSelectedAmount(amount);
+                            setOtherAmount("");
+                            setError("");
+                          }}
                           className={`relative flex min-h-16 items-center justify-center rounded-xl border p-3 font-['Fraunces'] text-xl transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--coral)] ${
                             selectedAmount === amount
                               ? "border-[var(--ink)] bg-[#e5f0e9] text-[var(--ink)]"
@@ -152,12 +169,44 @@ export function Donate() {
                         </button>
                       ))}
                     </div>
+                    <label className={`mt-3 block rounded-xl border px-4 py-3 text-sm font-bold transition-colors focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-[var(--coral)] ${
+                      selectedAmount === null
+                        ? "border-[var(--ink)] bg-[#e5f0e9]"
+                        : "border-[var(--line)] bg-[var(--white)]"
+                    }`}>
+                      Other amount (₹)
+                      <input
+                        type="number"
+                        inputMode="numeric"
+                        min={1}
+                        max={maxOtherAmount}
+                        step={1}
+                        value={otherAmount}
+                        onFocus={() => {
+                          setSelectedAmount(null);
+                          setError("");
+                        }}
+                        onChange={(event) => {
+                          setSelectedAmount(null);
+                          setOtherAmount(event.target.value);
+                          setError("");
+                        }}
+                        aria-invalid={Boolean(error)}
+                        aria-describedby={error ? "other-amount-error" : "other-amount-help"}
+                        placeholder="Enter a custom amount"
+                        className="mt-2 block w-full bg-transparent py-1 text-lg font-semibold outline-none placeholder:text-sm placeholder:font-normal placeholder:text-[var(--ink-soft)]"
+                      />
+                    </label>
+                    <p id="other-amount-help" className="mt-2 text-xs leading-5 text-[var(--ink-soft)]">
+                      Whole rupees only, up to ₹10,00,000. Preview only.
+                    </p>
                   </fieldset>
 
                   <div className="mt-5 flex flex-wrap items-center justify-between gap-2 rounded-xl bg-[var(--paper)] px-4 py-3 text-sm">
                     <span className="text-[var(--ink-soft)]">Selected amount</span>
-                    <strong className="text-[var(--ink)]">{rupees(selectedAmount)}</strong>
+                    <strong className="text-[var(--ink)]">{amountToPreview === null ? "Enter an amount" : rupees(amountToPreview)}</strong>
                   </div>
+                  {error && <div id="other-amount-error" role="alert" className="mt-4"><Notice>{error}</Notice></div>}
                   <button type="submit" className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl bg-[var(--ink)] px-6 py-3.5 text-sm font-bold text-white transition-colors hover:bg-[#285b52] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--coral)]">
                     Continue to pledge preview <ArrowRight size={17} aria-hidden="true" />
                   </button>
