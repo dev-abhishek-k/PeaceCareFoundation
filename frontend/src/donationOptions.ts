@@ -15,6 +15,12 @@ export const impactOptions = [
 
 export type ImpactOption = (typeof impactOptions)[number];
 
+export const fixedAmounts = [
+  500, 1_000, 2_500, 5_000,
+  10_000, 15_000, 20_000, 30_000,
+  40_000, 50_000, 75_000, 100_000,
+] as const;
+
 const inrFormatter = new Intl.NumberFormat("en-IN", {
   style: "currency",
   currency: "INR",

@@ -2,21 +2,20 @@ import { useState, type FormEvent } from "react";
 import { ArrowRight, Check, Heart, RotateCcw, ShieldCheck } from "lucide-react";
 import { useSearchParams } from "react-router-dom";
 import { Notice } from "../components/UI";
-import { impactOptions, rupees } from "../donationOptions";
+import { fixedAmounts, impactOptions, rupees } from "../donationOptions";
 
 const frequencies = ["One-time", "Monthly", "Quarterly", "Yearly"] as const;
 type Frequency = (typeof frequencies)[number];
-const fixedAmounts = [...new Set(impactOptions.map((option) => option.amount))].sort((a, b) => a - b);
-const featuredAmounts = [500, 1000, 2500, 5000];
+const featuredAmounts = fixedAmounts.slice(0, 4);
 const ribbonColors = ["bg-[#f3dfb9] text-[var(--ink)]", "bg-[#d9e8d9] text-[var(--ink)]", "bg-[#a9cbc0] text-[var(--ink)]", "bg-[#245e54] text-white"];
 const maxOtherAmount = 1_000_000;
 
 export function Donate() {
   const [searchParams] = useSearchParams();
-  const [selectedAmount, setSelectedAmount] = useState<number | null>(
-    () => impactOptions.find((option) => option.id === searchParams.get("theme"))?.amount ?? impactOptions[1].amount
-  );
-  const [otherAmount, setOtherAmount] = useState("");
+  const initialAmount = impactOptions.find((option) => option.id === searchParams.get("theme"))?.amount ?? fixedAmounts[1];
+  const initialIsFixed = fixedAmounts.some((amount) => amount === initialAmount);
+  const [selectedAmount, setSelectedAmount] = useState<number | null>(initialIsFixed ? initialAmount : null);
+  const [otherAmount, setOtherAmount] = useState(initialIsFixed ? "" : String(initialAmount));
   const [frequency, setFrequency] = useState<Frequency>("One-time");
   const [preview, setPreview] = useState<{ amount: number; frequency: Frequency } | null>(null);
   const [error, setError] = useState("");
@@ -35,7 +34,7 @@ export function Donate() {
   }
 
   function reset() {
-    setSelectedAmount(impactOptions[1].amount);
+    setSelectedAmount(fixedAmounts[1]);
     setOtherAmount("");
     setFrequency("One-time");
     setPreview(null);
@@ -72,7 +71,7 @@ export function Donate() {
                   Reference photo · Affiliation unverified
                 </span>
                 <div className="absolute inset-x-5 bottom-5">
-                  <p className="mb-3 text-xs font-bold uppercase tracking-[.14em] text-white">Fixed amounts · Preview only</p>
+                  <p className="mb-3 text-xs font-bold uppercase tracking-[.14em] text-white">Featured amounts · Preview only</p>
                   <div className="max-w-sm overflow-hidden rounded-xl shadow-lg">
                     {featuredAmounts.map((amount, index) => (
                       <div key={amount} className={`px-4 py-3 text-center ${ribbonColors[index]}`}>
