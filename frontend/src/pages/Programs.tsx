@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { ArrowDown } from "lucide-react";
 import { useLocation } from "react-router-dom";
-import { Notice } from "../components/UI";
 import { programFocusAreas } from "../programFocusAreas";
 
 const careAreas = [
@@ -64,12 +63,6 @@ export function Programs() {
             The care areas shown here include homeless dogs, children, adults and elders.
             One idea connects them: show up with dignity.
           </p>
-          <div className="mt-7 max-w-xl">
-            <Notice tone="info">
-              This is a frontend prototype. The organisation and programmes are not
-              independently verified; no live services or payments are offered.
-            </Notice>
-          </div>
           <a href="#care-areas" className="btn btn-outline mt-7">
             Explore the care areas <ArrowDown size={16} aria-hidden="true" />
           </a>
