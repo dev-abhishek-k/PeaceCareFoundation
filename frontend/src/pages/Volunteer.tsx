@@ -1,7 +1,8 @@
 import { useState, type FormEvent } from "react";
+import { ArrowRight } from "lucide-react";
 import { opportunities } from "../mockData";
 import { StateCityFields } from "../components/StateCityFields";
-import { Notice, PageIntro } from "../components/UI";
+import { Notice } from "../components/UI";
 
 type VolunteerForm = {
   opportunityId: string;
@@ -53,27 +54,45 @@ export function Volunteer() {
   }
 
   return (
-    <main className="mx-auto max-w-7xl px-5 py-14 md:py-20">
-      <PageIntro eyebrow="Volunteer · Sharing time and skills" title="Give your time where it fits.">
-        Volunteering works best when your skills, availability and local needs align. Explore
-        possible roles and see how you could express interest. There are no live placements
-        here, and the form does not send an application.
-      </PageIntro>
-
-      <figure className="mt-9 overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--white)]">
-        <div>
-          <img
-            src="/images/volunteer-reference.jpg"
-            alt="Photo of adults sharing school supplies with children at a table."
-            className="h-60 w-full object-cover object-top md:h-72"
-          />
+    <main className="mx-auto max-w-7xl px-5 pb-16 pt-8 md:pb-24 md:pt-12">
+      <section className="overflow-hidden rounded-[2rem] border border-[#d5e1df] bg-[#fffefd] shadow-[0_22px_55px_rgba(24,59,54,.09)]">
+        <div className="grid items-center lg:min-h-[570px] lg:grid-cols-[.94fr_1.06fr]">
+          <div className="relative z-10 px-7 pb-0 pt-12 sm:px-12 lg:py-16 lg:pl-16 lg:pr-4">
+            <div className="eyebrow">Volunteer · Share your time and skills</div>
+            <h1
+              className="mt-6 max-w-xl text-[clamp(3.25rem,5.5vw,5.4rem)] font-bold leading-[1.02] tracking-[-.065em] text-[var(--ink)]"
+              style={{ fontFamily: "'DM Sans', sans-serif" }}
+            >
+              <span className="text-[var(--coral)]">Volunteer</span>
+              <br />
+              with purpose.
+            </h1>
+            <p className="mt-6 max-w-lg text-base leading-8 text-[var(--ink-soft)] sm:text-lg">
+              Explore ways your skills and availability could meet local needs. Find a role that
+              interests you and preview how you would express interest.
+            </p>
+            <a
+              href="#volunteer-registration"
+              className="btn btn-primary mt-8 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--ink)]"
+            >
+              Explore roles <ArrowRight size={17} aria-hidden="true" />
+            </a>
+            <p className="mt-5 text-xs font-medium text-[var(--ink-soft)]">
+              Preview only · No live placements or applications
+            </p>
+          </div>
+          <div className="relative flex h-[370px] items-end justify-center overflow-hidden px-3 sm:h-[440px] lg:h-full lg:min-h-[570px] lg:items-center lg:px-5">
+            <div aria-hidden="true" className="absolute bottom-[-13rem] right-[-7rem] h-[35rem] w-[35rem] rounded-full bg-[#eef5f0] sm:bottom-[-11rem] lg:bottom-[-14rem]" />
+            <img
+              src="/images/volunteer-illustration.svg"
+              alt="Illustration of volunteers collecting litter, planting a sapling, and carrying supplies."
+              className="relative z-10 h-full max-h-[540px] w-full max-w-[590px] object-contain object-bottom lg:object-center"
+            />
+          </div>
         </div>
-        <figcaption className="px-5 py-3 text-xs leading-5 text-[var(--ink-soft)]">
-          User-provided image. The people and activity pictured are not verified as Peace Care Foundation volunteers or placements.
-        </figcaption>
-      </figure>
+      </section>
 
-      <section id="volunteer-registration" className="mt-10 scroll-mt-24">
+      <section id="volunteer-registration" className="mt-16 scroll-mt-24 md:mt-24">
         <div className="grid gap-8 lg:grid-cols-[.75fr_1.25fr]">
           <div>
             <div className="eyebrow">Explore a role · Form demo</div>
@@ -87,6 +106,16 @@ export function Volunteer() {
                 This is not a live opportunity. No one receives your information or contacts you.
               </Notice>
             </div>
+            <figure className="mt-8 overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--white)]">
+              <img
+                src="/images/volunteer-reference.jpg"
+                alt="Photo of adults sharing school supplies with children at a table."
+                className="h-60 w-full object-cover object-top md:h-72"
+              />
+              <figcaption className="px-5 py-3 text-xs leading-5 text-[var(--ink-soft)]">
+                User-provided image. The people and activity pictured are not verified as Peace Care Foundation volunteers or placements.
+              </figcaption>
+            </figure>
           </div>
 
           <div className="rounded-2xl border border-[var(--line)] bg-[var(--white)] p-6 md:p-8">
