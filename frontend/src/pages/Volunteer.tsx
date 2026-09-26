@@ -93,31 +93,7 @@ export function Volunteer() {
       </section>
 
       <section id="volunteer-registration" className="mt-16 scroll-mt-24 md:mt-24">
-        <div className="grid gap-8 lg:grid-cols-[.75fr_1.25fr]">
-          <div>
-            <div className="eyebrow">Explore a role · Form demo</div>
-            <h2 className="mt-3 text-3xl">What could you contribute?</h2>
-            <p className="mt-4 leading-7 text-[var(--ink-soft)]">
-              Choose an area that interests you, then think about the time and skills you could
-              offer. Your answers stay on this page and disappear when you leave or refresh.
-            </p>
-            <div className="mt-6">
-              <Notice tone="info">
-                This is not a live opportunity. No one receives your information or contacts you.
-              </Notice>
-            </div>
-            <figure className="mt-8 overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--white)]">
-              <img
-                src="/images/volunteer-reference.jpg"
-                alt="Photo of adults sharing school supplies with children at a table."
-                className="h-60 w-full object-cover object-top md:h-72"
-              />
-              <figcaption className="px-5 py-3 text-xs leading-5 text-[var(--ink-soft)]">
-                User-provided image. The people and activity pictured are not verified as Peace Care Foundation volunteers or placements.
-              </figcaption>
-            </figure>
-          </div>
-
+        <div className="mx-auto max-w-3xl">
           <div className="rounded-2xl border border-[var(--line)] bg-[var(--white)] p-6 md:p-8">
             {submitted ? (
               <div role="status" className="space-y-5">
