@@ -62,9 +62,6 @@ export function BecomePartner() {
               alt="Five adults seated together at a table, with two people shaking hands."
               className="absolute inset-0 h-full w-full object-cover object-[75%_center]"
             />
-            <figcaption className="absolute bottom-5 left-5 right-5 w-fit rounded-xl bg-[var(--ink)]/90 px-4 py-2 text-xs font-semibold leading-5 text-white">
-              Reference photo · People pictured are not verified Peace Care Foundation partners.
-            </figcaption>
           </figure>
         </div>
       </section>
