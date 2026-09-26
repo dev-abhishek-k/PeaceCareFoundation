@@ -38,15 +38,6 @@ export function Volunteer() {
     setError("");
   }
 
-  function chooseOpportunity(id: string) {
-    update("opportunityId", id);
-    setSubmitted(false);
-    document.getElementById("volunteer-registration")?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  }
-
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (!selected || !form.name.trim() || !form.state || !form.city.trim() || form.motivation.trim().length < 10) {
@@ -64,8 +55,8 @@ export function Volunteer() {
   return (
     <main className="mx-auto max-w-7xl px-5 py-14 md:py-20">
       <PageIntro eyebrow="Volunteer · Preview only" title="Give your time where it fits.">
-        Explore illustrative opportunities and preview a volunteer registration. These are fictional
-        placements; completing the form does not send or save an application.
+        Fill out the volunteer registration preview and choose an illustrative area in the form.
+        This is not a live placement; nothing is sent or saved.
       </PageIntro>
 
       <figure className="mt-9 overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--white)]">
@@ -73,7 +64,7 @@ export function Volunteer() {
           <img
             src="/images/volunteer-reference.jpg"
             alt="Photo of adults sharing school supplies with children at a table."
-            className="h-60 w-full object-cover object-top md:h-[420px]"
+            className="h-60 w-full object-cover object-top md:h-72"
           />
           <span className="absolute bottom-4 left-4 rounded-full bg-[var(--ink)]/90 px-4 py-2 text-xs font-semibold text-white">
             Reference photo · Affiliation unverified
@@ -84,33 +75,7 @@ export function Volunteer() {
         </figcaption>
       </figure>
 
-      <div className="mt-10 grid gap-4">
-        {opportunities.map((opportunity) => (
-          <article
-            className="rounded-2xl border border-[var(--line)] bg-[var(--white)] p-6 md:flex md:justify-between md:gap-8"
-            key={opportunity.id}
-          >
-            <div>
-              <span className="eyebrow">{opportunity.category} · {opportunity.location}</span>
-              <h2 className="mt-2 text-2xl">{opportunity.title}</h2>
-              <p className="mt-3 max-w-2xl text-sm leading-6 text-[var(--ink-soft)]">
-                {opportunity.description}
-              </p>
-              <p className="mt-4 text-sm font-semibold">{opportunity.ngo}</p>
-            </div>
-            <button
-              type="button"
-              className="btn btn-primary mt-5 h-fit shrink-0 md:mt-0"
-              aria-pressed={form.opportunityId === opportunity.id}
-              onClick={() => chooseOpportunity(opportunity.id)}
-            >
-              Preview registration
-            </button>
-          </article>
-        ))}
-      </div>
-
-      <section id="volunteer-registration" className="mt-14 scroll-mt-24">
+      <section id="volunteer-registration" className="mt-10 scroll-mt-24">
         <div className="grid gap-8 lg:grid-cols-[.75fr_1.25fr]">
           <div>
             <div className="eyebrow">Your next step · Preview</div>
