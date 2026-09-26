@@ -54,9 +54,10 @@ export function Volunteer() {
 
   return (
     <main className="mx-auto max-w-7xl px-5 py-14 md:py-20">
-      <PageIntro eyebrow="Volunteer · Preview only" title="Give your time where it fits.">
-        Fill out the volunteer registration preview and choose an illustrative area in the form.
-        This is not a live placement; nothing is sent or saved.
+      <PageIntro eyebrow="Volunteer · Sharing time and skills" title="Give your time where it fits.">
+        Volunteering works best when your skills, availability and local needs align. Explore
+        possible roles and see how you could express interest. There are no live placements
+        here, and the form does not send an application.
       </PageIntro>
 
       <figure className="mt-9 overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--white)]">
@@ -78,11 +79,11 @@ export function Volunteer() {
       <section id="volunteer-registration" className="mt-10 scroll-mt-24">
         <div className="grid gap-8 lg:grid-cols-[.75fr_1.25fr]">
           <div>
-            <div className="eyebrow">Your next step · Preview</div>
-            <h2 className="mt-3 text-3xl">Volunteer registration preview</h2>
+            <div className="eyebrow">Explore a role · Form demo</div>
+            <h2 className="mt-3 text-3xl">What could you contribute?</h2>
             <p className="mt-4 leading-7 text-[var(--ink-soft)]">
-              Try the form to see what a volunteer application might ask. Your details stay on this
-              page only and disappear when you leave or refresh.
+              Choose an area that interests you, then think about the time and skills you could
+              offer. Your answers stay on this page and disappear when you leave or refresh.
             </p>
             <div className="mt-6">
               <Notice tone="info">

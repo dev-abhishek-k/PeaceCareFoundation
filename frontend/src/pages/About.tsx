@@ -15,17 +15,17 @@ const steps = [
   {
     number: "01",
     title: "People request help",
-    text: "A person describes what they need and where they are. In this prototype, the request journey is a local preview only.",
+    text: "A person explains the kind of support they need and their location. The form on this site demonstrates these steps without sending a request.",
   },
   {
     number: "02",
     title: "The platform suggests an NGO",
-    text: "The intended process is to review the request and suggest an independent NGO whose focus and location may be relevant.",
+    text: "Our goal is to review a request and identify an independent NGO whose focus and location may be relevant.",
   },
   {
     number: "03",
     title: "The NGO decides",
-    text: "The NGO would decide whether it has the capacity to assist. A suggestion is not a promise that help will be available.",
+    text: "That NGO decides whether it has the capacity to assist. A suggested match never guarantees support.",
   },
 ];
 
@@ -33,7 +33,7 @@ const people = [
   {
     icon: Users,
     title: "Help seekers",
-    text: "Explore support areas, discover NGO profiles and outline a need in the request preview.",
+    text: "Find relevant support areas, learn how to compare organisations and describe a need clearly.",
     background: "bg-[#e9f1e9]",
   },
   {
@@ -45,7 +45,7 @@ const people = [
   {
     icon: HandHeart,
     title: "Volunteers",
-    text: "Explore possible ways to share time and skills. The opportunities shown here are illustrative.",
+    text: "See how time and skills can help meet local needs, with roles that fit personal availability.",
     background: "bg-[#f5ecd4]",
   },
   {
@@ -60,17 +60,17 @@ const trustPlans = [
   {
     icon: ShieldCheck,
     title: "NGO verification",
-    text: "We plan to introduce checks to help people understand who is listed. Profiles in this prototype are illustrative and not verified.",
+    text: "We plan to introduce checks so people can understand who is listed. Current directory profiles are examples, not verified organisations.",
   },
   {
     icon: ClipboardList,
     title: "Case updates",
-    text: "We plan to make request progress easier to follow. The updates shown in this prototype are examples, not live case tracking.",
+    text: "We plan to make request progress easier to follow. The updates shown on this site are examples, not live case tracking.",
   },
   {
     icon: LockKeyhole,
     title: "Privacy",
-    text: "Privacy-aware handling of requests is a planned platform feature. This frontend prototype does not send or save requests to a service.",
+    text: "Privacy-aware handling of requests is planned. The current form does not send or save requests to a service.",
   },
 ];
 
@@ -87,18 +87,19 @@ export function About() {
       <section className="bg-[linear-gradient(135deg,#e7eee5_0%,#f7f4ec_52%,#f7e9df_100%)]">
         <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 py-14 md:grid-cols-[1.05fr_.95fr] md:gap-16 md:py-24">
           <div>
-            <div className="eyebrow">About us · Frontend prototype</div>
+            <div className="eyebrow">About us · Our purpose</div>
             <h1 className="mt-5 max-w-2xl text-5xl leading-[1.08] sm:text-6xl lg:text-7xl">
               Connecting people with the <em className="text-[var(--coral)]">right help</em>
             </h1>
             <p className="mt-7 max-w-xl text-lg leading-8 text-[var(--ink-soft)]">
-              We envision a third-party coordination platform connecting people who need help
-              with independent NGOs, volunteers and supporters across India. Discover NGOs,
-              explore causes and preview how a request could be made.
+              Peace Care Foundation is working toward a third-party coordination platform
+              connecting people who need help with independent NGOs, volunteers and supporters
+              across India. Our purpose is to make relevant organisations easier to find and
+              make it simpler to understand how to ask for help or support a cause.
             </p>
             <p className="mt-4 max-w-xl text-sm leading-6 text-[var(--ink-soft)]">
-              This is a UI prototype, not a live referral service. We do not directly run the
-              listed NGO programmes or guarantee that a request will receive help.
+              Referrals are not live yet. We do not run independent NGOs&apos; programmes, and
+              no request or suggested match can guarantee assistance.
             </p>
             <Link to="/ngos" className="btn btn-primary mt-8 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--ink)]">
               Explore NGO profiles <ArrowRight size={17} aria-hidden="true" />
@@ -125,16 +126,17 @@ export function About() {
               Make relevant support easier to find, and communities easier to reach.
             </h2>
             <p className="mt-5 max-w-2xl leading-7 text-white/80">
-              The platform is designed to help people find NGOs whose work may match their needs,
-              while giving independent organisations a way to be discovered by the communities
-              they serve. Our role is to help make connections, not to operate their programmes.
+              We want people to understand their options and find NGOs whose work may match
+              their needs. We also want independent organisations to be easier for their
+              communities to discover. Our role is to support the connection, not to operate
+              their programmes.
             </p>
           </div>
         </div>
       </section>
 
       <section aria-labelledby="how-title" className="mx-auto max-w-7xl px-5 py-16 md:py-24">
-        <div className="eyebrow">An intended journey · Not a live referral service</div>
+        <div className="eyebrow">The intended journey · Referrals not yet live</div>
         <h2 id="how-title" className="mt-3 text-4xl sm:text-5xl">How it works</h2>
         <p className="mt-4 max-w-2xl leading-7 text-[var(--ink-soft)]">
           A simple path from asking for help to reaching an organisation that can make its own decision.
@@ -179,8 +181,8 @@ export function About() {
             <div className="eyebrow">Find an area of support</div>
             <h2 id="causes-title" className="mt-3 text-4xl sm:text-5xl">Causes we support</h2>
             <p className="mt-4 max-w-2xl leading-7 text-[var(--ink-soft)]">
-              Browse illustrative directory categories. A category describes a possible area of
-              NGO work, not a verified service available through this prototype.
+              Explore the areas where people may need support and where independent NGOs may
+              focus their work. Directory listings are examples until real organisations are verified.
             </p>
           </div>
           <Link to="/ngos" className="btn btn-outline self-start whitespace-nowrap focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--coral)]">
@@ -205,7 +207,7 @@ export function About() {
           <div className="eyebrow">What we want to build</div>
           <h2 id="trust-title" className="mt-3 text-4xl sm:text-5xl">Trust &amp; transparency</h2>
           <p className="mt-4 max-w-2xl leading-7 text-[var(--ink-soft)]">
-            These are planned features, not processes currently operating on this UI prototype.
+            These are goals for the platform, not processes operating on this website today.
           </p>
           <div className="mt-10 grid gap-4 md:grid-cols-3">
             {trustPlans.map((plan) => {
@@ -227,13 +229,13 @@ export function About() {
 
       <section aria-labelledby="next-title" className="mx-auto max-w-7xl px-5 py-16 md:py-24">
         <div className="rounded-[2rem] bg-[var(--ink)] px-6 py-12 text-white sm:px-10 md:px-14 md:py-16">
-          <div className="text-xs font-bold uppercase tracking-[.16em] text-[var(--sun)]">Explore the prototype</div>
+          <div className="text-xs font-bold uppercase tracking-[.16em] text-[var(--sun)]">Explore the possibilities</div>
           <h2 id="next-title" className="mt-3 max-w-2xl text-4xl leading-tight text-white sm:text-5xl">
             Find your place in the network.
           </h2>
           <p className="mt-5 max-w-2xl leading-7 text-white/80">
-            Discover NGOs and explore ways to get involved. These routes are previews; they do not
-            send a real request, register a volunteer or create a partnership.
+            Learn about support areas and ways to get involved. The linked journeys currently
+            demonstrate the steps; they do not send a request, register a volunteer or create a partnership.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             {actions.map((action, index) => (

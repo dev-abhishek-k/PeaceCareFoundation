@@ -48,13 +48,14 @@ export function Donate() {
         <div className="overflow-hidden rounded-[2rem] border border-[var(--ink)]/25 bg-[var(--white)] shadow-[0_24px_70px_rgba(24,59,54,.12)]">
           <div className="border-b border-[var(--line)] px-6 py-6 sm:px-9 lg:flex lg:items-end lg:justify-between lg:gap-10 lg:px-10">
             <div>
-              <div className="eyebrow">Donate · Preview only</div>
+              <div className="eyebrow">Giving · Explore a pledge</div>
               <h1 className="mt-3 text-4xl leading-tight sm:text-5xl">
                 Giving begins with <em className="text-[var(--coral)]">care.</em>
               </h1>
             </div>
             <p className="mt-4 max-w-md text-sm leading-6 text-[var(--ink-soft)] lg:mt-0">
-              Explore an illustrative pledge amount. No live payments are offered.
+              Choose an amount and frequency to see how a pledge could look. This website
+              cannot accept a donation or take payment.
             </p>
           </div>
 
@@ -96,7 +97,7 @@ export function Donate() {
                     <div className="eyebrow">Preview complete · Nothing submitted</div>
                     <h2 className="mt-3 text-3xl sm:text-4xl">Here’s your pledge preview.</h2>
                     <p className="mt-3 leading-7 text-[var(--ink-soft)]">
-                      This is only an illustration of a donation choice. It is not a receipt,
+                      This shows the amount and frequency you chose. It is not a receipt,
                       commitment, or confirmation of payment.
                     </p>
                   </div>
@@ -122,9 +123,10 @@ export function Donate() {
                     Choose amount · Preview only
                   </div>
                   <h2 className="mt-3 text-3xl sm:text-4xl">Choose an amount.</h2>
-                  <p className="mt-3 text-sm leading-6 text-[var(--ink-soft)]">
-                    These amounts are illustrative choices, not actual costs or a payment request.
-                  </p>
+                    <p className="mt-3 text-sm leading-6 text-[var(--ink-soft)]">
+                      Set an amount in rupees to explore a possible pledge. These choices
+                      are not actual programme costs or a payment request.
+                    </p>
 
                   <fieldset className="mt-6">
                     <legend className="text-sm font-bold">Pledge frequency</legend>

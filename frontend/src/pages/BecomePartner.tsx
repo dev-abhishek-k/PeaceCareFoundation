@@ -38,17 +38,18 @@ export function BecomePartner() {
       <section className="mx-auto max-w-7xl px-5 pt-10 md:pt-16">
         <div className="grid overflow-hidden rounded-[2rem] bg-[var(--ink)] lg:grid-cols-[1.05fr_.95fr]">
           <div className="flex flex-col justify-center px-7 py-12 text-white sm:px-10 lg:px-14 lg:py-20">
-            <div className="text-xs font-bold uppercase tracking-[.16em] text-[var(--sun)]">Partnerships · Preview only</div>
+            <div className="text-xs font-bold uppercase tracking-[.16em] text-[var(--sun)]">Partnerships · Working together</div>
             <h1 className="mt-5 max-w-xl text-5xl leading-[1.07] text-white sm:text-6xl">
               Become a <em className="text-[var(--sun)]">partner.</em>
             </h1>
             <p className="mt-6 max-w-lg text-lg leading-8 text-white/80">
-              Explore how organisations, businesses and community groups might work together
-              around care. These are possibilities, not established partnerships or verified programmes.
+              Organisations, businesses and community groups can bring resources, expertise and
+              local knowledge to shared needs. Explore how collaboration with independent NGOs
+              could take shape.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-5">
               <a className="btn btn-primary" href="#partner-interest">
-                Try the interest preview <ArrowRight size={17} aria-hidden="true" />
+                Explore the interest form <ArrowRight size={17} aria-hidden="true" />
               </a>
               <Link className="border-b border-white/60 pb-1 text-sm font-semibold text-white hover:border-white" to="/programs">
                 Explore our work
@@ -73,7 +74,8 @@ export function BecomePartner() {
         <div className="mt-3 flex flex-col justify-between gap-5 md:flex-row md:items-end">
           <h2 className="max-w-xl text-4xl leading-tight sm:text-5xl">There is more than one way to help.</h2>
           <p className="max-w-md text-sm leading-6 text-[var(--ink-soft)]">
-            These are starting points for a possible conversation. They do not represent open projects or confirmed needs.
+            Start with what you can offer and what a community may need. No partnerships or
+            open projects are confirmed through this website yet.
           </p>
         </div>
         <div className="mt-9 grid gap-4 md:grid-cols-3">
@@ -101,8 +103,8 @@ export function BecomePartner() {
             <div className="eyebrow">Partnership interest · Preview</div>
             <h2 className="mt-3 max-w-md text-4xl leading-tight sm:text-5xl">Start with an idea.</h2>
             <p className="mt-5 max-w-md leading-8 text-[var(--ink-soft)]">
-              Try the form to see what a future partnership enquiry might ask.
-              No message is delivered, no application is created, and no one will contact you from this preview.
+              Describe a possible contribution and see how an enquiry could be structured.
+              This form does not deliver a message, create an application or arrange a follow-up.
             </p>
             <div className="mt-7 max-w-md">
               <Notice tone="info">

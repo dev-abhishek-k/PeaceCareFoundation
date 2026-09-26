@@ -17,13 +17,13 @@ export function Programs() {
     <main>
       <section className="mx-auto grid max-w-7xl gap-10 px-5 pb-16 pt-14 md:grid-cols-[1.1fr_.9fr] md:items-center md:gap-16 md:pb-20 md:pt-20">
         <div className="max-w-3xl">
-          <div className="eyebrow">Our work · Care areas</div>
+          <div className="eyebrow">Our work · Areas of support</div>
           <h1 className="mt-5 max-w-2xl text-5xl leading-[1.05] md:text-6xl lg:text-7xl">
-            Care for every life, <em className="text-[var(--coral)]">every day.</em>
+            Understand the need. <em className="text-[var(--coral)]">Find a way forward.</em>
           </h1>
           <p className="mt-7 max-w-xl text-lg leading-8 text-[var(--ink-soft)]">
-            Explore possible areas of support for people, animals and communities.
-            Different needs, one idea: show up with dignity.
+            From education and healthcare to animal welfare and shelter, explore the kinds of
+            support people look for and the causes independent NGOs may work on.
           </p>
           <a href="#support-categories" className="btn btn-outline mt-7">
             Explore categories <ArrowDown size={16} aria-hidden="true" />
@@ -43,7 +43,7 @@ export function Programs() {
 
       <section id="support-categories" className="scroll-mt-20 border-y border-[var(--line)] bg-[var(--white)]" aria-labelledby="support-categories-title">
         <div className="mx-auto max-w-7xl px-5 py-16 md:py-20">
-          <div className="eyebrow">Support categories · Illustrative overview</div>
+          <div className="eyebrow">Support categories · Areas of need</div>
           <h2 id="support-categories-title" className="mt-3 max-w-2xl text-4xl md:text-5xl">Explore ways to help.</h2>
           <nav aria-label="Jump to a support category" className="mt-9 flex flex-wrap gap-2">
             {supportCategories.map((category) => (

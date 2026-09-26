@@ -7,7 +7,7 @@ const careCategories = [
     id: "street-dogs",
     number: "01",
     title: "Street dogs",
-    text: "Feeding, injury response, sterilisation and vaccination, with foster and adoption pathways described as illustrative work.",
+    text: "Explore the kinds of support street dogs may need, from food and veterinary care to safe foster and adoption pathways.",
     image: "/images/street-dog-care.jpg",
     alt: "Illustration of a dog resting beside a bowl of water in a warm courtyard.",
   },
@@ -15,7 +15,7 @@ const careCategories = [
     id: "children",
     number: "02",
     title: "Children",
-    text: "Learning circles, school kits, nutrition and health checks — illustrative programme ideas, not a verified report.",
+    text: "Understand needs around learning, school supplies, nutrition and access to basic health support.",
     image: "/images/learning-care.jpg",
     alt: "Illustration of hands turning pages in a children's book at a sunny table.",
   },
@@ -23,7 +23,7 @@ const careCategories = [
     id: "adults-and-elders",
     number: "03",
     title: "Adults & elders",
-    text: "Night meals, blankets, dignity kits and medical camps, shown here as an illustrative care model.",
+    text: "Look at how food, shelter, health guidance and everyday essentials can matter for adults and older people.",
     image: "/images/community-care.jpg",
     alt: "Illustration of an older adult and a younger adult sharing a meal.",
   },
@@ -58,23 +58,24 @@ export function HomePeace() {
     <main>
       <section className="mx-auto grid max-w-7xl gap-12 px-5 pb-20 pt-16 md:grid-cols-[1.05fr_.95fr] md:items-center md:pt-24">
         <div>
-          <div className="eyebrow">Peace Care Foundation · Care preview</div>
+          <div className="eyebrow">Peace Care Foundation · Connecting communities</div>
           <h1 className="mt-5 text-5xl leading-[.98] md:text-7xl">
-            Healing lives.<br /><em className="text-[var(--coral)]">Restoring hope.</em>
+            Find the right help.<br /><em className="text-[var(--coral)]">Make a connection.</em>
           </h1>
           <p className="mt-7 max-w-xl text-lg leading-8 text-[var(--ink-soft)]">
-            An illustrative view of care for homeless dogs, children, adults and elders
-            — presented as a frontend prototype, not a verified organisational claim.
+            Our aim is to make it easier to discover independent NGOs, understand the causes
+            they work on and find ways to offer support across India. The goal is to connect
+            people and organisations; each NGO decides what help it can provide.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link className="btn btn-primary" to="/programs">Explore care areas <ArrowRight size={16} aria-hidden="true" /></Link>
-            <Link className="btn btn-outline" to="/ngos">Browse directory preview</Link>
+            <Link className="btn btn-outline" to="/ngos">Browse NGOs</Link>
             <a className="inline-flex items-center gap-2 px-2 py-3 text-sm font-bold text-[var(--ink)] underline-offset-4 hover:underline focus-visible:underline" href="#community-photos">
               View photos <ArrowRight size={16} aria-hidden="true" />
             </a>
           </div>
           <div className="mt-6">
-            <Notice tone="info">Illustrative content; organisations and programmes are not verified. No payments or live services are offered.</Notice>
+            <Notice tone="info">The directory currently shows example listings. Requests, applications and donations are not sent or processed through this website.</Notice>
           </div>
         </div>
         <figure className="overflow-hidden rounded-[2rem] border border-[var(--line)] bg-[var(--paper)]">
@@ -111,10 +112,10 @@ export function HomePeace() {
               A connection to the right support starts here.
             </h2>
             <p className="mt-5 max-w-xl leading-7 text-[var(--ink-soft)]">
-              We envision a third-party platform connecting people who need help with independent
-              NGOs, volunteers and supporters across India. Explore NGO profiles, preview a request
-              and discover ways to support causes. This is a frontend prototype, not a live referral
-              service or a guarantee of assistance.
+              We are building a third-party connection between people who need help and independent
+              NGOs, volunteers and supporters across India. Our role is to help people find relevant
+              organisations, explain their needs and explore ways to contribute. Referrals are not live
+              yet, and an NGO always decides whether it can assist.
             </p>
             <Link to="/about" className="btn btn-outline mt-7 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--coral)]">
               Learn More <ArrowRight size={16} aria-hidden="true" />
@@ -125,11 +126,12 @@ export function HomePeace() {
 
       <section id="care-categories" className="border-y border-[var(--line)] bg-[var(--white)]" aria-labelledby="care-categories-title">
         <div className="mx-auto max-w-7xl px-5 py-16 md:py-20">
-          <div className="eyebrow">Care categories · Illustrative overview</div>
+          <div className="eyebrow">Areas of need</div>
           <div className="mt-3 flex flex-col justify-between gap-4 md:flex-row md:items-end">
             <h2 id="care-categories-title" className="text-4xl">Explore care categories.</h2>
             <p className="max-w-md text-sm leading-6 text-[var(--ink-soft)]">
-              These are illustrative areas of care, not verified programmes or live services.
+              Learn what different kinds of support can involve. These are not verified programmes
+              or services currently available through this website.
             </p>
           </div>
           <div className="mt-10 grid gap-4 md:grid-cols-3">
@@ -141,7 +143,7 @@ export function HomePeace() {
               >
                 <img src={category.image} alt={category.alt} className="h-52 w-full object-cover" loading="lazy" decoding="async" />
                 <div className="flex flex-1 flex-col p-6">
-                  <div className="text-xs font-bold uppercase tracking-wider text-[var(--coral-dark)]">Care area {category.number} · Illustration</div>
+                  <div className="text-xs font-bold uppercase tracking-wider text-[var(--coral-dark)]">Care area {category.number}</div>
                   <h3 className="mt-3 text-2xl">{category.title}</h3>
                   <p className="mt-3 text-sm leading-6 text-[var(--ink-soft)]">{category.text}</p>
                   <span className="mt-auto inline-flex items-center gap-2 pt-6 text-sm font-bold text-[var(--ink)]">
@@ -159,9 +161,9 @@ export function HomePeace() {
           <div className="eyebrow">User-provided photos · Reference gallery</div>
           <h2 id="community-photos-title" className="mt-3 text-4xl">Community moments in pictures.</h2>
           <p className="mt-4 max-w-3xl leading-7 text-[var(--ink-soft)]">
-            These photos were provided for this preview. The people, events and organisations pictured
-            have not been verified as Peace Care Foundation activities. One health-camp photo displays
-            another organisation&apos;s branding.
+            These reference photos show situations related to community care, but the people,
+            events and organisations pictured have not been verified as our activities. One
+            health-camp photo displays another organisation&apos;s branding.
           </p>
           <div className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {referencePhotos.map((photo) => (
@@ -179,15 +181,18 @@ export function HomePeace() {
       </section>
 
       <section className="mx-auto max-w-7xl px-5 py-20">
-        <div className="eyebrow">What guides the work</div>
-        <h2 className="mt-3 text-4xl">Small promises, repeated.</h2>
+        <div className="eyebrow">What guides our approach</div>
+        <h2 className="mt-3 text-4xl">Clarity and care in every connection.</h2>
         <div className="mt-10 grid gap-5 sm:grid-cols-2 md:grid-cols-4">
-          {["Dignity first", "Show up daily", "Open books", "Local hands"].map((value) => (
+          {[
+            ["Dignity first", "Treat every request as a person’s story, not a case number."],
+            ["Clear expectations", "Be honest about what the platform and each NGO can do."],
+            ["Useful information", "Help people understand causes and find relevant organisations."],
+            ["Local choice", "Respect an NGO’s own decisions, capacity and community knowledge."],
+          ].map(([value, description]) => (
             <div className="border-l-2 border-[var(--sun)] pl-4" key={value}>
               <h3 className="text-xl">{value}</h3>
-              <p className="mt-2 text-sm leading-6 text-[var(--ink-soft)]">
-                A guiding value in this preview, not evidence of verified operations.
-              </p>
+              <p className="mt-2 text-sm leading-6 text-[var(--ink-soft)]">{description}</p>
             </div>
           ))}
         </div>
