@@ -64,15 +64,6 @@ export function Donate() {
             Explore how a donation pledge could look for the care areas described here:
             homeless dogs, children, adults and elders.
           </p>
-          <div className="mt-7 max-w-lg">
-            <Notice tone="info">
-              This is an interactive preview, not a donation form. No payment is taken,
-              no pledge is sent or saved, and these programmes are not independently verified.
-            </Notice>
-          </div>
-          <a href="#pledge-preview" className="btn btn-primary mt-7">
-            Try the pledge preview <ArrowRight size={16} aria-hidden="true" />
-          </a>
         </div>
 
         <div id="pledge-preview" className="scroll-mt-24 rounded-[2rem] border border-[var(--line)] bg-[var(--white)] p-6 shadow-[0_20px_60px_rgba(24,59,54,.06)] sm:p-9">
