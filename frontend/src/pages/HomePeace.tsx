@@ -26,26 +26,27 @@ const moments = [
   },
 ];
 
-const visualIdeas = [
+const referencePhotos = [
   {
     title: "Learning together",
-    image: "/images/learning-moment.jpg",
-    alt: "Illustration of an adult and child drawing together at a courtyard table.",
+    image: "/images/reference-learning.jpg",
+    alt: "Photo of an adult helping a child with a notebook.",
   },
   {
-    title: "Sharing meals",
-    image: "/images/food-sharing.jpg",
-    alt: "Illustration of hands arranging meals in reusable containers.",
+    title: "Meal distribution",
+    image: "/images/reference-meals.jpg",
+    alt: "Collage showing people distributing food and packed meals.",
   },
   {
-    title: "Health conversations",
-    image: "/images/health-outreach.jpg",
-    alt: "Illustration of a health information table with notebooks and a stethoscope.",
+    title: "Community health camp",
+    image: "/images/reference-health-camp.jpg",
+    alt: "Photo of a health camp with Viswasanthi Health Initiative banners.",
+    note: "Viswasanthi Health Initiative branding is visible in this photo.",
   },
   {
-    title: "Caring for green spaces",
-    image: "/images/tree-planting.jpg",
-    alt: "Illustration of hands planting a young tree in a neighborhood garden.",
+    title: "Tree planting",
+    image: "/images/reference-planting.jpg",
+    alt: "Photo of a group planting a young tree.",
   },
 ];
 
@@ -65,6 +66,9 @@ export function HomePeace() {
           <div className="mt-8 flex flex-wrap gap-3">
             <Link className="btn btn-primary" to="/programs">Explore care areas <ArrowRight size={16} aria-hidden="true" /></Link>
             <Link className="btn btn-outline" to="/ngos">Browse directory preview</Link>
+            <a className="inline-flex items-center gap-2 px-2 py-3 text-sm font-bold text-[var(--ink)] underline-offset-4 hover:underline focus-visible:underline" href="#community-photos">
+              View photos <ArrowRight size={16} aria-hidden="true" />
+            </a>
           </div>
           <div className="mt-6">
             <Notice tone="info">Illustrative content; organisations and programmes are not verified. No payments or live services are offered.</Notice>
@@ -88,6 +92,30 @@ export function HomePeace() {
         </figure>
       </section>
 
+      <section id="community-photos" className="scroll-mt-24 border-y border-[var(--line)] bg-[var(--paper-deep)]" aria-labelledby="community-photos-title">
+        <div className="mx-auto max-w-7xl px-5 py-16 md:py-20">
+          <div className="eyebrow">User-provided photos · Reference gallery</div>
+          <h2 id="community-photos-title" className="mt-3 text-4xl">Community moments in pictures.</h2>
+          <p className="mt-4 max-w-3xl leading-7 text-[var(--ink-soft)]">
+            These photos were provided for this preview. The people, events and organisations pictured
+            have not been verified as Peace Care Foundation activities. One health-camp photo displays
+            another organisation&apos;s branding.
+          </p>
+          <div className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {referencePhotos.map((photo) => (
+              <figure key={photo.title} className="overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--white)]">
+                <img src={photo.image} alt={photo.alt} className="aspect-square w-full bg-[var(--paper)] object-contain" loading="lazy" decoding="async" />
+                <figcaption className="px-5 py-4">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[var(--coral-dark)]">Reference photo · Affiliation unverified</span>
+                  <h3 className="mt-2 text-lg">{photo.title}</h3>
+                  {photo.note && <p className="mt-2 text-xs leading-5 text-[var(--ink-soft)]">{photo.note}</p>}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="border-y border-[var(--line)] bg-[var(--paper-deep)]">
         <div className="mx-auto max-w-7xl px-5 py-16">
           <div className="eyebrow">A day of care · Illustrative overview</div>
@@ -104,26 +132,6 @@ export function HomePeace() {
               </article>
             ))}
           </div>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-5 py-16 md:py-20" aria-labelledby="visual-ideas-title">
-        <div className="eyebrow">Visual ideas · Illustrative artwork</div>
-        <h2 id="visual-ideas-title" className="mt-3 text-4xl">Ways care can take shape.</h2>
-        <p className="mt-4 max-w-2xl leading-7 text-[var(--ink-soft)]">
-          These are original illustrations of possible community care, not photos of Peace Care
-          Foundation or evidence that these activities have taken place.
-        </p>
-        <div className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {visualIdeas.map((idea) => (
-            <figure key={idea.title} className="overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--white)]">
-              <img src={idea.image} alt={idea.alt} className="aspect-square w-full object-cover" loading="lazy" decoding="async" />
-              <figcaption className="px-5 py-4">
-                <span className="text-xs font-bold uppercase tracking-wider text-[var(--coral-dark)]">Illustrative</span>
-                <h3 className="mt-1 text-lg">{idea.title}</h3>
-              </figcaption>
-            </figure>
-          ))}
         </div>
       </section>
 
