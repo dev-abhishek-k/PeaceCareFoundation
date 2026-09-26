@@ -221,9 +221,6 @@ export function About() {
                   <Icon className="text-[var(--coral-dark)]" size={28} aria-hidden="true" />
                   <h3 className="mt-5 text-2xl">{plan.title}</h3>
                   <p className="mt-3 text-sm leading-7 text-[var(--ink-soft)]">{plan.text}</p>
-                  <span className="mt-6 inline-block rounded-full bg-[var(--paper-deep)] px-3 py-1 text-xs font-bold text-[var(--ink)]">
-                    Planned · Not active
-                  </span>
                 </article>
               );
             })}
