@@ -61,15 +61,12 @@ export function Volunteer() {
       </PageIntro>
 
       <figure className="mt-9 overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--white)]">
-        <div className="relative">
+        <div>
           <img
             src="/images/volunteer-reference.jpg"
             alt="Photo of adults sharing school supplies with children at a table."
             className="h-60 w-full object-cover object-top md:h-72"
           />
-          <span className="absolute bottom-4 left-4 rounded-full bg-[var(--ink)]/90 px-4 py-2 text-xs font-semibold text-white">
-            Reference photo · Affiliation unverified
-          </span>
         </div>
         <figcaption className="px-5 py-3 text-xs leading-5 text-[var(--ink-soft)]">
           User-provided image. The people and activity pictured are not verified as Peace Care Foundation volunteers or placements.

@@ -16,22 +16,20 @@ const defaultArtwork = {
 const requestHelpPhoto = {
   src: "/images/request-help-reference.jpg",
   alt: "Photo of an adult writing at a table with another adult and a child.",
-  caption: "Reference photo · Affiliation unverified",
 };
 
 const browsePhoto = {
   src: "/images/browse-ngos-reference.jpg",
   alt: "Photo of people talking beside tables with plants, books and supplies at an indoor event.",
-  caption: "Reference photo · Affiliation unverified",
   position: "object-[center_12%]",
 };
 
-const Shell = ({children, image}:{children:React.ReactNode; image?: typeof defaultArtwork & {position?: string}}) => {
+const Shell = ({children, image}:{children:React.ReactNode; image?: {src: string; alt: string; position?: string}}) => {
   const artwork = image ?? defaultArtwork;
   return <main className="mx-auto min-h-[60vh] max-w-7xl px-5 py-14 md:py-20">
     <figure className={`relative mb-10 overflow-hidden rounded-2xl ${image ? "h-56 sm:h-72" : "h-36 sm:h-44"}`}>
       <img src={artwork.src} alt={artwork.alt} className={`h-full w-full object-cover ${image?.position ?? (image ? "object-[center_28%]" : "object-[center_48%]")}`} />
-      <figcaption className="absolute bottom-3 left-3 max-w-[calc(100%-1.5rem)] rounded-full bg-[var(--ink)]/90 px-3 py-1 text-xs font-semibold text-white">{artwork.caption}</figcaption>
+      {!image && <figcaption className="absolute bottom-3 left-3 max-w-[calc(100%-1.5rem)] rounded-full bg-[var(--ink)]/90 px-3 py-1 text-xs font-semibold text-white">{defaultArtwork.caption}</figcaption>}
     </figure>
     {children}
   </main>;
