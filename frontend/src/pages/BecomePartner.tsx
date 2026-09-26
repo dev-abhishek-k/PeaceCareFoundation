@@ -54,18 +54,15 @@ export function BecomePartner() {
                 Explore our work
               </Link>
             </div>
-            <p className="mt-8 max-w-lg text-xs leading-5 text-white/65">
-              This site cannot receive partnership enquiries yet. The form below is a local-only preview.
-            </p>
           </div>
           <figure className="relative min-h-80 bg-[#d9d0b6] sm:min-h-[440px]">
             <img
-              src="/images/hero-care.jpg"
-              alt="Illustration of a dog beside books, a blanket and a bowl in a courtyard."
-              className="absolute inset-0 h-full w-full object-cover"
+              src="/images/partner-reference.webp"
+              alt="Five adults seated together at a table, with two people shaking hands."
+              className="absolute inset-0 h-full w-full object-cover object-[75%_center]"
             />
-            <figcaption className="absolute bottom-5 left-5 rounded-full bg-[var(--ink)]/90 px-3 py-1.5 text-xs font-semibold text-white">
-              Illustrative artwork · Not a documented partnership
+            <figcaption className="absolute bottom-5 left-5 right-5 w-fit rounded-xl bg-[var(--ink)]/90 px-4 py-2 text-xs font-semibold leading-5 text-white">
+              Reference photo · People pictured are not verified Peace Care Foundation partners.
             </figcaption>
           </figure>
         </div>
