@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Notice } from "../components/UI";
 
 const amounts = [500, 1000, 2500, 5000];
-const careAreas = ["Across the sample story", "Street dogs", "Children", "Adults & elders"];
+const careAreas = ["Across all care areas", "Street dogs", "Children", "Adults & elders"];
 const rupees = (value: number) =>
   new Intl.NumberFormat("en-IN", {
     style: "currency",
@@ -42,17 +42,17 @@ export function Donate() {
     <main>
       <section className="mx-auto grid max-w-7xl gap-10 px-5 pb-16 pt-14 lg:grid-cols-[.9fr_1.1fr] lg:items-start lg:gap-16 lg:pb-24 lg:pt-20">
         <div className="lg:pt-8">
-          <div className="eyebrow">Donate · Sample preview</div>
+          <div className="eyebrow">Donate · Preview only</div>
           <h1 className="mt-5 max-w-xl text-5xl leading-[1.05] sm:text-6xl">
             Giving begins with <em className="text-[var(--coral)]">care.</em>
           </h1>
           <p className="mt-7 max-w-lg text-lg leading-8 text-[var(--ink-soft)]">
-            Explore how a donation pledge could look for Peace Care Foundation’s sample
-            story about caring for homeless dogs, children, adults and elders.
+            Explore how a donation pledge could look for the care areas described here:
+            homeless dogs, children, adults and elders.
           </p>
           <div className="mt-7 max-w-lg">
             <Notice tone="info">
-              This is a sample preview, not a donation form. No payment is taken,
+              This is an interactive preview, not a donation form. No payment is taken,
               no pledge is sent or saved, and these programmes are not independently verified.
             </Notice>
           </div>
@@ -72,7 +72,7 @@ export function Donate() {
               to="/programs"
               className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-[var(--sun)] underline-offset-4 hover:underline focus-visible:underline"
             >
-              Explore sample work <ArrowRight size={16} aria-hidden="true" />
+              Explore care areas <ArrowRight size={16} aria-hidden="true" />
             </Link>
           </div>
         </div>
@@ -85,7 +85,7 @@ export function Donate() {
               </span>
               <div>
                 <div className="eyebrow">Preview complete · Nothing submitted</div>
-                <h2 className="mt-3 text-3xl sm:text-4xl">Here’s your sample pledge.</h2>
+                <h2 className="mt-3 text-3xl sm:text-4xl">Here’s your pledge preview.</h2>
                 <p className="mt-3 leading-7 text-[var(--ink-soft)]">
                   This is only an illustration of a donation choice. It is not a receipt,
                   commitment, or confirmation of payment.
@@ -93,7 +93,7 @@ export function Donate() {
               </div>
               <div className="rounded-2xl bg-[var(--paper)] p-6">
                 <p className="text-xs font-bold uppercase tracking-[.14em] text-[var(--coral-dark)]">
-                  Sample amount
+                  Preview amount
                 </p>
                 <p className="mt-2 font-['Fraunces'] text-4xl">{rupees(preview.amount)}</p>
                 <p className="mt-4 border-t border-[var(--line)] pt-4 text-sm text-[var(--ink-soft)]">
@@ -111,7 +111,7 @@ export function Donate() {
           ) : (
             <form onSubmit={submit} noValidate>
               <div className="eyebrow">Your pledge · Preview only</div>
-              <h2 className="mt-3 text-3xl sm:text-4xl">Choose a sample amount.</h2>
+              <h2 className="mt-3 text-3xl sm:text-4xl">Choose an amount to preview.</h2>
               <p className="mt-3 text-sm leading-6 text-[var(--ink-soft)]">
                 These amounts are examples, not suggested gifts or a payment request.
               </p>
@@ -138,7 +138,7 @@ export function Donate() {
               </fieldset>
 
               <label className="mt-6 block text-sm font-bold" htmlFor="custom-amount">
-                Or enter another sample amount
+                Or enter another amount
               </label>
               <div className="relative mt-2">
                 <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 font-bold" aria-hidden="true">₹</span>
@@ -149,7 +149,7 @@ export function Donate() {
                   pattern="[0-9]*"
                   maxLength={7}
                   placeholder="Whole rupees"
-                  aria-label="Custom sample amount in rupees"
+                  aria-label="Custom preview amount in rupees"
                   value={customAmount}
                   onFocus={() => setAmountChoice("custom")}
                   onChange={(event) => {
@@ -162,7 +162,7 @@ export function Donate() {
               <p className="mt-2 text-xs text-[var(--ink-soft)]">For preview only · ₹1 to ₹10,00,000</p>
 
               <label className="mt-6 block text-sm font-bold" htmlFor="care-area">
-                Sample care area
+                Care area to preview
               </label>
               <select
                 id="care-area"

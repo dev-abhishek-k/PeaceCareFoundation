@@ -8,7 +8,7 @@ const careAreas = [
     number: "01",
     title: "Street dogs",
     summary: "Care begins with noticing who is often overlooked.",
-    description: "Feeding, injury response, sterilisation and vaccination, with foster and adoption pathways — all described here as sample work, not verified services.",
+    description: "Feeding, injury response, sterilisation and vaccination, with foster and adoption pathways — an illustrative description, not verified services.",
     details: ["Feeding & injury response", "Sterilisation & vaccination", "Foster & adoption pathways"],
     icon: PawPrint,
     surface: "bg-[#e9e9d6]",
@@ -20,7 +20,7 @@ const careAreas = [
     number: "02",
     title: "Children",
     summary: "A little support can make room to learn.",
-    description: "Learning circles, school kits, nutrition and health checks are part of this sample programme story, not a report of activities delivered.",
+    description: "Learning circles, school kits, nutrition and health checks are illustrative ideas, not a report of activities delivered.",
     details: ["Learning circles", "School kits", "Nutrition & health checks"],
     icon: BookOpen,
     surface: "bg-[#f5e1d5]",
@@ -46,13 +46,13 @@ export function Programs() {
     <main>
       <section className="mx-auto grid max-w-7xl gap-10 px-5 pb-16 pt-14 md:grid-cols-[1.1fr_.9fr] md:items-center md:gap-16 md:pb-24 md:pt-20">
         <div>
-          <div className="eyebrow">Our work · Sample story</div>
+          <div className="eyebrow">Our work · Care areas</div>
           <h1 className="mt-5 max-w-2xl text-5xl leading-[1.05] md:text-6xl lg:text-7xl">
             Care for every life, <em className="text-[var(--coral)]">every day.</em>
           </h1>
           <p className="mt-7 max-w-xl text-lg leading-8 text-[var(--ink-soft)]">
-            In Peace Care Foundation’s sample story, Aman’s care reaches homeless dogs,
-            children, adults and elders. One idea connects them: show up with dignity.
+            The care areas shown here include homeless dogs, children, adults and elders.
+            One idea connects them: show up with dignity.
           </p>
           <div className="mt-7 max-w-xl">
             <Notice tone="info">
@@ -68,7 +68,7 @@ export function Programs() {
           <div aria-hidden="true" className="absolute -right-20 -top-24 -z-10 h-72 w-72 rounded-full border-[50px] border-white/5" />
           <div className="flex items-center justify-between gap-4 border-b border-white/20 pb-6 text-xs font-bold uppercase tracking-[.15em] text-white/70">
             <span>Peace Care Foundation</span>
-            <span>Sample narrative</span>
+            <span>Illustrative overview</span>
           </div>
           <p className="mt-12 max-w-sm font-['Fraunces'] text-3xl leading-tight text-white sm:text-4xl">
             Different needs.<br />The same spirit of care.
@@ -99,7 +99,7 @@ export function Programs() {
           <div className="mt-3 flex flex-col justify-between gap-4 md:flex-row md:items-end">
             <h2 className="max-w-2xl text-4xl leading-tight md:text-5xl">What care can look like.</h2>
             <p className="max-w-sm text-sm leading-6 text-[var(--ink-soft)]">
-              The areas below reflect the sample story. They are not a list of currently available programmes.
+              The areas below are illustrative. They are not a list of currently available programmes.
             </p>
           </div>
         </div>
@@ -114,7 +114,7 @@ export function Programs() {
             className="grid scroll-mt-24 overflow-hidden rounded-[2rem] border border-[var(--line)] bg-[var(--white)] md:grid-cols-2"
           >
             <div className={`relative flex min-h-64 flex-col justify-between overflow-hidden p-7 sm:p-10 md:min-h-[410px] ${surface} ${index % 2 ? "md:order-2" : ""}`}>
-              <span className="text-xs font-bold uppercase tracking-[.15em]">{number} / 03 · Sample programme</span>
+              <span className="text-xs font-bold uppercase tracking-[.15em]">{number} / 03 · Care area preview</span>
               <Icon size={148} strokeWidth={1} aria-hidden="true" className={`relative z-10 my-6 self-center ${accent} sm:h-44 sm:w-44`} />
               <div aria-hidden="true" className="absolute -right-16 top-12 h-56 w-56 rounded-full border-[34px] border-white/35 sm:h-72 sm:w-72" />
               <span className="relative z-10 self-end rounded-full border border-current/25 px-4 py-2 text-xs font-semibold">{label}</span>
@@ -124,7 +124,7 @@ export function Programs() {
               <h3 id={`${id}-title`} className="mt-4 text-4xl md:text-5xl">{title}</h3>
               <p className="mt-5 max-w-md font-['Fraunces'] text-xl leading-snug text-[var(--ink)]">{summary}</p>
               <p className="mt-5 max-w-lg leading-7 text-[var(--ink-soft)]">{description}</p>
-              <ul className="mt-7 flex flex-wrap gap-2" aria-label={`${title} sample activities`}>
+              <ul className="mt-7 flex flex-wrap gap-2" aria-label={`${title} illustrative activities`}>
                 {details.map(detail => (
                   <li key={detail} className="rounded-full border border-[var(--line)] bg-[var(--paper)] px-3 py-2 text-xs font-semibold text-[var(--ink-soft)]">
                     {detail}
@@ -148,7 +148,7 @@ export function Programs() {
               and partnerships are intentionally omitted because they are not verified.
             </Notice>
             <Link to="/ngos/peace-care-foundation" className="btn btn-primary mt-6">
-              View sample profile <ArrowRight size={16} aria-hidden="true" />
+              View preview profile <ArrowRight size={16} aria-hidden="true" />
             </Link>
           </div>
         </div>

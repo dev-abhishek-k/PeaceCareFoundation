@@ -54,7 +54,7 @@ export function Volunteer() {
       return;
     }
     if (!form.consent) {
-      setError("Please confirm that you understand this is only a sample preview.");
+      setError("Please confirm that you understand this is only a preview.");
       return;
     }
     setError("");
@@ -63,8 +63,8 @@ export function Volunteer() {
 
   return (
     <main className="mx-auto max-w-7xl px-5 py-14 md:py-20">
-      <PageIntro eyebrow="Volunteer · Sample preview" title="Give your time where it fits.">
-        Explore sample opportunities and preview a volunteer registration. These are fictional
+      <PageIntro eyebrow="Volunteer · Preview only" title="Give your time where it fits.">
+        Explore illustrative opportunities and preview a volunteer registration. These are fictional
         placements; completing the form does not send or save an application.
       </PageIntro>
 
@@ -116,7 +116,7 @@ export function Volunteer() {
                 <div className="eyebrow">Preview complete</div>
                 <h3 className="text-3xl">Your preview is complete.</h3>
                 <p className="leading-7 text-[var(--ink-soft)]">
-                  You selected <strong>{selected?.title}</strong>. This was a sample preview only:
+                  You selected <strong>{selected?.title}</strong>. This was a preview only:
                   nothing was sent or saved, and no placement has been reserved.
                 </p>
                 <Notice tone="success">Preview submission only—nothing sent or saved.</Notice>
@@ -141,7 +141,7 @@ export function Volunteer() {
                 </div>
 
                 <label className="block text-sm font-semibold">
-                  Sample opportunity <span aria-hidden="true">*</span>
+                  Opportunity preview <span aria-hidden="true">*</span>
                   <select
                     required
                     className="field mt-2"

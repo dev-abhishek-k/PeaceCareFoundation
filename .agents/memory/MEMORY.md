@@ -1,2 +1,3 @@
 - [Dependency cache after branch changes](dependency-cache-after-branch-changes.md) — sync missing packages and restart Vite after branch changes; a running server may retain failed imports.
 - [Mockup bootstrap runtime](mockup-bootstrap-runtime.md) — check that `node` actually resolves before creating a mockup artifact; declaring a module may not update the running shell.
+- [Prototype copy convention](prototype-copy-convention.md) — avoid “Sample” labels and named-founder storytelling in public copy; keep clear preview and verification disclosures.
