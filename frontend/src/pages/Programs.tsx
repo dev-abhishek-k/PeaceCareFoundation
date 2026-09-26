@@ -82,7 +82,7 @@ export function Programs() {
 
       <section id="support-categories" className="scroll-mt-20 border-y border-[var(--line)] bg-[var(--white)]" aria-labelledby="support-categories-title">
         <div className="mx-auto max-w-7xl px-5 py-16 md:py-20">
-          <div className="eyebrow">18 support categories · Illustrative overview</div>
+          <div className="eyebrow">Support categories · Illustrative overview</div>
           <div className="mt-3 flex flex-col justify-between gap-4 md:flex-row md:items-end">
             <h2 id="support-categories-title" className="max-w-2xl text-4xl md:text-5xl">Explore ways to help.</h2>
             <p className="max-w-md text-sm leading-6 text-[var(--ink-soft)]">
@@ -90,13 +90,13 @@ export function Programs() {
             </p>
           </div>
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {supportCategories.map((category, index) => (
-              <article key={category.name} className="rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-5">
-                <div className="text-xs font-bold uppercase tracking-wider text-[var(--coral-dark)]">
-                  Category {String(index + 1).padStart(2, "0")}
+            {supportCategories.map((category) => (
+              <article key={category.name} className="overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--paper)]">
+                <img src={category.image} alt="" loading="lazy" decoding="async" className="aspect-[3/2] w-full object-cover" />
+                <div className="p-5">
+                  <h3 className="text-xl">{category.name}</h3>
+                  <p className="mt-3 text-sm leading-6 text-[var(--ink-soft)]">{category.help}</p>
                 </div>
-                <h3 className="mt-4 text-xl">{category.name}</h3>
-                <p className="mt-3 text-sm leading-6 text-[var(--ink-soft)]">{category.help}</p>
               </article>
             ))}
           </div>
