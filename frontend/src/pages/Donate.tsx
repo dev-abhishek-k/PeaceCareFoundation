@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from "react";
-import { ArrowRight, Heart, RotateCcw, ShieldCheck } from "lucide-react";
+import { ArrowRight, Check, Heart, RotateCcw, ShieldCheck } from "lucide-react";
 import { useSearchParams } from "react-router-dom";
 import { Notice } from "../components/UI";
 import { impactOptions, rupees, type ImpactOption } from "../donationOptions";
@@ -104,17 +104,20 @@ export function Donate() {
                       key={option.id}
                       aria-pressed={selected.id === option.id}
                       onClick={() => setSelected(option)}
-                      className={`flex min-h-28 items-center gap-3 rounded-xl border p-3 text-left transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--coral)] ${
+                      className={`overflow-hidden rounded-2xl border text-left transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--coral)] ${
                         selected.id === option.id
                           ? "border-[var(--ink)] bg-[var(--ink)] text-white"
-                          : "border-[var(--line)] bg-[var(--paper)] hover:border-[var(--ink)]"
+                          : "border-[var(--line)] bg-[var(--paper)] hover:border-[var(--ink)] hover:bg-[var(--paper-deep)]"
                       }`}
                     >
-                      <img src={option.image} alt="" loading="lazy" decoding="async" className="h-20 w-20 shrink-0 rounded-lg object-cover" />
-                      <span className="min-w-0">
+                      <img src={option.image} alt="" loading="lazy" decoding="async" className="aspect-[3/2] w-full object-cover" />
+                      <span className="block p-4">
                         <span className={`block text-[11px] font-bold uppercase tracking-wider ${selected.id === option.id ? "text-white/75" : "text-[var(--coral-dark)]"}`}>{option.area}</span>
                         <span className="mt-1 block text-sm font-bold leading-5">{option.title}</span>
-                        <span className="mt-2 block font-['Fraunces'] text-xl">{rupees(option.amount)}</span>
+                        <span className="mt-2 flex items-center justify-between font-['Fraunces'] text-xl">
+                          {rupees(option.amount)}
+                          {selected.id === option.id && <Check size={18} aria-hidden="true" />}
+                        </span>
                       </span>
                     </button>
                   ))}
