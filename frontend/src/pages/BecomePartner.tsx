@@ -106,12 +106,6 @@ export function BecomePartner() {
               Describe a possible contribution and see how an enquiry could be structured.
               This form does not deliver a message, create an application or arrange a follow-up.
             </p>
-            <div className="mt-7 max-w-md">
-              <Notice tone="info">
-                Please do not enter sensitive information. Anything typed here stays in this browser
-                and disappears after submission or refresh.
-              </Notice>
-            </div>
           </div>
 
           <div className="rounded-[1.5rem] border border-[var(--line)] bg-[var(--white)] p-6 shadow-[0_18px_40px_rgba(24,59,54,.06)] sm:p-9">
