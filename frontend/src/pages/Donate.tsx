@@ -97,21 +97,21 @@ export function Donate() {
 
               <fieldset className="mt-6">
                 <legend className="text-sm font-bold">Illustrative category and amount</legend>
-                <div className="mt-3 flex flex-col gap-3">
+                <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
                   {impactOptions.map((option) => (
                     <button
                       type="button"
                       key={option.id}
                       aria-pressed={selected.id === option.id}
                       onClick={() => setSelected(option)}
-                      className={`flex w-full flex-col overflow-hidden rounded-2xl border text-left transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--coral)] sm:flex-row ${
+                      className={`flex h-full w-full flex-col overflow-hidden rounded-2xl border text-left transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--coral)] ${
                         selected.id === option.id
                           ? "border-[var(--ink)] bg-[var(--ink)] text-white"
                           : "border-[var(--line)] bg-[var(--paper)] hover:border-[var(--ink)] hover:bg-[var(--paper-deep)]"
                       }`}
                     >
-                      <img src={option.image} alt="" loading="lazy" decoding="async" className="aspect-[3/2] w-full object-cover sm:aspect-auto sm:h-40 sm:w-52 sm:shrink-0" />
-                      <span className="flex min-w-0 flex-1 flex-col justify-center p-4 sm:p-5">
+                      <img src={option.image} alt="" loading="lazy" decoding="async" className="aspect-[3/2] w-full object-cover" />
+                      <span className="flex min-w-0 flex-1 flex-col justify-center p-4">
                         <span className={`block text-[11px] font-bold uppercase tracking-wider ${selected.id === option.id ? "text-white/75" : "text-[var(--coral-dark)]"}`}>{option.area}</span>
                         <span className="mt-1 block text-sm font-bold leading-5">{option.title}</span>
                         <span className="mt-3 flex items-center justify-between font-['Fraunces'] text-xl">
