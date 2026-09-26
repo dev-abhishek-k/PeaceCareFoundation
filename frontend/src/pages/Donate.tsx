@@ -2,28 +2,29 @@ import { useState, type FormEvent } from "react";
 import { ArrowRight, Check, Heart, RotateCcw, ShieldCheck } from "lucide-react";
 import { useSearchParams } from "react-router-dom";
 import { Notice } from "../components/UI";
-import { impactOptions, rupees, type ImpactOption } from "../donationOptions";
+import { impactOptions, rupees } from "../donationOptions";
 
 const frequencies = ["One-time", "Monthly", "Quarterly", "Yearly"] as const;
 type Frequency = (typeof frequencies)[number];
-const featuredPledges = [impactOptions[0], impactOptions[4], impactOptions[8], impactOptions[10]];
+const fixedAmounts = [...new Set(impactOptions.map((option) => option.amount))].sort((a, b) => a - b);
+const featuredAmounts = [500, 1000, 2500, 5000];
 const ribbonColors = ["bg-[#f3dfb9] text-[var(--ink)]", "bg-[#d9e8d9] text-[var(--ink)]", "bg-[#a9cbc0] text-[var(--ink)]", "bg-[#245e54] text-white"];
 
 export function Donate() {
   const [searchParams] = useSearchParams();
-  const [selected, setSelected] = useState<ImpactOption>(
-    () => impactOptions.find((option) => option.id === searchParams.get("theme")) ?? impactOptions[1]
+  const [selectedAmount, setSelectedAmount] = useState<number>(
+    () => impactOptions.find((option) => option.id === searchParams.get("theme"))?.amount ?? impactOptions[1].amount
   );
   const [frequency, setFrequency] = useState<Frequency>("One-time");
-  const [preview, setPreview] = useState<{ option: ImpactOption; frequency: Frequency } | null>(null);
+  const [preview, setPreview] = useState<{ amount: number; frequency: Frequency } | null>(null);
 
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setPreview({ option: selected, frequency });
+    setPreview({ amount: selectedAmount, frequency });
   }
 
   function reset() {
-    setSelected(impactOptions[1]);
+    setSelectedAmount(impactOptions[1].amount);
     setFrequency("One-time");
     setPreview(null);
   }
@@ -40,8 +41,7 @@ export function Donate() {
               </h1>
             </div>
             <p className="mt-4 max-w-md text-sm leading-6 text-[var(--ink-soft)] lg:mt-0">
-              Explore an illustrative donation pledge for animals, children, adults and elders.
-              No live payments are offered.
+              Explore an illustrative fixed-amount pledge. No live payments are offered.
             </p>
           </div>
 
@@ -58,12 +58,11 @@ export function Donate() {
                   Reference photo · Affiliation unverified
                 </span>
                 <div className="absolute inset-x-5 bottom-5">
-                  <p className="mb-3 text-xs font-bold uppercase tracking-[.14em] text-white">Illustrative pledge themes</p>
+                  <p className="mb-3 text-xs font-bold uppercase tracking-[.14em] text-white">Fixed amounts · Preview only</p>
                   <div className="max-w-sm overflow-hidden rounded-xl shadow-lg">
-                    {featuredPledges.map((option, index) => (
-                      <div key={option.id} className={`flex items-center gap-4 px-4 py-3 text-sm ${ribbonColors[index]}`}>
-                        <strong className="w-20 shrink-0 font-['Fraunces'] text-lg">{rupees(option.amount)}</strong>
-                        <span className="font-semibold">{option.title}</span>
+                    {featuredAmounts.map((amount, index) => (
+                      <div key={amount} className={`px-4 py-3 text-center ${ribbonColors[index]}`}>
+                        <strong className="font-['Fraunces'] text-lg">{rupees(amount)}</strong>
                       </div>
                     ))}
                   </div>
@@ -90,11 +89,8 @@ export function Donate() {
                   </div>
                   <div className="rounded-2xl bg-[var(--paper)] p-6">
                     <p className="text-xs font-bold uppercase tracking-[.14em] text-[var(--coral-dark)]">Preview amount</p>
-                    <p className="mt-2 font-['Fraunces'] text-4xl">{rupees(preview.option.amount)}</p>
+                    <p className="mt-2 font-['Fraunces'] text-4xl">{rupees(preview.amount)}</p>
                     <p className="mt-4 border-t border-[var(--line)] pt-4 text-sm text-[var(--ink-soft)]">
-                      Care theme: <strong className="text-[var(--ink)]">{preview.option.title} · {preview.option.area}</strong>
-                    </p>
-                    <p className="mt-2 text-sm text-[var(--ink-soft)]">
                       Frequency: <strong className="text-[var(--ink)]">{preview.frequency} · illustrative only</strong>
                     </p>
                   </div>
@@ -112,10 +108,9 @@ export function Donate() {
                     <span className="h-2 w-2 rounded-full bg-[#62a66d]" aria-hidden="true" />
                     Choose amount · Preview only
                   </div>
-                  <h2 className="mt-3 text-3xl sm:text-4xl">Choose a care theme.</h2>
+                  <h2 className="mt-3 text-3xl sm:text-4xl">Choose a fixed amount.</h2>
                   <p className="mt-3 text-sm leading-6 text-[var(--ink-soft)]">
-                    Twelve fixed-amount examples. These are not verified programmes,
-                    actual costs or a payment request.
+                    These amounts are illustrative choices, not actual costs or a payment request.
                   </p>
 
                   <fieldset className="mt-6">
@@ -138,34 +133,30 @@ export function Donate() {
                   </fieldset>
 
                   <fieldset className="mt-6">
-                    <legend className="text-sm font-bold">Illustrative category and amount</legend>
+                    <legend className="text-sm font-bold">Fixed amounts</legend>
                     <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3">
-                      {impactOptions.map((option) => (
+                      {fixedAmounts.map((amount) => (
                         <button
                           type="button"
-                          key={option.id}
-                          aria-pressed={selected.id === option.id}
-                          onClick={() => setSelected(option)}
-                          className={`flex min-h-[92px] flex-col rounded-xl border p-3 text-left transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--coral)] ${
-                            selected.id === option.id
+                          key={amount}
+                          aria-pressed={selectedAmount === amount}
+                          onClick={() => setSelectedAmount(amount)}
+                          className={`relative flex min-h-16 items-center justify-center rounded-xl border p-3 font-['Fraunces'] text-xl transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--coral)] ${
+                            selectedAmount === amount
                               ? "border-[var(--ink)] bg-[#e5f0e9] text-[var(--ink)]"
                               : "border-[var(--line)] bg-[var(--white)] hover:border-[var(--ink)] hover:bg-[var(--paper)]"
                           }`}
                         >
-                          <span className="text-[10px] font-bold uppercase tracking-wider text-[var(--coral-dark)]">{option.area}</span>
-                          <span className="mt-1 text-xs font-semibold leading-4">{option.title}</span>
-                          <span className="mt-auto flex w-full items-center justify-between pt-2 font-['Fraunces'] text-lg">
-                            {rupees(option.amount)}
-                            {selected.id === option.id && <Check size={16} aria-hidden="true" />}
-                          </span>
+                          {rupees(amount)}
+                          {selectedAmount === amount && <Check size={15} className="absolute right-2 top-2" aria-hidden="true" />}
                         </button>
                       ))}
                     </div>
                   </fieldset>
 
                   <div className="mt-5 flex flex-wrap items-center justify-between gap-2 rounded-xl bg-[var(--paper)] px-4 py-3 text-sm">
-                    <span className="text-[var(--ink-soft)]">Selected for preview</span>
-                    <strong className="text-[var(--ink)]">{selected.title} · {rupees(selected.amount)}</strong>
+                    <span className="text-[var(--ink-soft)]">Selected amount</span>
+                    <strong className="text-[var(--ink)]">{rupees(selectedAmount)}</strong>
                   </div>
                   <button type="submit" className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl bg-[var(--ink)] px-6 py-3.5 text-sm font-bold text-white transition-colors hover:bg-[#285b52] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--coral)]">
                     Continue to pledge preview <ArrowRight size={17} aria-hidden="true" />
