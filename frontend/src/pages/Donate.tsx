@@ -52,10 +52,6 @@ export function Donate() {
                 Giving begins with <em className="text-[var(--coral)]">care.</em>
               </h1>
             </div>
-            <p className="mt-4 max-w-md text-sm leading-6 text-[var(--ink-soft)] lg:mt-0">
-              Choose an amount and frequency to see how a pledge could look. This website
-              cannot accept a donation or take payment.
-            </p>
           </div>
 
           <div className="grid lg:grid-cols-[.9fr_1.1fr]">
