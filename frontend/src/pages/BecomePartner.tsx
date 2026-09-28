@@ -157,7 +157,7 @@ export function BecomePartner() {
                   />
                 </label>
                 <button className="btn btn-primary w-full" type="submit">
-                  View interest summary <ArrowRight size={17} aria-hidden="true" />
+                  Submit <ArrowRight size={17} aria-hidden="true" />
                 </button>
               </form>
             )}
