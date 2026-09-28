@@ -123,9 +123,6 @@ export function BecomePartner() {
               <form onSubmit={submit} className="space-y-5">
                 <div>
                   <h3 className="text-2xl">Preview your interest</h3>
-                  <p className="mt-2 text-sm leading-6 text-[var(--ink-soft)]">
-                    Required fields are checked here only. No details are sent or stored.
-                  </p>
                 </div>
                 <div className="grid gap-4 sm:grid-cols-2">
                   <label className="block text-sm font-semibold">
