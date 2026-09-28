@@ -156,10 +156,6 @@ export function BecomePartner() {
                     required
                   />
                 </label>
-                <label className="flex items-start gap-3 text-sm leading-6">
-                  <input className="mt-1.5" type="checkbox" required />
-                  <span>I understand this form does not send an enquiry or save my details.</span>
-                </label>
                 <button className="btn btn-primary w-full" type="submit">
                   View interest summary <ArrowRight size={17} aria-hidden="true" />
                 </button>
