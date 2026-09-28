@@ -136,9 +136,9 @@ export function BecomePartner() {
                   </label>
                 </div>
                 <label className="block text-sm font-semibold">
-                  How might you collaborate? <span aria-hidden="true">*</span>
+                  How would you like to contribute? <span aria-hidden="true">*</span>
                   <select className="field mt-2" name="interest" defaultValue="" required>
-                    <option value="" disabled>Choose a possibility</option>
+                    <option value="" disabled>Select an area of support</option>
                     <option value="Sharing resources">Sharing resources</option>
                     <option value="Offering expertise">Offering expertise</option>
                     <option value="Connecting communities">Connecting communities</option>
@@ -146,11 +146,11 @@ export function BecomePartner() {
                   </select>
                 </label>
                 <label className="block text-sm font-semibold">
-                  Tell us about your idea <span aria-hidden="true">*</span>
+                  Describe your partnership idea <span aria-hidden="true">*</span>
                   <textarea
                     className="field mt-2 min-h-28"
                     name="idea"
-                    placeholder="What kind of collaboration would you like to explore?"
+                    placeholder="What resources, skills or local connections could your organisation offer?"
                     minLength={20}
                     maxLength={1000}
                     required
@@ -161,7 +161,7 @@ export function BecomePartner() {
                   <span>I understand this form does not send an enquiry or save my details.</span>
                 </label>
                 <button className="btn btn-primary w-full" type="submit">
-                  Show interest preview <ArrowRight size={17} aria-hidden="true" />
+                  View interest summary <ArrowRight size={17} aria-hidden="true" />
                 </button>
               </form>
             )}
