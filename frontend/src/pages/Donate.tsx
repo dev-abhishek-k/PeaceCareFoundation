@@ -64,7 +64,6 @@ export function Donate() {
                 />
                 <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-[#102923]/75 via-transparent to-[#102923]/20" />
                 <div className="absolute inset-x-5 bottom-5">
-                  <p className="mb-3 text-xs font-bold uppercase tracking-[.14em] text-white">Featured amounts · Preview only</p>
                   <div className="max-w-sm overflow-hidden rounded-xl shadow-lg">
                     {featuredAmounts.map((amount, index) => (
                       <div key={amount} className={`px-4 py-3 text-center ${ribbonColors[index]}`}>
