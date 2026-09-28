@@ -97,11 +97,12 @@ export function BecomePartner() {
       <section id="partner-interest" className="scroll-mt-20 bg-[#e9efe8] px-5 py-16 md:py-20">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[.85fr_1.15fr] lg:gap-16">
           <div>
-            <div className="eyebrow">Partnership interest · Preview</div>
-            <h2 className="mt-3 max-w-md text-4xl leading-tight sm:text-5xl">Start with an idea.</h2>
+            <div className="eyebrow">Partnership opportunities</div>
+            <h2 className="mt-3 max-w-md text-4xl leading-tight sm:text-5xl">Start with what you can offer.</h2>
             <p className="mt-5 max-w-md leading-8 text-[var(--ink-soft)]">
-              Describe a possible contribution and see how an enquiry could be structured.
-              This form does not deliver a message, create an application or arrange a follow-up.
+              Your organisation can bring resources, expertise or local connections to a shared goal.
+              Strong partnerships begin with listening to what independent NGOs need and finding
+              practical ways to contribute.
             </p>
           </div>
 
