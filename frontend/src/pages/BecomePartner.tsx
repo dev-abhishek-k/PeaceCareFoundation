@@ -123,7 +123,7 @@ export function BecomePartner() {
             ) : (
               <form onSubmit={submit} className="space-y-5">
                 <div>
-                  <h3 className="text-2xl">Preview your interest</h3>
+                  <h3 className="text-2xl">Your partnership idea</h3>
                 </div>
                 <div className="grid gap-4 sm:grid-cols-2">
                   <label className="block text-sm font-semibold">
