@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from "react";
-import { ArrowRight, Check, Heart, RotateCcw, ShieldCheck } from "lucide-react";
+import { ArrowRight, Check, Heart, RotateCcw } from "lucide-react";
 import { useSearchParams } from "react-router-dom";
 import { Notice } from "../components/UI";
 import { fixedAmounts, impactOptions, rupees } from "../donationOptions";
@@ -204,10 +204,6 @@ export function Donate() {
                   <button type="submit" className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl bg-[var(--ink)] px-6 py-3.5 text-sm font-bold text-white transition-colors hover:bg-[#285b52] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--coral)]">
                     Continue to pledge preview <ArrowRight size={17} aria-hidden="true" />
                   </button>
-                  <p className="mt-4 flex items-start gap-2 text-xs leading-5 text-[var(--ink-soft)]">
-                    <ShieldCheck size={16} className="mt-0.5 shrink-0" aria-hidden="true" />
-                    No card details or personal information is required. Frequency choices are only a preview.
-                  </p>
                 </form>
               )}
             </div>
