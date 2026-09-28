@@ -112,10 +112,6 @@ export function Donate() {
                     Choose amount
                   </div>
                   <h2 className="mt-3 text-3xl sm:text-4xl">Choose an amount.</h2>
-                    <p className="mt-3 text-sm leading-6 text-[var(--ink-soft)]">
-                      Set an amount in rupees and choose how often you would like to give.
-                    </p>
-
                   <fieldset className="mt-6">
                     <legend className="text-sm font-bold">Pledge frequency</legend>
                     <div className="mt-3 grid grid-cols-4 gap-1 rounded-xl bg-[var(--paper-deep)] p-1">
