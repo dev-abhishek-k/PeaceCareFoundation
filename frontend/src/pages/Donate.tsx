@@ -109,7 +109,7 @@ export function Donate() {
                 <form onSubmit={submit} noValidate>
                   <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-[.14em] text-[var(--ink)]">
                     <span className="h-2 w-2 rounded-full bg-[#62a66d]" aria-hidden="true" />
-                    Choose amount · Preview only
+                    Choose amount
                   </div>
                   <h2 className="mt-3 text-3xl sm:text-4xl">Choose an amount.</h2>
                     <p className="mt-3 text-sm leading-6 text-[var(--ink-soft)]">
@@ -182,14 +182,11 @@ export function Donate() {
                           setError("");
                         }}
                         aria-invalid={Boolean(error)}
-                        aria-describedby={error ? "other-amount-error" : "other-amount-help"}
+                        aria-describedby={error ? "other-amount-error" : undefined}
                         placeholder="Enter a custom amount"
                         className="mt-2 block w-full bg-transparent py-1 text-lg font-semibold outline-none placeholder:text-sm placeholder:font-normal placeholder:text-[var(--ink-soft)]"
                       />
                     </label>
-                    <p id="other-amount-help" className="mt-2 text-xs leading-5 text-[var(--ink-soft)]">
-                      Whole rupees only, up to ₹10,00,000. Preview only.
-                    </p>
                   </fieldset>
 
                   <div className="mt-5 flex flex-wrap items-center justify-between gap-2 rounded-xl bg-[var(--paper)] px-4 py-3 text-sm">
