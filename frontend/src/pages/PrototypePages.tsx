@@ -168,7 +168,7 @@ export function RequestHelpPreview() {
         onCityChange={value => { update("city", value); setFeedback(""); }}
       />
     </div>}
-    {step===3&&<div className="grid gap-5"><h2 className="text-2xl">Consent and preferences</h2><label className="flex gap-3 text-sm leading-6"><input type="checkbox" checked={consent} onChange={e=>{setConsent(e.target.checked);setFeedback("")}}/> I understand this is a preview submission and no help is guaranteed.</label><p className="text-sm text-[var(--ink-soft)]">This confirmation will not create a request.</p></div>}
+    {step===3&&<div className="grid gap-5"><h2 className="text-2xl">Consent and preferences</h2><label className="flex gap-3 text-sm leading-6"><input type="checkbox" checked={consent} onChange={e=>{setConsent(e.target.checked);setFeedback("")}}/> I understand this is a preview submission and no help is guaranteed.</label></div>}
     {feedback&&<Notice>{feedback}</Notice>}<div className="mt-8 flex justify-between">{step>1?<button className="btn btn-outline" onClick={()=>setStep(step-1)}>Back</button>:<span/>}{step<3?<Button onClick={next}>Continue <ArrowRight size={16}/></Button>:<Button disabled={!consent} onClick={()=>consent?setDone(true):setFeedback("Please confirm the preview consent before showing the confirmation.")}>Show preview confirmation <Check size={16}/></Button>}</div>
   </div></div></RequestHelpLayout>;
 }

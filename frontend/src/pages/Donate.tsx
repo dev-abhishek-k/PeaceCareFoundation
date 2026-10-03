@@ -8,9 +8,10 @@ const frequencies = ["One-time", "Monthly", "Quarterly", "Yearly"] as const;
 type Frequency = (typeof frequencies)[number];
 const featuredAmounts = fixedAmounts.slice(0, 4);
 const ribbonColors = ["bg-[#f3dfb9] text-[var(--ink)]", "bg-[#d9e8d9] text-[var(--ink)]", "bg-[#a9cbc0] text-[var(--ink)]", "bg-[#245e54] text-white"];
-const maxOtherAmount = 1_000_000;
 
-export function Donate() {
+export function Donate({ embedded = false }: { embedded?: boolean }) {
+  const Root = embedded ? "section" : "main";
+  const Heading = embedded ? "h2" : "h1";
   const [searchParams] = useSearchParams();
   const initialAmount = impactOptions.find((option) => option.id === searchParams.get("theme"))?.amount ?? fixedAmounts[1];
   const initialIsFixed = fixedAmounts.some((amount) => amount === initialAmount);
@@ -20,13 +21,13 @@ export function Donate() {
   const [preview, setPreview] = useState<{ amount: number; frequency: Frequency } | null>(null);
   const [error, setError] = useState("");
   const customValue = Number(otherAmount);
-  const validOtherAmount = otherAmount.trim() !== "" && Number.isSafeInteger(customValue) && customValue >= 1 && customValue <= maxOtherAmount;
+  const validOtherAmount = otherAmount.trim() !== "" && Number.isSafeInteger(customValue) && customValue >= 1;
   const amountToPreview = selectedAmount ?? (validOtherAmount ? customValue : null);
 
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (amountToPreview === null) {
-      setError("Enter a whole-rupee amount between ₹1 and ₹10,00,000.");
+      setError("Enter a positive whole-rupee amount.");
       return;
     }
     setError("");
@@ -42,15 +43,15 @@ export function Donate() {
   }
 
   return (
-    <main className="bg-[linear-gradient(135deg,#e9dffa_0%,#f7f4ec_52%,#e8f0e9_100%)]">
+    <Root id={embedded ? "donate" : undefined} aria-label={embedded ? "Donation pledge preview" : undefined} className="bg-[linear-gradient(135deg,#e9dffa_0%,#f7f4ec_52%,#e8f0e9_100%)]">
       <section className="mx-auto max-w-7xl px-5 py-10 lg:py-16">
         <div className="overflow-hidden rounded-[2rem] border border-[var(--ink)]/25 bg-[var(--white)] shadow-[0_24px_70px_rgba(24,59,54,.12)]">
           <div className="border-b border-[var(--line)] px-6 py-6 sm:px-9 lg:flex lg:items-end lg:justify-between lg:gap-10 lg:px-10">
             <div>
               <div className="eyebrow">Giving · Explore a pledge</div>
-              <h1 className="mt-3 text-4xl leading-tight sm:text-5xl">
+              <Heading className="mt-3 text-4xl leading-tight sm:text-5xl">
                 Giving begins with <em className="text-[var(--coral)]">care.</em>
-              </h1>
+              </Heading>
             </div>
           </div>
 
@@ -164,7 +165,6 @@ export function Donate() {
                         type="number"
                         inputMode="numeric"
                         min={1}
-                        max={maxOtherAmount}
                         step={1}
                         value={otherAmount}
                         onFocus={() => {
@@ -198,6 +198,6 @@ export function Donate() {
           </div>
         </div>
       </section>
-    </main>
+    </Root>
   );
 }

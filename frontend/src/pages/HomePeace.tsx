@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Donate } from "./Donate";
 
 const careCategories = [
   {
@@ -83,11 +84,13 @@ export function HomePeace() {
               fetchPriority="high"
             />
           </figure>
-          <Link className="btn btn-primary self-center" to="/donate">
+          <a className="btn btn-primary self-center" href="#donate">
             Donate <ArrowRight size={16} aria-hidden="true" />
-          </Link>
+          </a>
         </div>
       </section>
+
+      <Donate embedded />
 
       <section aria-labelledby="home-about-title" className="border-y border-[var(--line)] bg-[var(--white)]">
         <div className="mx-auto grid max-w-7xl items-center gap-9 px-5 py-16 md:grid-cols-[.9fr_1.1fr] md:gap-16 md:py-20">

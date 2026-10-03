@@ -13,7 +13,6 @@ type VolunteerForm = {
   city: string;
   availability: string;
   motivation: string;
-  consent: boolean;
 };
 
 const emptyForm: VolunteerForm = {
@@ -25,7 +24,6 @@ const emptyForm: VolunteerForm = {
   city: "",
   availability: "",
   motivation: "",
-  consent: false,
 };
 
 export function Volunteer() {
@@ -43,10 +41,6 @@ export function Volunteer() {
     event.preventDefault();
     if (!selected || !form.name.trim() || !form.state || !form.city.trim() || form.motivation.trim().length < 10) {
       setError("Choose an opportunity and enter your name, state, city and a short reason (at least 10 characters).");
-      return;
-    }
-    if (!form.consent) {
-      setError("Please confirm that you understand this is only a preview.");
       return;
     }
     setError("");
@@ -209,16 +203,6 @@ export function Volunteer() {
                     onChange={(event) => update("motivation", event.target.value)}
                     placeholder="Tell us what interests you about this kind of work."
                   />
-                </label>
-                <label className="flex items-start gap-3 text-sm leading-6">
-                  <input
-                    type="checkbox"
-                    className="mt-1.5"
-                    required
-                    checked={form.consent}
-                    onChange={(event) => update("consent", event.target.checked)}
-                  />
-                  <span>I understand this is a preview and no application will be sent or saved.</span>
                 </label>
                 {error && <div role="alert"><Notice>{error}</Notice></div>}
                 <button type="submit" className="btn btn-primary w-full">
