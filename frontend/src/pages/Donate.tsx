@@ -1,5 +1,5 @@
-import { useState, type FormEvent } from "react";
-import { ArrowRight, Check, Heart, RotateCcw } from "lucide-react";
+import { useEffect, useState, type FormEvent } from "react";
+import { ArrowRight, Check, ChevronLeft, ChevronRight, Heart, RotateCcw } from "lucide-react";
 import { useSearchParams } from "react-router-dom";
 import { Notice } from "../components/UI";
 import { fixedAmounts, impactOptions, rupees } from "../donationOptions";
@@ -8,6 +8,12 @@ const frequencies = ["One-time", "Monthly", "Quarterly", "Yearly"] as const;
 type Frequency = (typeof frequencies)[number];
 const featuredAmounts = fixedAmounts.slice(0, 4);
 const ribbonColors = ["bg-[#f3dfb9] text-[var(--ink)]", "bg-[#d9e8d9] text-[var(--ink)]", "bg-[#a9cbc0] text-[var(--ink)]", "bg-[#245e54] text-white"];
+const donateSlides = [
+  { image: "/images/donate1.webp", alt: "Volunteers handing out donated food supplies." },
+  { image: "/images/donate2.webp", alt: "Volunteers sharing groceries with families at a food distribution." },
+  { image: "/images/donate3.png", alt: "Donation poster showing a volunteer giving food supplies to a child." },
+  { image: "/images/donate4.png", alt: "Donation poster showing volunteers sharing food supplies with a child." },
+];
 
 export function Donate({ embedded = false }: { embedded?: boolean }) {
   const Root = embedded ? "section" : "main";
@@ -20,9 +26,19 @@ export function Donate({ embedded = false }: { embedded?: boolean }) {
   const [frequency, setFrequency] = useState<Frequency>("One-time");
   const [preview, setPreview] = useState<{ amount: number; frequency: Frequency } | null>(null);
   const [error, setError] = useState("");
+  const [activeSlide, setActiveSlide] = useState(0);
+  const [carouselPaused, setCarouselPaused] = useState(false);
   const customValue = Number(otherAmount);
   const validOtherAmount = otherAmount.trim() !== "" && Number.isSafeInteger(customValue) && customValue >= 1;
   const amountToPreview = selectedAmount ?? (validOtherAmount ? customValue : null);
+
+  useEffect(() => {
+    if (carouselPaused || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const timer = window.setInterval(() => {
+      setActiveSlide((current) => (current + 1) % donateSlides.length);
+    }, 5000);
+    return () => window.clearInterval(timer);
+  }, [carouselPaused]);
 
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -57,13 +73,33 @@ export function Donate({ embedded = false }: { embedded?: boolean }) {
 
           <div className="grid lg:grid-cols-[.9fr_1.1fr]">
             <figure className="flex min-w-0 flex-col bg-[var(--paper)]">
-              <div className="relative min-h-[440px] flex-1 overflow-hidden lg:min-h-[760px]">
+              <div
+                className="relative min-h-[440px] flex-1 overflow-hidden lg:min-h-[760px]"
+                role="region"
+                aria-roledescription="carousel"
+                aria-label="Donation photos"
+                onMouseEnter={() => setCarouselPaused(true)}
+                onMouseLeave={() => setCarouselPaused(false)}
+                onFocusCapture={() => setCarouselPaused(true)}
+                onBlurCapture={(event) => {
+                  if (!event.currentTarget.contains(event.relatedTarget)) setCarouselPaused(false);
+                }}
+              >
                 <img
-                  src="/images/donate-reference.jpg"
-                  alt="Photo of adults and a child holding a box of school supplies."
+                  src={donateSlides[activeSlide].image}
+                  alt={donateSlides[activeSlide].alt}
                   className="absolute inset-0 h-full w-full object-cover"
                 />
                 <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-[#102923]/75 via-transparent to-[#102923]/20" />
+                <div className="absolute inset-x-5 top-5 flex items-center justify-between">
+                  <button type="button" aria-label="Previous donation photo" onClick={() => setActiveSlide((current) => (current - 1 + donateSlides.length) % donateSlides.length)} className="rounded-full bg-white/90 p-2 text-[var(--ink)] shadow-md hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--coral)]">
+                    <ChevronLeft size={20} aria-hidden="true" />
+                  </button>
+                  <span className="rounded-full bg-[#102923]/70 px-3 py-1 text-xs font-semibold text-white" aria-live="off">{activeSlide + 1} / {donateSlides.length}</span>
+                  <button type="button" aria-label="Next donation photo" onClick={() => setActiveSlide((current) => (current + 1) % donateSlides.length)} className="rounded-full bg-white/90 p-2 text-[var(--ink)] shadow-md hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--coral)]">
+                    <ChevronRight size={20} aria-hidden="true" />
+                  </button>
+                </div>
                 <div className="absolute inset-x-5 bottom-5">
                   <div className="max-w-sm overflow-hidden rounded-xl shadow-lg">
                     {featuredAmounts.map((amount, index) => (

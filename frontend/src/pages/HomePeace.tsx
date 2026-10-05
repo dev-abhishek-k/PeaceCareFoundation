@@ -1,4 +1,5 @@
-import { ArrowRight } from "lucide-react";
+import { useEffect, useState } from "react";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Donate } from "./Donate";
 
@@ -29,6 +30,13 @@ const careCategories = [
   },
 ];
 
+const heroSlides = [
+  { image: "/images/reference-learning.jpg", alt: "An adult helping a child with a notebook.", title: "Learning together" },
+  { image: "/images/reference-meals.jpg", alt: "People distributing food and packed meals.", title: "Meal support" },
+  { image: "/images/reference-health-camp.jpg", alt: "A community health camp with Viswasanthi Health Initiative banners.", title: "Community health" },
+  { image: "/images/reference-planting.jpg", alt: "A group planting a young tree.", title: "Community action" },
+];
+
 const referencePhotos = [
   {
     title: "Learning together",
@@ -54,6 +62,19 @@ const referencePhotos = [
 ];
 
 export function HomePeace() {
+  const [activeSlide, setActiveSlide] = useState(0);
+  const [carouselPaused, setCarouselPaused] = useState(false);
+
+  useEffect(() => {
+    if (carouselPaused || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const timer = window.setInterval(() => {
+      setActiveSlide((current) => (current + 1) % heroSlides.length);
+    }, 5000);
+
+    return () => window.clearInterval(timer);
+  }, [carouselPaused]);
+
   return (
     <main>
       <section className="mx-auto grid max-w-7xl gap-12 px-5 pb-20 pt-16 md:grid-cols-[1.05fr_.95fr] md:items-center md:pt-24">
@@ -63,9 +84,9 @@ export function HomePeace() {
             Find the right help.<br /><em className="text-[var(--coral)]">Make a connection.</em>
           </h1>
           <p className="mt-7 max-w-xl text-lg leading-8 text-[var(--ink-soft)]">
-            Our aim is to make it easier to discover independent NGOs, understand the causes
-            they work on and find ways to offer support across India. The goal is to connect
-            people and organisations; each NGO decides what help it can provide.
+            There are many ways to help: donate, volunteer your time, share your skills, or
+            provide essential supplies. Explore causes across India and connect with NGOs
+            working in areas such as education, healthcare, food support, and animal care.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link className="btn btn-primary" to="/programs">Explore care areas <ArrowRight size={16} aria-hidden="true" /></Link>
@@ -76,14 +97,41 @@ export function HomePeace() {
           </div>
         </div>
         <div className="flex min-w-0 flex-col gap-5">
-          <figure className="overflow-hidden rounded-[2rem] border border-[var(--line)] bg-[var(--paper)]">
+          <div
+            className="overflow-hidden rounded-[2rem] border border-[var(--line)] bg-[var(--paper)]"
+            aria-label="Ways to help carousel"
+            aria-roledescription="carousel"
+            onMouseEnter={() => setCarouselPaused(true)}
+            onMouseLeave={() => setCarouselPaused(false)}
+            onFocusCapture={() => setCarouselPaused(true)}
+            onBlurCapture={(event) => {
+              if (!event.currentTarget.contains(event.relatedTarget)) setCarouselPaused(false);
+            }}
+          >
             <img
-              src="/images/home-design-reference.png"
-              alt="Design-reference screenshot depicting a child, an adult and a dog with a mock 96 percent figure and pledge controls."
-              className="mx-auto block h-auto w-full max-w-[500px]"
+              src={heroSlides[activeSlide].image}
+              alt={heroSlides[activeSlide].alt}
+              className="aspect-[4/3] w-full object-contain"
               fetchPriority="high"
             />
-          </figure>
+            <div className="flex items-center justify-between gap-3 px-4 py-3">
+              <button type="button" className="rounded-full border border-[var(--line)] bg-[var(--white)] p-2 hover:border-[var(--ink)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--coral)]" aria-label="Previous slide" onClick={() => setActiveSlide((current) => (current - 1 + heroSlides.length) % heroSlides.length)}>
+                <ChevronLeft size={20} aria-hidden="true" />
+              </button>
+              <div className="text-center">
+                <p className="text-sm font-bold" aria-live="polite">{heroSlides[activeSlide].title}</p>
+                <div className="mt-2 flex justify-center gap-2" aria-label="Choose a slide">
+                  {heroSlides.map((slide, index) => (
+                    <button key={slide.title} type="button" onClick={() => setActiveSlide(index)} aria-label={`Show slide ${index + 1}: ${slide.title}`} aria-current={activeSlide === index ? "true" : undefined} className={`h-2.5 w-2.5 rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--coral)] ${activeSlide === index ? "bg-[var(--coral)]" : "bg-[var(--line)]"}`} />
+                  ))}
+                </div>
+              </div>
+              <button type="button" className="rounded-full border border-[var(--line)] bg-[var(--white)] p-2 hover:border-[var(--ink)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--coral)]" aria-label="Next slide" onClick={() => setActiveSlide((current) => (current + 1) % heroSlides.length)}>
+                <ChevronRight size={20} aria-hidden="true" />
+              </button>
+            </div>
+       
+          </div>
           <a className="btn btn-primary self-center" href="#donate">
             Donate <ArrowRight size={16} aria-hidden="true" />
           </a>
@@ -101,7 +149,7 @@ export function HomePeace() {
               className="h-64 w-full object-cover sm:h-80 md:h-96"
               loading="lazy"
             />
-            <figcaption className="px-5 py-3 text-xs text-[var(--ink-soft)]">Illustrative artwork · Not a photo of platform activities</figcaption>
+
           </figure>
           <div>
             <div className="eyebrow">About us</div>
